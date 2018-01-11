@@ -1,91 +1,110 @@
 {
-    "name": "mybettingslips",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest",
-        "commit": "git add . && git cz && git push"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/stevenfitzpatrick/mybettingslips.git"
-    },
-    "lint-staged": {
-        "*.test.js": ["jest"],
-        "*.{js,jsx}": ["eslint --fix", "git add"],
-        "*.{scss}": ["stylelint --fix", "git add"]
-    },
-    "browserslist": ["last 2 Chrome versions"],
-    "bundlesize": [
-        {
-            "path": "./dist/vendor.bundle.*.js",
-            "maxSize": "37 kB"
-        },
-        {
-            "path": "./dist/app.bundle.*.js",
-            "maxSize": "12 kB"
-        },
-        {
-            "path": "./dist/index.html",
-            "maxSize": "6.25 kB"
-        }
+  "name": "mybettingslips",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git add . && git cz && git push",
+    "build": "cross-env NODE_ENV=production webpack --env=prod",
+    "lint": "eslint src --ext .js --ext .jsx",
+    "start": "webpack-dev-server --watch --progress --inline --color --env=dev",
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:ci": "jest --coverage && ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
+    "test:size": "bundlesize"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenfitzpatrick/mybettingslips.git"
+  },
+  "lint-staged": {
+    "*.test.js": [
+      "jest"
     ],
-    "keywords": [],
-    "author": "Steven Fitzpatrick",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/stevenfitzpatrick/mybettingslips/issues"
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{scss}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "bundlesize": [
+    {
+      "path": "./dist/vendor.bundle.*.js",
+      "maxSize": "37 kB"
     },
-    "homepage": "https://github.com/stevenfitzpatrick/mybettingslips#readme",
-    "devDependencies": {
-        "babel-core": "^6.26.0",
-        "babel-eslint": "^8.2.1",
-        "babel-jest": "^22.0.4",
-        "babel-loader": "^7.1.2",
-        "babel-plugin-transform-class-properties": "^6.24.1",
-        "babel-plugin-transform-object-rest-spread": "^6.26.0",
-        "babel-preset-env": "^1.6.1",
-        "babel-preset-react": "^6.24.1",
-        "coveralls": "^3.0.0",
-        "cross-env": "^5.1.3",
-        "cz-conventional-changelog": "^2.1.0",
-        "enzyme": "^3.3.0",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "eslint": "^4.15.0",
-        "eslint-plugin-import": "^2.8.0",
-        "eslint-plugin-jest": "^21.6.1",
-        "eslint-plugin-jsx-a11y": "^6.0.3",
-        "eslint-plugin-prettier": "^2.4.0",
-        "eslint-plugin-react": "^7.5.1",
-        "html-webpack-plugin": "^2.30.1",
-        "husky": "^0.14.3",
-        "jest": "^22.0.5",
-        "lint-staged": "^6.0.0",
-        "prettier-eslint": "^8.7.2",
-        "webpack": "^3.10.0",
-        "webpack-bundle-analyzer": "^2.9.2",
-        "webpack-dev-server": "^2.10.1",
-        "workbox-webpack-plugin": "^3.0.0-alpha.3"
+    {
+      "path": "./dist/app.bundle.*.js",
+      "maxSize": "12 kB"
     },
-    "dependencies": {
-        "apollo-cache-inmemory": "^1.1.5",
-        "apollo-client": "^2.2.0",
-        "apollo-link-http": "^1.3.2",
-        "classnames": "^2.2.5",
-        "prop-types": "^15.6.0",
-        "react": "^16.2.0",
-        "react-apollo": "^2.0.4",
-        "react-dom": "^16.2.0",
-        "react-router-dom": "^4.2.2"
-    },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
-    },
-    "prettier": {
-        "tabWidth": 2,
-        "useTabs": false
+    {
+      "path": "./dist/index.html",
+      "maxSize": "6.25 kB"
     }
+  ],
+  "keywords": [],
+  "author": "Steven Fitzpatrick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevenfitzpatrick/mybettingslips/issues"
+  },
+  "homepage": "https://github.com/stevenfitzpatrick/mybettingslips#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.0.4",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.3",
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.15.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.6.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
+    "jest": "^22.0.5",
+    "lint-staged": "^6.0.0",
+    "prettier-eslint": "^8.7.2",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-dev-server": "^2.10.1",
+    "webpack-merge": "^4.1.1",
+    "workbox-webpack-plugin": "^3.0.0-alpha.3"
+  },
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.1.5",
+    "apollo-client": "^2.2.0",
+    "apollo-link-http": "^1.3.2",
+    "classnames": "^2.2.5",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false
+  }
 }

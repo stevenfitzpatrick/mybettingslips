@@ -1,28 +1,30 @@
 {
-    "parser": "babel-eslint",
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true,
-        "jest": true
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:jest/recommended",
-        "plugin:jsx-a11y/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
-        },
-        "sourceType": "module"
-    },
-    "plugins": ["react", "jest", "import", "jsx-a11y", "prettier", "jsx-a11y"],
-    "rules": {
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "single"],
-        "semi": ["error", "always"]
-    }
+    "sourceType": "module"
+  },
+  "plugins": ["react", "jest", "import", "jsx-a11y", "prettier", "jsx-a11y"],
+  "rules": {
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "react/prefer-stateless-function": [2]
+  }
 }
