@@ -1,0 +1,6 @@
+enum RESULT {
+  Open
+  Win
+  Loss
+  Void
+}

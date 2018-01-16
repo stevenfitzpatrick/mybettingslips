@@ -1,0 +1,3 @@
+targets:
+  prod: shared-eu-west-1/cjcgptgo157pr01902z5vbkis
+  default: prod

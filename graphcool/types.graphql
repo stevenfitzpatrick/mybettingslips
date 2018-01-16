@@ -1,0 +1,26 @@
+type User @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  email: String! @isUnique
+  password: String!
+  bets: [Bet!]! @relation(name: "UserBets")
+}
+
+type Bet @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  stake: Float!
+  odds: Float!
+  result: RESULT
+  user: User! @relation(name: "UserBets")
+  type: BetType @relation(name: "BetType")
+}
+
+type BetType @model {
+  id: ID! @isUnique
+  name: String!
+  icon: String!
+  bets: [Bet!]! @relation(name: "BetType")
+}
