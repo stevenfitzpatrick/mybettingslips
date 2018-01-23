@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const commonPaths = require('./common-paths');
 
 const config = {
@@ -9,7 +11,14 @@ const config = {
         publicPath: '/',
         open: true,
         historyApiFallback: true
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('development')
+            }
+        })
+    ]
 };
 
 module.exports = config;

@@ -4,3 +4,17 @@ enum RESULT {
   Loss
   Void
 }
+
+# added by email-password template: (please uncomment)
+# type User @model {
+#   # Required system field:
+#   id: ID! @isUnique # read-only (managed by Graphcool)
+#
+#   # Optional system fields (remove if not needed):
+#   createdAt: DateTime! # read-only (managed by Graphcool)
+#   updatedAt: DateTime! # read-only (managed by Graphcool)
+#
+#   email: String! @isUnique
+#   password: String!
+# }
+#

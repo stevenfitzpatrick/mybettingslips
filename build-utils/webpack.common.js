@@ -18,10 +18,7 @@ const config = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                options: {
-                    compact: true
-                }
+                exclude: /node_modules/
             }
         ]
     },
