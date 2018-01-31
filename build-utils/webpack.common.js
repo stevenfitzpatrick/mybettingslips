@@ -6,7 +6,8 @@ const config = {
     entry: './src/index.js',
     output: {
         path: commonPaths.outputPath,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve: {
         modules: [commonPaths.nodeModules, commonPaths.src],

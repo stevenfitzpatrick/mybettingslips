@@ -1,18 +1,15 @@
 import { setItem, removeItem, fetchItem } from '../utils';
 
-const USER_ID_KEY = 'user_id';
-const USER_TOKEN_KEY = 'user_token';
+export const USER_ID_KEY = 'user_id';
+export const USER_TOKEN_KEY = 'user_token';
 
-export async function login() {
-    setItem(USER_ID_KEY, 'lol');
-    setItem(USER_TOKEN_KEY, 'lol');
+export function setKeys(id, token) {
+    setItem(USER_ID_KEY, id);
+    setItem(USER_TOKEN_KEY, token);
 }
 
 export function isLoggedIn() {
-  debugger; //eslint-disable-line
-
     const token = fetchItem(USER_TOKEN_KEY);
-  debugger; //eslint-disable-line
     return token ? true : false;
 }
 

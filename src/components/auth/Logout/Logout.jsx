@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import { logout } from '../../../client';
+
 class Logout extends Component {
-    constructor(props) {
-        super(props);
-        client.logout();
+    componentWillMount() {
+    debugger; //eslint-disable-line
+        logout();
     }
 
     render() {

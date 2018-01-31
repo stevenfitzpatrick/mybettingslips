@@ -16,7 +16,7 @@ export function setItem(key, value) {
  * @param {string} key
  */
 export function fetchItem(key) {
-    localStorage.getItem(key);
+    return localStorage.getItem(key);
 }
 
 /**
