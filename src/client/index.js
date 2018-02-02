@@ -1,3 +1,5 @@
+import decode from 'jwt-decode';
+
 import { setItem, removeItem, fetchItem } from '../utils';
 
 export const USER_ID_KEY = 'user_id';
@@ -8,12 +10,31 @@ export function setKeys(id, token) {
     setItem(USER_TOKEN_KEY, token);
 }
 
-export function isLoggedIn() {
-    const token = fetchItem(USER_TOKEN_KEY);
-    return token ? true : false;
-}
-
 export function logout() {
     removeItem(USER_ID_KEY);
     removeItem(USER_TOKEN_KEY);
+}
+
+export function isLoggedIn() {
+    const token = fetchItem(USER_TOKEN_KEY);
+    return token && !isTokenExpired(token);
+}
+
+function getTokenExpirationDate(encodedToken) {
+    try {
+        const token = decode(encodedToken);
+        if (!token.exp) {
+            return null;
+        }
+        const date = new Date(0);
+        date.setUTCSeconds(token.exp);
+        return date;
+    } catch (e) {
+        return null;
+    }
+}
+
+function isTokenExpired(token) {
+    const expirationDate = getTokenExpirationDate(token);
+    return expirationDate < new Date();
 }

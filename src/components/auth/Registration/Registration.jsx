@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import gql from 'graphql-tag';
-import { graphql, compose } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import { Formik } from 'formik';
 
 import { Alert } from '../../common';
 import { setKeys } from '../../../client';
-
-const SIGNUP_USER_MUTATION = gql`
-  mutation SignupUser($email: String!, $password: String!) {
-    signupUser(email: $email, password: $password) {
-      id
-      token
-    }
-  }
-`;
+import { SIGNUP_USER_MUTATION } from '../../../client/auth';
 
 const propTypes = {
     history: PropTypes.object,
@@ -101,8 +92,6 @@ export function Registration({ history, signupUserMutation }) {
 Registration.propTypes = propTypes;
 Registration.defaultProps = defaultProps;
 
-export default compose(
-    graphql(SIGNUP_USER_MUTATION, {
-        name: 'signupUserMutation'
-    })
-)(Registration);
+export default graphql(SIGNUP_USER_MUTATION, {
+    name: 'signupUserMutation'
+})(Registration);

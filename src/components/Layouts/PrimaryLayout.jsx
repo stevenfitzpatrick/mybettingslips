@@ -1,12 +1,11 @@
 import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
-import Home from '../Home';
-import FAQ from '../FAQ';
-import Logout from '../auth/Logout';
+import Dashboard from '../pages/Dashboard';
+import FAQ from '../pages/FAQ';
 import { NotFound } from '../common';
 
-function UnauthorizedLayout() {
+function PrimaryLayout() {
     return (
         <React.Fragment>
             <header>
@@ -17,16 +16,15 @@ function UnauthorizedLayout() {
                     <NavLink to="/faq" activeClassName="active">
             FAQ
                     </NavLink>
-                    <NavLink to="/logout" activeClassName="active">
+                    <NavLink to="/auth/logout" activeClassName="active">
             Logout
                     </NavLink>
                 </nav>
             </header>
             <main>
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={Dashboard} />
                     <Route path="/faq" component={FAQ} />
-                    <Route path="/logout" component={Logout} />
                     <Route component={NotFound} />
                 </Switch>
             </main>
@@ -35,4 +33,4 @@ function UnauthorizedLayout() {
     );
 }
 
-export default UnauthorizedLayout;
+export default PrimaryLayout;

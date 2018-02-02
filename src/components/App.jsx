@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { PrivateRoute } from './common';
-import { PrimaryLayout, UnauthorizedLayout } from './Layouts';
+import { PrivateRoute } from './auth';
+import { PrimaryLayout, UnauthorizedLayout } from './layouts';
 
 function App() {
     return (
