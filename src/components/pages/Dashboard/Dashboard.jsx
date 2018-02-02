@@ -19,12 +19,12 @@ import { LOGGED_IN_USER_QUERY } from '../../../client/auth';
 //   }
 // `;
 
-const results = {
-    OPEN: 'Open',
-    WIN: 'Win',
-    LOSS: 'Loss',
-    VOID: 'Void'
-};
+// const results = {
+//     OPEN: 'Open',
+//     WIN: 'Win',
+//     LOSS: 'Loss',
+//     VOID: 'Void'
+// };
 
 class Dashboard extends Component {
   state = {
@@ -40,7 +40,6 @@ class Dashboard extends Component {
       //           typeId: 'cjd61oxwh1tvm01763kusqrkr'
       //       }
       //   });
-      const test = this.props;
   }
 
   render() {
