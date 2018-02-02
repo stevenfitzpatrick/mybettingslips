@@ -15,12 +15,12 @@ type Bet @model {
   odds: Float!
   result: RESULT
   user: User! @relation(name: "UserBets")
-  type: BetType @relation(name: "BetType")
+  type: BetType! @relation(name: "BetTypes")
 }
 
 type BetType @model {
   id: ID! @isUnique
   name: String!
-  icon: String!
-  bets: [Bet!]! @relation(name: "BetType")
+  icon: String
+  bets: [Bet!]! @relation(name: "BetTypes")
 }

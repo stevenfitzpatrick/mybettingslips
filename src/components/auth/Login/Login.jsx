@@ -1,32 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import gql from 'graphql-tag';
-import { graphql, compose } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import { Formik } from 'formik';
 
 import { Alert } from '../../common';
-import { setKeys } from '../../../client';
-
-const SIGNUP_USER_MUTATION = gql`
-  mutation SignupUser($email: String!, $password: String!) {
-    signupUser(email: $email, password: $password) {
-      id
-      token
-    }
-  }
-`;
+import { setKeys, logout } from '../../../client';
+import { LOGIN_USER_MUTATION } from '../../../client/auth';
 
 const propTypes = {
     history: PropTypes.object,
-    signupUserMutation: PropTypes.func
+    loginMutation: PropTypes.func
 };
 
 const defaultProps = {
     history: {}
 };
 
-export function Login({ history, signupUserMutation }) {
+export function Login({ history, loginMutation }) {
+    logout();
     return (
         <Formik
             initialValues={{
@@ -45,13 +37,14 @@ export function Login({ history, signupUserMutation }) {
             }}
             onSubmit={async ({ email, password }, { setSubmitting, setErrors }) => {
                 try {
-                    const { data: { signupUser } } = await signupUserMutation({
+                    const { data: { authenticateUser } } = await loginMutation({
                         variables: { email, password }
                     });
-                    setKeys(signupUser.id, signupUser.token);
-                    history.push('/');
+                    setKeys(authenticateUser.id, authenticateUser.token);
                     setSubmitting(false);
+                    history.push('/');
                 } catch ({ message }) {
+          debugger; //eslint-disable-line
                     setErrors({ message });
                     setSubmitting(false);
                 }
@@ -65,7 +58,7 @@ export function Login({ history, signupUserMutation }) {
                 handleSubmit,
                 isSubmitting
             }) => (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} noValidate name="loginForm">
                     <h1>Login</h1>
                     {errors.message && <Alert>{errors.message}</Alert>}
                     <input
@@ -74,7 +67,9 @@ export function Login({ history, signupUserMutation }) {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.email}
+                        autoComplete="username"
                         autoFocus
+                        required
                     />
                     {touched.email &&
             errors.email && <div className="form-error">{errors.email}</div>}
@@ -84,6 +79,8 @@ export function Login({ history, signupUserMutation }) {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.password}
+                        autoComplete="current-password"
+                        required
                     />
                     {touched.password &&
             errors.password && (
@@ -101,8 +98,6 @@ export function Login({ history, signupUserMutation }) {
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
 
-export default compose(
-    graphql(SIGNUP_USER_MUTATION, {
-        name: 'signupUserMutation'
-    })
-)(Login);
+export default graphql(LOGIN_USER_MUTATION, {
+    name: 'loginMutation'
+})(Login);

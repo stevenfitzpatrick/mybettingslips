@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { withApollo } from 'react-apollo';
 
 import { logout } from '../../../client';
 
 class Logout extends Component {
-    componentWillMount() {
-    debugger; //eslint-disable-line
-        logout();
-    }
+  static propTypes = {
+      client: PropTypes.shape({
+          resetStore: PropTypes.func.isRequired
+      })
+  };
 
-    render() {
-        return <Redirect to="/login" />;
-    }
+  componentWillMount() {
+      this.props.client.resetStore();
+      logout();
+  }
+
+  render() {
+      return <Redirect to="/auth/login" />;
+  }
 }
 
-export default Logout;
+export default withApollo(Logout);
