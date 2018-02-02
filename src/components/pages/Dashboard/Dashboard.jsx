@@ -32,16 +32,15 @@ class Dashboard extends Component {
   };
 
   async componentDidMount() {
-      const result = await this.props.createBet({
-          variables: {
-              stake: 20,
-              odds: 1.5,
-              result: results.OPEN,
-              typeId: 'cjd61oxwh1tvm01763kusqrkr'
-          }
-      });
+      //   const result = await this.props.createBet({
+      //       variables: {
+      //           stake: 20,
+      //           odds: 1.5,
+      //           result: results.OPEN,
+      //           typeId: 'cjd61oxwh1tvm01763kusqrkr'
+      //       }
+      //   });
       const test = this.props;
-    debugger; //eslint-disable-line
   }
 
   render() {

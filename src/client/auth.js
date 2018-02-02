@@ -31,6 +31,7 @@ export const LOGGED_IN_USER_QUERY = gql`
   query CurrentUser {
     loggedInUser {
       id
+      email
     }
   }
 `;

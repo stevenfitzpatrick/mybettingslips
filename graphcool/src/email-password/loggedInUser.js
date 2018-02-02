@@ -19,7 +19,7 @@ export default async event => {
             return { data: null };
         }
 
-        return { data: { id: user.id } };
+        return { data: { id: user.id, email: user.email } };
     } catch (e) {
         return { error: 'An unexpected error occured during authentication.' };
     }
@@ -29,7 +29,8 @@ async function getUser(api, id) {
     const query = `
     query getUser($id: ID!) {
       User(id: $id) {
-        id
+        id,
+        email
       }
     }
   `;

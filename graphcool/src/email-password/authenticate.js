@@ -58,5 +58,5 @@ async function getUserByEmail(api, email) {
         email
     };
 
-    return api.reques(query, variables);
+    return api.request(query, variables);
 }

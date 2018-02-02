@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { graphql } from 'react-apollo';
 import { Formik } from 'formik';
+import Yup from 'yup';
 
 import { Alert } from '../../common';
 import { setKeys, logout } from '../../../client';
@@ -17,6 +17,13 @@ const defaultProps = {
     history: {}
 };
 
+const schema = Yup.object().shape({
+    email: Yup.string()
+        .required('Email is required')
+        .email('Invalid email address'),
+    password: Yup.string().required('Password is required')
+});
+
 export function Login({ history, loginMutation }) {
     logout();
     return (
@@ -25,16 +32,7 @@ export function Login({ history, loginMutation }) {
                 email: '',
                 password: ''
             }}
-            validate={({ email, password }) => {
-                let errors = {};
-                if (!email) {
-                    errors.email = 'Email is required';
-                }
-                if (!password) {
-                    errors.password = 'Password is required';
-                }
-                return errors;
-            }}
+            validationSchema={schema}
             onSubmit={async ({ email, password }, { setSubmitting, setErrors }) => {
                 try {
                     const { data: { authenticateUser } } = await loginMutation({
@@ -44,7 +42,6 @@ export function Login({ history, loginMutation }) {
                     setSubmitting(false);
                     history.push('/');
                 } catch ({ message }) {
-          debugger; //eslint-disable-line
                     setErrors({ message });
                     setSubmitting(false);
                 }
