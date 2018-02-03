@@ -5,7 +5,7 @@ import { withApollo } from 'react-apollo';
 
 import { logout } from '../../../client';
 
-class Logout extends Component {
+export class Logout extends Component {
   static propTypes = {
       client: PropTypes.shape({
           resetStore: PropTypes.func.isRequired

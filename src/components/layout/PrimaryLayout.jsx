@@ -3,7 +3,7 @@ import { Switch, Route, NavLink } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';
 import FAQ from '../pages/FAQ';
-import { NotFound } from '../common';
+import NotFound from '../pages/NotFound';
 
 function PrimaryLayout() {
     return (

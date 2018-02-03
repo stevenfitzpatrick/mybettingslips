@@ -89,20 +89,5 @@ describe('Registration', () => {
             form.simulate('submit');
             expect(onSubmitSpy).toHaveBeenCalled();
         });
-
-    // test('should submit and call routing change', () => {
-    //     expect(onSubmitSpy).not.toHaveBeenCalled();
-
-    //     email.simulate('change', {
-    //         target: { name: 'email', value: 'email@test.com' }
-    //     });
-    //     password.simulate('change', {
-    //         target: { name: 'password', value: 'secret' }
-    //     });
-
-    //     form.simulate('submit');
-    //     expect(onSubmitSpy).toHaveBeenCalledTimes(1);
-    //     expect(onHistoryPushSpy).toHaveBeenCalledTimes(1);
-    // });
     });
 });

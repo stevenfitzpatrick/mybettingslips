@@ -8,8 +8,8 @@ const localStorageMock = (() => {
         setItem(key, value) {
             store[key] = value.toString();
         },
-        clear() {
-            store = {};
+        removeItem(key) {
+            delete store[key];
         }
     };
 })();
