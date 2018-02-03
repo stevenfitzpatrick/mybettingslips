@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import { Formik } from 'formik';
 import Yup from 'yup';
-
+import { Input } from 'fitzy';
 import { Alert } from '../../common';
 import { setKeys, logout } from '../../../client';
 import { LOGIN_USER_MUTATION } from '../../../client/auth';
@@ -58,7 +58,7 @@ export function Login({ history, loginMutation }) {
                 <form onSubmit={handleSubmit} noValidate name="loginForm">
                     <h1>Login</h1>
                     {errors.message && <Alert>{errors.message}</Alert>}
-                    <input
+                    <Input
                         name="email"
                         type="email"
                         onChange={handleChange}
@@ -70,7 +70,7 @@ export function Login({ history, loginMutation }) {
                     />
                     {touched.email &&
             errors.email && <div className="form-error">{errors.email}</div>}
-                    <input
+                    <Input
                         name="password"
                         type="password"
                         onChange={handleChange}
