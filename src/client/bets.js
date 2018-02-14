@@ -22,3 +22,15 @@ export const CREATE_BET_MUTATION = gql`
     }
   }
 `;
+
+/**
+ * Bet dropdown Query
+ */
+export const BET_DROPDOWNS_QUERY = gql`
+  query BetDropdowns {
+    allBetTypes {
+      id
+      name
+    }
+  }
+`;

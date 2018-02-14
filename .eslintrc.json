@@ -10,12 +10,16 @@
     "eslint:recommended",
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
   ],
   "parserOptions": {
+    "ecmaVersion": 8,
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "jsx": true
+      "jsx": true,
+      "classes": true
     },
     "sourceType": "module"
   },

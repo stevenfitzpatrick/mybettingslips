@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import { Formik } from 'formik';
 import Yup from 'yup';
 import { Input } from 'fitzy';
+
 import { Alert } from '../../common';
 import { setKeys, logout } from '../../../client';
 import { LOGIN_USER_MUTATION } from '../../../client/auth';
@@ -65,6 +66,7 @@ export function Login({ history, loginMutation }) {
                         onBlur={handleBlur}
                         value={values.email}
                         autoComplete="username"
+                        spellCheck={false}
                         autoFocus
                         required
                     />

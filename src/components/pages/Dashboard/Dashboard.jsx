@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
 
-import { CREATE_BET_MUTATION } from '../../../client/bets';
+// Queries
 import { LOGGED_IN_USER_QUERY } from '../../../client/auth';
+
+// Components
+import CreateBet from './CreateBet';
 // const GET_NETWORK = gql`
 //   query {
 //     networkStatus @client {
@@ -19,31 +22,24 @@ import { LOGGED_IN_USER_QUERY } from '../../../client/auth';
 //   }
 // `;
 
-// const results = {
-//     OPEN: 'Open',
-//     WIN: 'Win',
-//     LOSS: 'Loss',
-//     VOID: 'Void'
-// };
-
 class Dashboard extends Component {
   state = {
-      something: true
+      showAddBet: false
   };
 
-  async componentDidMount() {
-      //   const result = await this.props.createBet({
-      //       variables: {
-      //           stake: 20,
-      //           odds: 1.5,
-      //           result: results.OPEN,
-      //           typeId: 'cjd61oxwh1tvm01763kusqrkr'
-      //       }
-      //   });
-  }
+  toggleAddBet = () =>
+      this.setState(({ showAddBet }) => ({ showAddBet: !showAddBet }));
 
   render() {
-      return <div>Dashboard</div>;
+      const { loggedInUser } = this.props;
+      const { showAddBet } = this.state;
+      return (
+          <div>
+        Dashboard
+              <button onClick={this.toggleAddBet}>Add Bet</button>
+              {showAddBet ? <CreateBet id={loggedInUser.id} /> : null}
+          </div>
+      );
   }
 }
 
@@ -52,11 +48,5 @@ export default compose(
         props: ({ data: { loggedInUser } }) => ({
             loggedInUser
         })
-    }),
-    graphql(CREATE_BET_MUTATION, {
-        options: ({ loggedInUser }) => ({
-            variables: { userId: loggedInUser.id }
-        }),
-        name: 'createBet'
     })
 )(Dashboard);
