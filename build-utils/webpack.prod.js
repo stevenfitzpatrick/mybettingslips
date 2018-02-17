@@ -4,36 +4,34 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const config = {
     mode: 'production',
     plugins: [
-    //     new webpack.optimize.ModuleConcatenationPlugin(),
-    //     new UglifyJsPlugin({
-    //         sourceMap: true,
-    //         cache: true,
-    //         parallel: true,
-    //         uglifyOptions: {
-    //             output: {
-    //                 comments: false,
-    //                 beautify: false
-    //             },
-    //             compress: {
-    //                 warnings: false,
-    //                 comparisons: false,
-    //                 drop_console: true,
-    //                 ecma: 8
-    //             },
-    //             mangle: {
-    //                 eval: false
-    //             },
-    //             warnings: false
-    //         }
-    //     }),
+    // new UglifyJsPlugin({
+    //     sourceMap: true,
+    //     cache: true,
+    //     parallel: true,
+    //     uglifyOptions: {
+    //         output: {
+    //             comments: false,
+    //             beautify: false
+    //         },
+    //         compress: {
+    //             warnings: false,
+    //             comparisons: false,
+    //             drop_console: true,
+    //             ecma: 8
+    //         },
+    //         mangle: {
+    //             eval: false
+    //         },
+    //         warnings: false
+    //     }
+    // }),
     //Add Bundle JS Analyzer
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: true,
             generateStatsFile: false
         })
-    ],
-    devtool: ''
+    ]
 };
 
 module.exports = config;
