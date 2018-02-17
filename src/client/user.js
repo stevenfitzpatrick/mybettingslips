@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
 
-import { setItem, removeItem, fetchItem } from '../utils';
+import { fetchItem, removeItem, setItem } from '../utils';
 
 export const USER_ID_KEY = 'user_id';
 export const USER_TOKEN_KEY = 'user_token';

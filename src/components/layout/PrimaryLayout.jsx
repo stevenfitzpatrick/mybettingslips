@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';
 import FAQ from '../pages/FAQ';

@@ -1,30 +1,20 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { graphql, compose } from 'react-apollo';
+import { compose, graphql } from 'react-apollo';
 
 // Queries
 import { LOGGED_IN_USER_QUERY } from '../../../client/auth';
 
 // Components
 import CreateBet from './CreateBet';
-// const GET_NETWORK = gql`
-//   query {
-//     networkStatus @client {
-//       isConnected
-//     }
-//   }
-// `;
-
-// const UPDATE_NETWORK_STATUS = gql`
-//   mutation updateNetworkStatus($isConnected: Boolean) {
-//     updateNetworkStatus(isConnected: $isConnected) @client {
-//       isConnected
-//     }
-//   }
-// `;
 
 class Dashboard extends Component {
   state = {
       showAddBet: false
+  };
+
+  static propTypes = {
+      loggedInUser: PropTypes.object
   };
 
   toggleAddBet = () =>

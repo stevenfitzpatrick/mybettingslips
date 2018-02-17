@@ -1,13 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'react-apollo';
-import { Formik } from 'formik';
+import React from 'react';
 import Yup from 'yup';
+import { Formik } from 'formik';
+import { graphql } from 'react-apollo';
 import { Input } from 'fitzy';
 
 import { Alert } from '../../common';
-import { setKeys, logout } from '../../../client';
 import { LOGIN_USER_MUTATION } from '../../../client/auth';
+import { logout, setKeys } from '../../../client';
 
 const propTypes = {
     history: PropTypes.object,

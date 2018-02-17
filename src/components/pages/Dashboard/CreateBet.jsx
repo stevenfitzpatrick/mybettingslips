@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { graphql, compose } from 'react-apollo';
+import { compose, graphql } from 'react-apollo';
 
 // Queries
-import { CREATE_BET_MUTATION, BET_DROPDOWNS_QUERY } from '../../../client/bets';
+import { BET_DROPDOWNS_QUERY, CREATE_BET_MUTATION } from '../../../client/bets';
 
 const results = {
     OPEN: 'Open',
@@ -12,8 +13,12 @@ const results = {
 };
 
 class CreateBet extends Component {
+  static propTypes = {
+      createBet: PropTypes.func
+  };
+
   handleSubmit = async () => {
-      const result = await this.props.createBet({
+      await this.props.createBet({
           variables: {
               stake: 20,
               odds: 1.5,
@@ -21,11 +26,9 @@ class CreateBet extends Component {
               typeId: 'cjd61oxwh1tvm01763kusqrkr'
           }
       });
-    debugger; //eslint-disable-line
   };
+
   render() {
-      const test = this.props;
-    debugger; //eslint-disable-line
       return (
           <div>
         some bets

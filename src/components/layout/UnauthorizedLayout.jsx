@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Login from '../auth/Login';
-import Registration from '../auth/Registration';
 import Logout from '../auth/Logout';
+import Registration from '../auth/Registration';
 
 function UnauthorizedLayout() {
     return (

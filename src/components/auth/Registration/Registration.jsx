@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import { graphql } from 'react-apollo';
 import { Formik } from 'formik';
+import { graphql } from 'react-apollo';
 
 import { Alert } from '../../common';
 import { setKeys } from '../../../client';

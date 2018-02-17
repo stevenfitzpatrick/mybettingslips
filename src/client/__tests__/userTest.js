@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
 
 import {
-    setKeys,
-    logout,
     isLoggedIn,
+    logout,
+    setKeys,
     USER_ID_KEY,
     USER_TOKEN_KEY
 } from '../user';

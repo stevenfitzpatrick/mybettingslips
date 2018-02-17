@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
 import { graphql } from 'react-apollo';
+import { Redirect, Route } from 'react-router-dom';
 
 import { isLoggedIn } from '../../client';
 import { LOGGED_IN_USER_QUERY } from '../../client/auth';
