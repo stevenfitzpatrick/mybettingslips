@@ -1,4 +1,4 @@
-import React, { StrictMode, createContext } from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -67,10 +67,8 @@ export const ThemeContext = createContext({
 });
 
 ReactDOM.render(
-    <StrictMode>
-        <ApolloProvider client={client}>
-            <App />
-        </ApolloProvider>
-    </StrictMode>,
+    <ApolloProvider client={client}>
+        <App />
+    </ApolloProvider>,
     document.getElementById('app')
 );
