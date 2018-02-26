@@ -30,7 +30,7 @@ jobs:
             node --version
             npm --version
 
-      - run: npm install -g npm@5.7.1
+      - run: sudo npm install -g npm@5.7.1
       - run: npm ci
 
       - save_cache:
