@@ -87,7 +87,7 @@
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
-    "image-webpack-loader": "^4.1.0",
+    "image-webpack-loader": "^3.6.0",
     "jest": "^22.3.0",
     "jsonwebtoken": "^8.1.1",
     "lint-staged": "^6.1.0",
