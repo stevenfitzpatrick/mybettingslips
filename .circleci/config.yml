@@ -30,7 +30,7 @@ jobs:
             node --version
             npm --version
 
-      - run: npm ci
+      - run: npm install
 
       - save_cache:
           paths:
