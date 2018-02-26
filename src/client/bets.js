@@ -28,7 +28,7 @@ export const CREATE_BET_MUTATION = gql`
  */
 export const BET_DROPDOWNS_QUERY = gql`
   query BetDropdowns {
-    allBetTypes {
+    allBetTypes(orderBy: name_ASC) {
       id
       name
     }

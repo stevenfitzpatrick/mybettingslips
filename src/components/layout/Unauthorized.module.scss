@@ -1,0 +1,20 @@
+.auth-container {
+  display: grid;
+  grid-template-columns: auto 600px;
+  min-height: 100vh;
+}
+
+.auth__img {
+  background-image: url("../../../public/assets/images/richard-boyle-309541-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  mix-blend-mode: multiply;
+  filter: grayscale(100%);
+}
+
+.auth__form {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+}

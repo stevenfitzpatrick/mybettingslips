@@ -1,16 +1,18 @@
 {
   "name": "mybettingslips",
   "version": "1.0.0",
-  "description": "",
+  "description": "Add & Track your betslips, get overview of your record.",
   "main": "index.js",
   "scripts": {
     "commit": "git add . && git cz && git push",
     "cypress": "cypress open",
     "cypress:run": "wait-on http://localhost:9000 && cypress run",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --env=prod",
     "lint": "eslint src --ext .js --ext .jsx",
-    "start": "webpack-dev-server --watch --inline --color --env=dev",
+    "start": "webpack-dev-server --watch --inline --progress --color --env=dev",
     "test": "jest",
+    "test:watch": "npm run test -- --watch",
     "test:coverage": "npm test -- --coverage",
     "test:ci": "jest --coverage && ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
     "test:size": "bundlesize"
@@ -38,7 +40,7 @@
   "bundlesize": [
     {
       "path": "./dist/bundle.js",
-      "maxSize": "37 kB"
+      "maxSize": "150 kB"
     },
     {
       "path": "./dist/index.html",
@@ -59,18 +61,19 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^8.2.2",
     "babel-jest": "^22.2.2",
     "babel-loader": "^8.0.0-beta.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "bundlesize": "^0.16.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
     "cypress": "^1.4.2",
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-codebox": "^2.0.2",
     "eslint-plugin-graphql": "^1.5.0",
@@ -79,20 +82,32 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",
+    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "file-loader": "^1.1.9",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "image-webpack-loader": "^4.1.0",
     "jest": "^22.3.0",
     "jsonwebtoken": "^8.1.1",
     "lint-staged": "^6.1.0",
+    "node-sass": "^4.7.2",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.1.0",
+    "postcss-url": "^7.3.0",
     "prettier": "^1.10.2",
     "prettier-eslint": "^8.8.1",
     "react-perf-devtool": "^3.0.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.2",
+    "stylelint": "^9.1.1",
+    "stylelint-config-standard": "^18.1.0",
     "tapable": "1.0.0-beta.5",
     "wait-on": "^2.1.0",
-    "webpack": "^4.0.0-beta.1",
-    "webpack-bundle-analyzer": "^2.10.0",
-    "webpack-cli": "^2.0.6",
-    "webpack-dev-server": "^3.0.0-beta.1",
+    "webpack": "^4.0.0",
+    "webpack-bundle-analyzer": "^2.11.0",
+    "webpack-cli": "^2.0.8",
+    "webpack-dev-server": "^3.0.0",
     "webpack-merge": "^4.1.1",
     "workbox-webpack-plugin": "^3.0.0-alpha.3"
   },
@@ -105,7 +120,7 @@
     "apollo-link-http": "^1.3.3",
     "apollo-link-state": "^0.4.0",
     "classnames": "^2.2.5",
-    "fitzy": "^1.0.17",
+    "fitzy": "^2.3.0",
     "formik": "^0.11.10",
     "graphql": "^0.13.0",
     "graphql-tag": "^2.7.3",
@@ -115,6 +130,7 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.3.0-alpha.0",
     "react-router-dom": "^4.2.2",
+    "styled-components": "^3.1.6",
     "yup": "^0.24.0"
   },
   "config": {
@@ -130,8 +146,13 @@
     "testMatch": [
       "<rootDir>/src/**/?(*)(Test).js"
     ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "^.+\\.module\\.scss$": "identity-obj-proxy"
+    },
     "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$",
+      "^.+\\.module\\.scss$"
     ],
     "moduleFileExtensions": [
       "js",

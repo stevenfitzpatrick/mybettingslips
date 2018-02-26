@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
+import Yup from 'yup';
 import { compose, graphql } from 'react-apollo';
+import { Dropdown, Input } from 'fitzy';
+import { Formik } from 'formik';
 
-// Queries
+import { Alert, FieldWarning } from '../../common';
 import { BET_DROPDOWNS_QUERY, CREATE_BET_MUTATION } from '../../../client/bets';
 
 const results = {
@@ -12,31 +15,94 @@ const results = {
     VOID: 'Void'
 };
 
-class CreateBet extends Component {
-  static propTypes = {
-      createBet: PropTypes.func
-  };
+const schema = Yup.object().shape({
+    stake: Yup.number('Must be integer').required('Stake is required'),
+    odds: Yup.number('Must be integer').required('Odds is required'),
+    typeId: Yup.string().required('Type is required')
+});
 
-  handleSubmit = async () => {
-      await this.props.createBet({
-          variables: {
-              stake: 20,
-              odds: 1.5,
-              result: results.OPEN,
-              typeId: 'cjd61oxwh1tvm01763kusqrkr'
-          }
-      });
-  };
+const propTypes = {
+    createBet: PropTypes.func.isRequired,
+    allBetTypes: PropTypes.array
+};
 
-  render() {
-      return (
-          <div>
-        some bets
-              <button onClick={this.handleSubmit}>Submit</button>
-          </div>
-      );
-  }
+const defaultProps = {
+    allBetTypes: []
+};
+
+export function CreateBet({ createBet, allBetTypes }) {
+    return (
+        <div>
+            <Formik
+                initialValues={{
+                    stake: '',
+                    odds: '',
+                    result: results.OPEN,
+                    typeId: ''
+                }}
+                validationSchema={schema}
+                onSubmit={async (inputs, { setSubmitting, setErrors }) => {
+                    try {
+                        await createBet({
+                            variables: {
+                                ...inputs
+                            }
+                        });
+                        setSubmitting(false);
+                    } catch ({ message }) {
+                        setErrors({ message });
+                        setSubmitting(false);
+                    }
+                }}
+                render={({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    setFieldTouched,
+                    handleSubmit,
+                    setFieldValue,
+                    isSubmitting
+                }) => (
+                    <form onSubmit={handleSubmit} noValidate name="createBetForm">
+                        {errors.message && <Alert>{errors.message}</Alert>}
+                        <Input
+                            name="stake"
+                            type="number"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.stake}
+                            autoFocus
+                        />
+                        <FieldWarning field="stake" touched={touched} errors={errors} />
+                        <Input
+                            name="odds"
+                            type="number"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.odds}
+                        />
+                        <FieldWarning field="odds" touched={touched} errors={errors} />
+                        <Dropdown
+                            onChange={i => setFieldValue('typeId', i.id)}
+                            onBlur={() => setFieldTouched('typeId')}
+                            items={allBetTypes}
+                            placeholder="Select Sport Type"
+                        />
+                        <FieldWarning field="typeId" touched={touched} errors={errors} />
+                        <button type="submit" disabled={isSubmitting}>
+              Submit
+                        </button>
+                    </form>
+                )}
+            />
+        </div>
+    );
 }
+
+CreateBet.propTypes = propTypes;
+CreateBet.defaultProps = defaultProps;
 
 export default compose(
     graphql(CREATE_BET_MUTATION, {
@@ -47,7 +113,7 @@ export default compose(
     }),
     graphql(BET_DROPDOWNS_QUERY, {
         props: ({ getBetTypes: { allBetTypes } }) => {
-            return { betTypeList: allBetTypes };
+            return { allBetTypes };
         },
         name: 'getBetTypes'
     })

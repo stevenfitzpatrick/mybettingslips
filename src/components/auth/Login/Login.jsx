@@ -5,9 +5,17 @@ import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
 import { Input } from 'fitzy';
 
-import { Alert } from '../../common';
+import styles from '../Auth.module.scss';
+import { Alert, FieldWarning } from '../../common';
 import { LOGIN_USER_MUTATION } from '../../../client/auth';
 import { logout, setKeys } from '../../../client';
+
+const schema = Yup.object().shape({
+    email: Yup.string()
+        .required('Email is required')
+        .email('Invalid email address'),
+    password: Yup.string().required('Password is required')
+});
 
 const propTypes = {
     history: PropTypes.object,
@@ -17,13 +25,6 @@ const propTypes = {
 const defaultProps = {
     history: {}
 };
-
-const schema = Yup.object().shape({
-    email: Yup.string()
-        .required('Email is required')
-        .email('Invalid email address'),
-    password: Yup.string().required('Password is required')
-});
 
 export function Login({ history, loginMutation }) {
     logout();
@@ -56,9 +57,15 @@ export function Login({ history, loginMutation }) {
                 handleSubmit,
                 isSubmitting
             }) => (
-                <form onSubmit={handleSubmit} noValidate name="loginForm">
+                <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    name="loginForm"
+                    className={styles.formContainer}
+                >
                     <h1>Login</h1>
                     {errors.message && <Alert>{errors.message}</Alert>}
+
                     <Input
                         name="email"
                         type="email"
@@ -67,11 +74,18 @@ export function Login({ history, loginMutation }) {
                         value={values.email}
                         autoComplete="username"
                         spellCheck={false}
+                        label="Email"
+                        className="field-container"
+                        hasError={touched['email'] && errors['email']}
+                        warning=<FieldWarning
+                            field="email"
+                            touched={touched}
+                            errors={errors}
+                        />
                         autoFocus
                         required
                     />
-                    {touched.email &&
-            errors.email && <div className="form-error">{errors.email}</div>}
+
                     <Input
                         name="password"
                         type="password"
@@ -79,14 +93,19 @@ export function Login({ history, loginMutation }) {
                         onBlur={handleBlur}
                         value={values.password}
                         autoComplete="current-password"
+                        label="Password"
                         required
+                        className="field-container"
+                        hasError={touched['password'] && errors['password']}
+                        warning=<FieldWarning
+                            field="password"
+                            touched={touched}
+                            errors={errors}
+                        />
                     />
-                    {touched.password &&
-            errors.password && (
-                            <div className="form-error">{errors.password}</div>
-                        )}
+
                     <button type="submit" disabled={isSubmitting}>
-            Submit
+            Login
                     </button>
                 </form>
             )}

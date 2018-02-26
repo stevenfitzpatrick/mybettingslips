@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
-import registerObserver from 'react-perf-devtool';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { ApolloProvider } from 'react-apollo';
@@ -10,10 +9,8 @@ import { withClientState } from 'apollo-link-state';
 
 import App from './components/App';
 import { fetchItem } from './utils';
-
 import { USER_TOKEN_KEY } from './client';
-
-registerObserver();
+import './styles/main.scss';
 
 const cache = new InMemoryCache();
 

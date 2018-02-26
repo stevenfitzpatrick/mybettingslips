@@ -1,0 +1,8 @@
+.form-container {
+  width: 400px;
+  margin: 0 auto;
+
+  > label:last-of-type {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+}
