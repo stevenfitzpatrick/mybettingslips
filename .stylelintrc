@@ -1,5 +1,8 @@
 {
   "extends": "stylelint-config-standard",
+  "plugins": [
+		"stylelint-order"
+	],
   "rules": {
     "selector-list-comma-newline-after": "always",
     "selector-type-no-unknown": null,
@@ -7,6 +10,7 @@
     "block-no-empty": null,
     "at-rule-no-unknown": null,
     "color-no-invalid-hex": true,
+    "declaration-colon-newline-after": null,
     "selector-pseudo-class-no-unknown": [
       true,
       {
@@ -15,7 +19,6 @@
         ]
       }
     ],
-    "declaration-colon-space-after": "always",
     "max-empty-lines": 2,
     "unit-whitelist": [
       "em",
@@ -26,6 +29,11 @@
       "vh",
       "deg",
       "vw"
-    ]
+    ],
+    "order/order": [
+			"custom-properties",
+			"declarations"
+		],
+		"order/properties-alphabetical-order": true
   }
 }

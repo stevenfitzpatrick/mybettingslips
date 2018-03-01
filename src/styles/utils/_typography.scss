@@ -2,7 +2,7 @@
 @import url("../variables/_typography.scss");
 
 * {
-  line-height: var(--line-height);
+  line-height: var(--body-line-height);
 }
 
 /**
@@ -11,10 +11,10 @@
 h1,
 h2 {
   font-weight: 600;
-  position: relative;
   letter-spacing: 0.3px;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
   margin-bottom: var(--spacing);
+  position: relative;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 h1 {

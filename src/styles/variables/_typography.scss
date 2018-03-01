@@ -1,54 +1,57 @@
 :root {
-  --line-height: 1.5;
-  --font-size: 16px;
-  --spacing: 24px;
   --primary-font: "Faune", sans-serif;
+  --body-line-height: 1.5;
+  --body-font-size: 16px;
+  --spacing: 24px;
+  --sm-spacing: 8px;
+  --m-spacing: 16px;
+  --l-spacing: 32px;
 }
 
 @font-face {
   font-family: "Faune";
+  font-style: normal;
+  font-weight: 900;
   src: url("../../../public/assets/fonts/Webfonts/woff2/Faune-Display_Black.woff2")
     format("woff2");
-  font-weight: 900;
-  font-style: normal;
 }
 
 @font-face {
   font-family: "Faune";
+  font-style: italic;
+  font-weight: bold;
   src: url("../../../public/assets/fonts/Webfonts/woff2/Faune-Display_Bold_Italic.woff2")
     format("woff2");
-  font-weight: bold;
-  font-style: italic;
 }
 
 @font-face {
   font-family: "Faune";
+  font-style: normal;
+  font-weight: 100;
   src: url("../../../public/assets/fonts/Webfonts/woff2/Faune-Display_Thin.woff2")
     format("woff2");
-  font-weight: 100;
-  font-style: normal;
 }
 
 @font-face {
   font-family: "Faune";
+  font-style: normal;
+  font-weight: bold;
   src: url("../../../public/assets/fonts/Webfonts/woff2/Faune-Text_Bold.woff2")
     format("woff2");
-  font-weight: bold;
-  font-style: normal;
 }
 
 @font-face {
   font-family: "Faune";
+  font-style: italic;
+  font-weight: normal;
   src: url("../../../public/assets/fonts/Webfonts/woff2/Faune-Text_Italic.woff2")
     format("woff2");
-  font-weight: normal;
-  font-style: italic;
 }
 
 @font-face {
   font-family: "Faune";
+  font-style: normal;
+  font-weight: normal;
   src: url("../../../public/assets/fonts/Webfonts/woff2/Faune-Text_Regular.woff2")
     format("woff2");
-  font-weight: normal;
-  font-style: normal;
 }

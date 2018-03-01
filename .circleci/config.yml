@@ -45,6 +45,9 @@ jobs:
           name: Lint
           command: npm run lint
       - run:
+          name: Stylelint
+          command: npm run stylelint
+      - run:
           name: Test
           command: npm test
       - run:

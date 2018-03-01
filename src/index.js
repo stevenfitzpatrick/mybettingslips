@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
@@ -10,7 +10,7 @@ import { withClientState } from 'apollo-link-state';
 import App from './components/App';
 import { fetchItem } from './utils';
 import { USER_TOKEN_KEY } from './client';
-import './styles/main.scss';
+import './styles/imports.scss';
 
 const cache = new InMemoryCache();
 
@@ -21,6 +21,9 @@ export const defaults = {
     }
 };
 
+/**
+ * Set up Auth forwarding header on each request
+ */
 const authLink = new ApolloLink((operation, forward) => {
     const token = fetchItem(USER_TOKEN_KEY);
     const authorization = token ? `Bearer ${token}` : null;
@@ -32,6 +35,9 @@ const authLink = new ApolloLink((operation, forward) => {
     return forward(operation);
 });
 
+/**
+ * Set up Client State to mix with Apollo State
+ */
 const stateLink = withClientState({
     cache,
     resolvers: {
@@ -47,7 +53,9 @@ const stateLink = withClientState({
     defaults
 });
 
-// Set up Apollo Client
+/**
+ * Set up ApolloClient
+ */
 const client = new ApolloClient({
     link: ApolloLink.from([
         stateLink,
@@ -57,10 +65,6 @@ const client = new ApolloClient({
         })
     ]),
     cache
-});
-
-export const ThemeContext = createContext({
-    background: 'yellow'
 });
 
 ReactDOM.render(
