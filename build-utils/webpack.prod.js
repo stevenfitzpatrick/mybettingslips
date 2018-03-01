@@ -58,27 +58,6 @@ const config = {
         ]
     },
     plugins: [
-    // new UglifyJsPlugin({
-    //     sourceMap: true,
-    //     cache: true,
-    //     parallel: true,
-    //     uglifyOptions: {
-    //         output: {
-    //             comments: false,
-    //             beautify: false
-    //         },
-    //         compress: {
-    //             warnings: false,
-    //             comparisons: false,
-    //             drop_console: true,
-    //             ecma: 8
-    //         },
-    //         mangle: {
-    //             eval: false
-    //         },
-    //         warnings: false
-    //     }
-    // }),
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css'
         }),
@@ -88,7 +67,13 @@ const config = {
             openAnalyzer: true,
             generateStatsFile: false
         })
-    ]
+    ],
+    optimization: {
+        runtimeChunk: false,
+        splitChunks: {
+            chunks: 'all' //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
+        }
+    }
 };
 
 module.exports = config;

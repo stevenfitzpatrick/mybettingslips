@@ -15,7 +15,8 @@
   ],
   "plugins": [
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
-    "@babel/plugin-proposal-object-rest-spread"
+    "@babel/plugin-proposal-object-rest-spread",
+    "react-hot-loader/babel"
   ],
   "env": {
     "test": {
@@ -29,4 +30,15 @@
       "plugins": ["transform-react-remove-prop-types"]
     }
   }
+
+  // "plugins": [
+  //   "@babel/transform-react-constant-elements",
+  //   "@babel/transform-react-inline-elements",
+  //   "transform-react-remove-prop-types",
+  //   "transform-react-pure-class-to-function",
+
+  //   "@babel/transform-runtime",
+  //   ["babel-plugin-root-import", {
+  //     "rootPathSuffix": "."
+  //   }]
 }

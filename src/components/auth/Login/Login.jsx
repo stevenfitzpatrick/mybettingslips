@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Yup from 'yup';
+import { Button, Input } from 'fitzy';
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
-import { Input } from 'fitzy';
 
 import styles from '../Auth.module.scss';
 import { Alert, FieldWarning } from '../../common';
@@ -18,7 +18,13 @@ const schema = Yup.object().shape({
 });
 
 const propTypes = {
+    /**
+   * React Router prop used for route navigation
+   */
     history: PropTypes.object,
+    /**
+   * Function to handle login attempts
+   */
     loginMutation: PropTypes.func
 };
 
@@ -27,6 +33,7 @@ const defaultProps = {
 };
 
 export function Login({ history, loginMutation }) {
+    let inputRef = React.createRef();
     logout();
     return (
         <Formik
@@ -46,6 +53,7 @@ export function Login({ history, loginMutation }) {
                 } catch ({ message }) {
                     setErrors({ message });
                     setSubmitting(false);
+                    inputRef.value.focus();
                 }
             }}
             render={({
@@ -75,6 +83,7 @@ export function Login({ history, loginMutation }) {
                         autoComplete="username"
                         spellCheck={false}
                         label="Email"
+                        innerRef={inputRef}
                         className="field-container"
                         hasError={touched['email'] && errors['email']}
                         warning=<FieldWarning
@@ -104,9 +113,9 @@ export function Login({ history, loginMutation }) {
                         />
                     />
 
-                    <button type="submit" disabled={isSubmitting}>
+                    <Button fullWidth type="submit" disabled={isSubmitting}>
             Login
-                    </button>
+                    </Button>
                 </form>
             )}
         />
