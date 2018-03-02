@@ -5,16 +5,16 @@
 }
 
 .auth__img {
-  background-image: url("https://res.cloudinary.com/ddw0ktdva/image/upload/c_scale,f_auto,fl_any_format.force_strip.progressive,q_auto,w_2590/v1519689991/richard-boyle-309541-unsplash.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/ddw0ktdva/image/upload/c_scale,f_auto,fl_preserve_transparency.progressive,q_auto:best,w_1000/v1519689991/richard-boyle-309541-unsplash.jpg");
   background-position: 50%;
-  mix-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
   filter: grayscale(100%);
+  mix-blend-mode: multiply;
 }
 
 .auth__form {
-  min-height: 100%;
   display: grid;
+  min-height: 100%;
   place-items: center;
 }

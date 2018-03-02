@@ -1,0 +1,40 @@
+/* ------------------------------------ *\
+    #Useful Sass Helper Functions
+\* ------------------------------------ */
+
+/**
+ * Truncate text after certain length to ...
+ */
+@mixin truncate($maxLength) {
+  max-width: $maxLength;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+ * CSS Media Query Helper
+ */
+@mixin mq($width, $type: min) {
+  @if map-has-key($map: $breakpoints, $key: $width) {
+    $width: map-get($map: $breakpoints, $key: $width);
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+/**
+ * Psuedo Selector Helper
+ */
+@mixin psuedo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+/* ------------------------------------ *\
+    $Flex Helpers
+\* ------------------------------------ */
+

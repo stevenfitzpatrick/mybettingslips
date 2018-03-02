@@ -10,7 +10,7 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --env=prod",
     "lint": "eslint src --ext .js --ext .jsx",
-    "stylelint": "stylelint src/**/*.scss src/styles/**/*.scss",
+    "stylelint": "stylelint src/components/**/*.scss src/styles/**/*.scss",
     "start": "webpack-dev-server --hot --inline --progress --color --env=dev",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
