@@ -1,18 +1,7 @@
-import { fromEvent, FunctionEvent } from 'graphcool-lib';
-import { GraphQLClient } from 'graphql-request';
+import { fromEvent } from 'graphcool-lib';
 import * as bcrypt from 'bcryptjs';
 
-interface User {
-  id: string;
-  password: string;
-}
-
-interface EventData {
-  email: string;
-  password: string;
-}
-
-const SALT_ROUNDS = 10;
+import createErrorResponse from '../../../utils/errorLogging';
 
 export default async event => {
     try {
@@ -26,13 +15,21 @@ export default async event => {
 
         // no user with this email
         if (!user) {
-            return { error: 'Invalid credentials!' };
+            return createErrorResponse({
+                code: 401,
+                subCode: 401001,
+                field: 'username'
+            });
         }
 
         // check password
         const passwordIsCorrect = await bcrypt.compare(password, user.password);
         if (!passwordIsCorrect) {
-            return { error: 'Invalid credentials!' };
+            return createErrorResponse({
+                code: 401,
+                subCode: 401002,
+                field: 'password'
+            });
         }
 
         // generate node token for existing User node
@@ -40,7 +37,7 @@ export default async event => {
 
         return { data: { id: user.id, token } };
     } catch (e) {
-        return { error: 'An unexpected error occured during authentication.' };
+        return createErrorResponse({ code: 500, subCode: 500001 });
     }
 };
 

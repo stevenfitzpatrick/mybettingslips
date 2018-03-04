@@ -38,3 +38,25 @@
     $Flex Helpers
 \* ------------------------------------ */
 
+/**
+ * Center Vertically and Horizontally
+ */
+@mixin centerFully() {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------------------------ *\
+    $Type Helpers
+\* ------------------------------------ */
+
+/**
+ * Set Header Size and LineHeight
+ */
+@mixin heading() {
+  letter-spacing: 0.3px;
+  margin-bottom: var(--spacing);
+  position: relative;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+}

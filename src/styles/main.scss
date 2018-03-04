@@ -1,5 +1,8 @@
-@import url("./variables/_typography");
-@import url("./variables/_colors");
+@import 'imports';
+
+/* ------------------------------------ *\
+    #Main Styles
+\* ------------------------------------ */
 
 body {
   background-color: var(--primary);
@@ -8,3 +11,5 @@ body {
   font-size: var(--body-font-size);
   line-height: var(--body-line-height);
 }
+
+

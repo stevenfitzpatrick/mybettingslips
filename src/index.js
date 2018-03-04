@@ -10,7 +10,7 @@ import { withClientState } from 'apollo-link-state';
 import App from './components/App';
 import { fetchItem } from './utils';
 import { USER_TOKEN_KEY } from './client';
-import './styles/imports.scss';
+import './styles/main';
 
 const cache = new InMemoryCache();
 

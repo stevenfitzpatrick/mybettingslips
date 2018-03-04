@@ -5,6 +5,8 @@ type User @model {
   email: String! @isUnique
   password: String!
   bets: [Bet!]! @relation(name: "UserBets")
+  loginAttempts: Int
+  status: USERSTATUS
 }
 
 type Bet @model {

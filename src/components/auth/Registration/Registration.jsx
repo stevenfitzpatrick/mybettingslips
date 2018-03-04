@@ -4,7 +4,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
 
-import { Alert } from '../../common';
+import { FormAlert } from '../../common';
 import { setKeys } from '../../../client';
 import { SIGNUP_USER_MUTATION } from '../../../client/auth';
 
@@ -58,7 +58,7 @@ export function Registration({ history, signupUserMutation }) {
             }) => (
                 <form onSubmit={handleSubmit}>
                     <h1>Register</h1>
-                    {errors.message && <Alert>{errors.message}</Alert>}
+                    {errors.message && <FormAlert>{errors.message}</FormAlert>}
                     <input
                         name="email"
                         type="email"

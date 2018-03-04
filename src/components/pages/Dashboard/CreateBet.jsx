@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Yup from 'yup';
 import { compose, graphql } from 'react-apollo';
-import { Dropdown, Input } from 'fitzy';
+import { Dropdown, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 
-import { Alert, FieldWarning } from '../../common';
 import { BET_DROPDOWNS_QUERY, CREATE_BET_MUTATION } from '../../../client/bets';
+import { FieldWarning, FormAlert } from '../../common';
 
 const results = {
     OPEN: 'Open',
@@ -66,7 +66,7 @@ export function CreateBet({ createBet, allBetTypes }) {
                     isSubmitting
                 }) => (
                     <form onSubmit={handleSubmit} noValidate name="createBetForm">
-                        {errors.message && <Alert>{errors.message}</Alert>}
+                        {errors.message && <FormAlert>{errors.message}</FormAlert>}
                         <Input
                             name="stake"
                             type="number"

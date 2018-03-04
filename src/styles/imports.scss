@@ -1,5 +1,10 @@
-@import url("./variables/_colors");
-@import url("./variables/_typography");
-@import url("./utils/_reset");
-@import url("./utils/_typography");
-@import url("./main.scss");
+/* ------------------------------------ *\
+    #Sitewide SCSS Imports
+    Note these will be critical css styles
+\* ------------------------------------ */
+
+@import "./variables/_colors";
+@import "./variables/_typography";
+@import "./utils/_helpers";
+@import "./utils/_reset";
+@import "./utils/_typography";

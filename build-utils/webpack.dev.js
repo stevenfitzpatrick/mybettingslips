@@ -4,6 +4,9 @@ const commonPaths = require('./common');
 
 const config = {
     mode: 'development',
+    output: {
+        filename: '[name].bundle.[hash].js'
+    },
     devtool: 'source-map',
     module: {
         rules: [
@@ -13,11 +16,10 @@ const config = {
                 use: ExtractTextPlugin.extract({
                     use: [
                         {
-                            loader: 'css-loader'
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: commonPaths.PostCSSConfig
+                            loader: 'css-loader',
+                            options: {
+                                modules: false
+                            }
                         },
                         {
                             loader: 'sass-loader'

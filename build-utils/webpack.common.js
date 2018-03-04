@@ -5,7 +5,6 @@ const config = {
     entry: './src',
     output: {
         path: commonPaths.outputPath,
-        filename: 'bundle.js',
         publicPath: '/'
     },
     resolve: {

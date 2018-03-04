@@ -6,6 +6,9 @@ const { PostCSSConfig } = require('./common');
 
 const config = {
     mode: 'production',
+    output: {
+        filename: '[name].bundle.[chunkhash].js'
+    },
     module: {
         rules: [
             {
@@ -71,7 +74,8 @@ const config = {
     optimization: {
         runtimeChunk: false,
         splitChunks: {
-            chunks: 'all' //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
+            chunks: 'all', //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693,
+            filename: '[name].async.[chunkhash].js'
         }
     }
 };

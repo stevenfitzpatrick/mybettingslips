@@ -1,3 +1,7 @@
+/* ------------------------------------ *\
+    #Reset CSS Styles
+\* ------------------------------------ */
+
 html {
   box-sizing: border-box;
   -ms-text-size-adjust: 100%;
@@ -80,6 +84,8 @@ img {
   height: auto;
   image-rendering: -webkit-optimize-contrast;
   max-width: 100%;
+  object-fit: cover;
+  vertical-align: middle;
 }
 
 // Scrollbars
@@ -98,11 +104,9 @@ img {
 
 // Selection Color
 ::selection {
-  background-color: $header; /* WebKit/Blink Browsers */
   color: #fff;
 }
 
 ::-moz-selection {
-  background-color: $header; /* Gecko Browsers */
   color: #fff;
 }

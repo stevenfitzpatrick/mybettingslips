@@ -4,3 +4,8 @@ enum RESULT {
   Loss
   Void
 }
+
+enum USERSTATUS {
+  Active
+  Locked
+}

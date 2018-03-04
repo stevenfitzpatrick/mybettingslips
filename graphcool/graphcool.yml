@@ -1,31 +1,29 @@
-# Welcome to Graphcool!
-#
-# This file is the main config file for your Graphcool Service.
-# It's very minimal at this point and uses default values.
-# We've included a hello world function here.
-# Just run `graphcool deploy` to have the first running Graphcool Service.
-#
-# Check out some examples:
-#    https://github.com/graphcool/framework/tree/master/examples
-#
-# Here are the reference docs of this definition format:
-# https://www.graph.cool/docs/reference/service-definition/graphcool.yml-foatho8aip
-#
-# Happy Coding!
 
 
-# In the types.graphql you define your data schema
+# Data Schemas
 types:
   - enums.graphql
   - types.graphql
 
+# Graphcool functions and resolvers
+functions:
+  signup:
+    type: resolver
+    schema: src/auth/registration/signup.graphql
+    handler:
+      code: src/auth/registration/signup.js
 
-# functions:
-#   hello:
-#     handler:
-#       code: src/hello.js
-#     type: resolver
-#     schema: src/hello.graphql
+  authenticate:
+    type: resolver
+    schema: src/auth/authenticate/authenticate.graphql
+    handler:
+      code: src/auth/authenticate/authenticate.js
+
+  loggedInUser:
+    type: resolver
+    schema: src/auth/login/loggedInUser.graphql
+    handler:
+      code: src/auth/login/loggedInUser.js
 
 
 # Model/Relation permissions are used to limit the API access
@@ -43,23 +41,4 @@ permissions:
 # rootTokens:
 #   - mytoken
 
-
-functions:
-  signup:
-    type: resolver
-    schema: src/email-password/signup.graphql
-    handler:
-      code: src/email-password/signup.js
-
-  authenticate:
-    type: resolver
-    schema: src/email-password/authenticate.graphql
-    handler:
-      code: src/email-password/authenticate.js
-
-  loggedInUser:
-    type: resolver
-    schema: src/email-password/loggedInUser.graphql
-    handler:
-      code: src/email-password/loggedInUser.js
 

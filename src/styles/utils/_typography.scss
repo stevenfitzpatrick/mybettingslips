@@ -1,30 +1,74 @@
-@import url("../variables/_colors");
-@import url("../variables/_typography.scss");
+/* ------------------------------------ *\
+    #Typography Styles
+\* ------------------------------------ */
 
 * {
   line-height: var(--body-line-height);
 }
 
 /**
-* Headers
-**/
-h1,
-h2 {
-  font-weight: 600;
-  letter-spacing: 0.3px;
+ * Margin and Paddings
+ */
+p,
+div[role="alert"] {
   margin-bottom: var(--spacing);
-  position: relative;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  font-size: 2.25em;
-}
+/**
+ * Header Styles
+ */
+.header {
+  &-xs {
+    @include heading();
 
-h2 {
-  font-size: 1.5em;
-}
+    font-size: 0.75rem;
+  }
 
-smaller {
-  font-size: 0.667em;
+  &-sm {
+    @include heading();
+
+    font-size: 0.875rem;
+  }
+
+  &-lg {
+    @include heading();
+
+    font-size: 1.125rem;
+  }
+
+  &-xl {
+    @include heading();
+
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  &-2xl {
+    @include heading();
+
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  &-3xl {
+    @include heading();
+
+    font-size: 1.875rem;
+    line-height: 1.25;
+  }
+
+  &-4xl {
+    @include heading();
+
+    font-size: 2.25rem;
+    line-height: 1.125;
+  }
+
+  &-5xl {
+    @include heading();
+
+    font-size: 3rem;
+    line-height: 1.125;
+  }
 }
