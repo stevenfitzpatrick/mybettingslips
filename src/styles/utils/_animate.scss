@@ -1,0 +1,19 @@
+/* ------------------------------------ *\
+    # Animation CSS
+\* ------------------------------------ */
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+div[class^="sc"] {
+  animation: 0.25s slideInLeft ease-in;
+}

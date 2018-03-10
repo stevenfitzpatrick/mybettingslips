@@ -5,8 +5,10 @@ import { ApolloLink } from 'apollo-link';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { withClientState } from 'apollo-link-state';
+import { Theme } from '@sfitzpatrick/fitzy';
+import { ThemeProvider } from 'styled-components';
 
+import { withClientState } from 'apollo-link-state';
 import App from './components/App';
 import { fetchItem } from './utils';
 import { USER_TOKEN_KEY } from './client';
@@ -69,7 +71,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <App />
+        <ThemeProvider theme={Theme}>
+            <App />
+        </ThemeProvider>
     </ApolloProvider>,
     document.getElementById('app')
 );

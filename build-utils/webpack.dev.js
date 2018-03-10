@@ -62,9 +62,11 @@ const config = {
         open: true,
         historyApiFallback: true
     },
+    cache: true,
     plugins: [
         new ExtractTextPlugin({
-            filename: '[name].css'
+            filename: '[name].css',
+            disable: true
         })
     ]
 };

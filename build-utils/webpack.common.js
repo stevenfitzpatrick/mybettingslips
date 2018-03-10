@@ -1,6 +1,8 @@
 const commonPaths = require('./common');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const pkg = require('../package.json');
+
 const config = {
     entry: './src',
     output: {
@@ -51,7 +53,8 @@ const config = {
                 removeComments: true,
                 collapseWhitespace: true,
                 minifyJS: true
-            }
+            },
+            buildVersion: pkg.version
         })
     ]
 };

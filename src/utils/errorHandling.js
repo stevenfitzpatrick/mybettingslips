@@ -4,7 +4,17 @@
  */
 export const handleGraphQLError = (errors = {}) => {
     const { graphQLErrors } = errors;
-    let [{ functionError: { field, message, title } }] = graphQLErrors;
+    const [error] = graphQLErrors;
+    const graphQLError = error?.functionError;
+
+    // Check if back end error otherwise pass generic error
+    if (!graphQLError)
+        return {
+            message: 'Generic Error has occured',
+            title: 'Whhoooppss'
+        };
+
+    let { field, message, title } = graphQLError;
 
     return {
         field,
