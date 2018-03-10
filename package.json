@@ -14,7 +14,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --progress --env=dev",
     "precommit": "lint-staged",
     "prettier": "prettier --config ./.prettierrc --write '{src,graphcool,build-utils}/**/*.{js,jsx}'",
-    "release": "standard-version",
+    "release": "standard-version && git push --follow-tags",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm test -- --coverage",
