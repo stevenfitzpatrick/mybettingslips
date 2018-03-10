@@ -109,10 +109,11 @@
     "url": "git+https://github.com/stevenfitzpatrick/mybettingslips.git"
   },
   "lint-staged": {
-    "*.test.js": [
+    "*Test.js": [
       "jest"
     ],
     "*.{js,jsx}": [
+      "prettier --write",
       "eslint --fix",
       "git add"
     ],
