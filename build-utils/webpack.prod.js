@@ -5,7 +5,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const pkg = require('../package.json');
-const { PostCSSConfig } = require('./common');
+const commonPaths = require('./common');
 
 const config = {
   mode: 'production',
@@ -27,7 +27,7 @@ const config = {
             },
             {
               loader: 'postcss-loader',
-              options: PostCSSConfig
+              options: commonPaths.PostCSSConfig
             },
             {
               loader: 'sass-loader'
@@ -52,7 +52,7 @@ const config = {
             },
             {
               loader: 'postcss-loader',
-              options: PostCSSConfig
+              options: commonPaths.PostCSSConfig
             },
             {
               loader: 'sass-loader'
