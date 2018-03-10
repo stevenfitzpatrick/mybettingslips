@@ -1,5 +1,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin').default;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const pkg = require('../package.json');
 const commonPaths = require('./common');
 
 const config = {
@@ -64,10 +67,19 @@ const config = {
     },
     cache: true,
     plugins: [
+        new HtmlWebpackPlugin({
+            hash: false,
+            filename: 'index.html',
+            template: `${commonPaths.public}/index.ejs`,
+            inject: true,
+            cache: false,
+            buildVersion: pkg.version
+        }),
         new ExtractTextPlugin({
             filename: '[name].css',
             disable: true
-        })
+        }),
+        new ErrorOverlayPlugin()
     ]
 };
 

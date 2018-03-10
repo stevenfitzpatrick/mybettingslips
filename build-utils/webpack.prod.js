@@ -1,7 +1,10 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const pkg = require('../package.json');
 const { PostCSSConfig } = require('./common');
 
 const config = {
@@ -44,7 +47,7 @@ const config = {
                                 minimize: true,
                                 camelCase: 'dashes',
                                 modules: true,
-                                localIdentName: '[hash:base64:5]'
+                                localIdentName: 'bs_[hash:base64:3]'
                             }
                         },
                         {
@@ -61,12 +64,28 @@ const config = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            hash: false,
+            filename: 'index.html',
+            template: `${commonPaths.public}/index.ejs`,
+            inject: true,
+            prefetch: false,
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                minifyJS: true
+            },
+            buildVersion: pkg.version
+        }),
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css'
         }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'defer'
+        }),
         //Add Bundle JS Analyzer
         new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
+            analyzerMode: 'server',
             openAnalyzer: true,
             generateStatsFile: false
         })

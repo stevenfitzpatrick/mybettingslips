@@ -39,9 +39,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
       - run:
-          name: Build
-          command: npm run build
-      - run:
           name: Lint
           command: npm run lint
       - run:
@@ -53,3 +50,9 @@ jobs:
       - run:
           name: Generate code coverage
           command: npm run test:ci
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: BundleSize
+          command: npm run test:size

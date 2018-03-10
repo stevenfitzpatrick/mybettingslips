@@ -1,7 +1,4 @@
 const commonPaths = require('./common');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const pkg = require('../package.json');
 
 const config = {
     entry: './src',
@@ -42,21 +39,7 @@ const config = {
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            hash: false,
-            filename: 'index.html',
-            template: `${commonPaths.public}/index.ejs`,
-            inject: true,
-            prefetch: false,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                minifyJS: true
-            },
-            buildVersion: pkg.version
-        })
-    ]
+    plugins: []
 };
 
 module.exports = config;
