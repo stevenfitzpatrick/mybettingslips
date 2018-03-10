@@ -7,18 +7,18 @@ import { logout } from '../../../client';
 
 export class Logout extends Component {
   static propTypes = {
-      client: PropTypes.shape({
-          resetStore: PropTypes.func.isRequired
-      })
+    client: PropTypes.shape({
+      resetStore: PropTypes.func.isRequired
+    })
   };
 
   componentWillMount() {
-      this.props.client.resetStore();
-      logout();
+    this.props.client.resetStore();
+    logout();
   }
 
   render() {
-      return <Redirect to="/auth/login" />;
+    return <Redirect to="/auth/login" />;
   }
 }
 

@@ -9,89 +9,89 @@ import { setKeys } from '../../../client';
 import { SIGNUP_USER_MUTATION } from '../../../client/auth';
 
 const propTypes = {
-    history: PropTypes.object,
-    signupUserMutation: PropTypes.func
+  history: PropTypes.object,
+  signupUserMutation: PropTypes.func
 };
 
 const defaultProps = {
-    history: {}
+  history: {}
 };
 
 export function Registration({ history, signupUserMutation }) {
-    return (
-        <Formik
-            initialValues={{
-                email: '',
-                password: ''
-            }}
-            validate={({ email, password }) => {
-                let errors = {};
-                if (!email) {
-                    errors.email = 'Email is required';
-                }
-                if (!password) {
-                    errors.password = 'Password is required';
-                }
-                return errors;
-            }}
-            onSubmit={async ({ email, password }, { setSubmitting, setErrors }) => {
-                try {
-                    const { data: { signupUser } } = await signupUserMutation({
-                        variables: { email, password }
-                    });
-                    setKeys(signupUser.id, signupUser.token);
-                    setSubmitting(false);
-                    history.push('/');
-                } catch ({ message }) {
-                    setErrors({ message });
-                    setSubmitting(false);
-                }
-            }}
-            render={({
-                values,
-                errors,
-                touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting
-            }) => (
-                <form onSubmit={handleSubmit}>
-                    <h1>Register</h1>
-                    {errors.message && <FormAlert>{errors.message}</FormAlert>}
-                    <input
-                        name="email"
-                        type="email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.email}
-                        autoFocus
-                    />
-                    {touched.email &&
+  return (
+    <Formik
+      initialValues={{
+        email: '',
+        password: ''
+      }}
+      validate={({ email, password }) => {
+        let errors = {};
+        if (!email) {
+          errors.email = 'Email is required';
+        }
+        if (!password) {
+          errors.password = 'Password is required';
+        }
+        return errors;
+      }}
+      onSubmit={async ({ email, password }, { setSubmitting, setErrors }) => {
+        try {
+          const { data: { signupUser } } = await signupUserMutation({
+            variables: { email, password }
+          });
+          setKeys(signupUser.id, signupUser.token);
+          setSubmitting(false);
+          history.push('/');
+        } catch ({ message }) {
+          setErrors({ message });
+          setSubmitting(false);
+        }
+      }}
+      render={({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting
+      }) => (
+        <form onSubmit={handleSubmit}>
+          <h1>Register</h1>
+          {errors.message && <FormAlert>{errors.message}</FormAlert>}
+          <input
+            name="email"
+            type="email"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            autoFocus
+          />
+          {touched.email &&
             errors.email && <div className="form-error">{errors.email}</div>}
-                    <input
-                        name="password"
-                        type="password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}
-                    />
-                    {touched.password &&
+          <input
+            name="password"
+            type="password"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+          />
+          {touched.password &&
             errors.password && (
-                            <div className="form-error">{errors.password}</div>
-                        )}
-                    <button type="submit" disabled={isSubmitting}>
-            Submit
-                    </button>
-                </form>
+              <div className="form-error">{errors.password}</div>
             )}
-        />
-    );
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+        </form>
+      )}
+    />
+  );
 }
 
 Registration.propTypes = propTypes;
 Registration.defaultProps = defaultProps;
 
 export default graphql(SIGNUP_USER_MUTATION, {
-    name: 'signupUserMutation'
+  name: 'signupUserMutation'
 })(Registration);

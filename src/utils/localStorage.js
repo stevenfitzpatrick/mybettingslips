@@ -8,7 +8,7 @@
  * @param {string} value
  */
 export function setItem(key, value) {
-    localStorage.setItem(key, value);
+  localStorage.setItem(key, value);
 }
 
 /**
@@ -16,7 +16,7 @@ export function setItem(key, value) {
  * @param {string} key
  */
 export function fetchItem(key) {
-    return localStorage.getItem(key);
+  return localStorage.getItem(key);
 }
 
 /**
@@ -24,5 +24,5 @@ export function fetchItem(key) {
  * @param {string} key
  */
 export function removeItem(key) {
-    localStorage.removeItem(key);
+  localStorage.removeItem(key);
 }

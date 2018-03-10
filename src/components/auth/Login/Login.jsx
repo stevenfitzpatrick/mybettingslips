@@ -12,30 +12,30 @@ import { LOGIN_USER_MUTATION } from '../../../client/auth';
 import { logout, setKeys } from '../../../client';
 
 const schema = Yup.object().shape({
-    username: Yup.string()
-        .required('Email is required')
-        .email('Invalid email address'),
-    password: Yup.string().required('Password is required')
+  username: Yup.string()
+    .required('Email is required')
+    .email('Invalid email address'),
+  password: Yup.string().required('Password is required')
 });
 
 const propTypes = {
-    /**
+  /**
    * React Router prop used for route navigation
    */
-    history: PropTypes.object,
-    /**
+  history: PropTypes.object,
+  /**
    * Function to handle login attempts
    */
-    loginMutation: PropTypes.func
+  loginMutation: PropTypes.func
 };
 
 const defaultProps = {
-    history: {}
+  history: {}
 };
 
 export class Login extends Component {
   state = {
-      error: null
+    error: null
   };
 
   /**
@@ -45,15 +45,15 @@ export class Login extends Component {
   passwordRef = React.createRef();
 
   componentDidMount() {
-      logout();
+    logout();
   }
 
   /**
    * Clear back end error message
    */
   clearError = e => {
-      e.preventDefault();
-      this.setState({ error: null });
+    e.preventDefault();
+    this.setState({ error: null });
   };
 
   /**
@@ -63,97 +63,97 @@ export class Login extends Component {
     { username, password },
     { setSubmitting, setErrors }
   ) => {
-      const { loginMutation, history } = this.props;
-      try {
-          const { data: { authenticateUser } } = await loginMutation({
-              variables: { username, password }
-          });
-          setKeys(authenticateUser.id, authenticateUser.token);
-          setSubmitting(false);
-          history.push('/');
-      } catch (ex) {
-          const error = handleGraphQLError(ex);
-          const { message, field } = error;
-          if (field) {
-              const ref = `${field}Ref`;
-              this[ref].value.focus();
-              setErrors({ [field]: message });
-          } else {
-              this.setState({ error });
-          }
-          setSubmitting(false);
+    const { loginMutation, history } = this.props;
+    try {
+      const { data: { authenticateUser } } = await loginMutation({
+        variables: { username, password }
+      });
+      setKeys(authenticateUser.id, authenticateUser.token);
+      setSubmitting(false);
+      history.push('/');
+    } catch (ex) {
+      const error = handleGraphQLError(ex);
+      const { message, field } = error;
+      if (field) {
+        const ref = `${field}Ref`;
+        this[ref].value.focus();
+        setErrors({ [field]: message });
+      } else {
+        this.setState({ error });
       }
+      setSubmitting(false);
+    }
   };
 
   render() {
-      return (
-          <Formik
-              initialValues={{
-                  username: '',
-                  password: ''
-              }}
-              validationSchema={schema}
-              onSubmit={this.handleSubmit}
-              render={({
-                  values,
-                  errors,
-                  touched,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                  isSubmitting
-              }) => (
-                  <form
-                      onSubmit={handleSubmit}
-                      noValidate
-                      name="loginForm"
-                      className={styles.formContainer}
-                  >
-                      <h1 className="header-4xl">Login</h1>
-                      <FormAlert error={this.state.error} onClear={this.clearError} />
-                      <Input
-                          name="username"
-                          type="email"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.username}
-                          autoComplete="username"
-                          spellCheck={false}
-                          label="Username"
-                          innerRef={this.usernameRef}
-                          hasError={touched['username'] && errors['username']}
-                          warning=<FieldWarning
-                              field="username"
-                              touched={touched}
-                              errors={errors}
-                          />
-                          autoFocus
-                          required
-                      />
-                      <Input
-                          name="password"
-                          type="password"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.password}
-                          autoComplete="current-password"
-                          label="Password"
-                          innerRef={this.passwordRef}
-                          required
-                          hasError={touched['password'] && errors['password']}
-                          warning=<FieldWarning
-                              field="password"
-                              touched={touched}
-                              errors={errors}
-                          />
-                      />
-                      <Button fullWidth type="submit" disabled={isSubmitting}>
+    return (
+      <Formik
+        initialValues={{
+          username: '',
+          password: ''
+        }}
+        validationSchema={schema}
+        onSubmit={this.handleSubmit}
+        render={({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting
+        }) => (
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            name="loginForm"
+            className={styles.formContainer}
+          >
+            <h1 className="header-4xl">Login</h1>
+            <FormAlert error={this.state.error} onClear={this.clearError} />
+            <Input
+              name="username"
+              type="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.username}
+              autoComplete="username"
+              spellCheck={false}
+              label="Username"
+              innerRef={this.usernameRef}
+              hasError={touched['username'] && errors['username']}
+              warning=<FieldWarning
+                field="username"
+                touched={touched}
+                errors={errors}
+              />
+              autoFocus
+              required
+            />
+            <Input
+              name="password"
+              type="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              autoComplete="current-password"
+              label="Password"
+              innerRef={this.passwordRef}
+              required
+              hasError={touched['password'] && errors['password']}
+              warning=<FieldWarning
+                field="password"
+                touched={touched}
+                errors={errors}
+              />
+            />
+            <Button fullWidth type="submit" disabled={isSubmitting}>
               Login2
-                      </Button>
-                  </form>
-              )}
-          />
-      );
+            </Button>
+          </form>
+        )}
+      />
+    );
   }
 }
 
@@ -161,5 +161,5 @@ Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
 
 export default graphql(LOGIN_USER_MUTATION, {
-    name: 'loginMutation'
+  name: 'loginMutation'
 })(Login);

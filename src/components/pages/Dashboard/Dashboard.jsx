@@ -7,27 +7,27 @@ import CreateBet from './CreateBet';
 
 export class Dashboard extends Component {
   state = {
-      showAddBet: false
+    showAddBet: false
   };
 
   static propTypes = {
-      id: PropTypes.string
+    id: PropTypes.string
   };
 
   toggleAddBet = () =>
-      this.setState(({ showAddBet }) => ({ showAddBet: !showAddBet }));
+    this.setState(({ showAddBet }) => ({ showAddBet: !showAddBet }));
 
   render() {
-      const { showAddBet } = this.state;
-      const { id } = this.props;
+    const { showAddBet } = this.state;
+    const { id } = this.props;
 
-      return (
-          <div>
+    return (
+      <div>
         Dashboard
-              <button onClick={this.toggleAddBet}>Add Bet</button>
-              {showAddBet ? <CreateBet id={id} /> : null}
-          </div>
-      );
+        <button onClick={this.toggleAddBet}>Add Bet</button>
+        {showAddBet ? <CreateBet id={id} /> : null}
+      </div>
+    );
   }
 }
 

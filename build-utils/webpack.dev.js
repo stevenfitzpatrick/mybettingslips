@@ -6,81 +6,81 @@ const pkg = require('../package.json');
 const commonPaths = require('./common');
 
 const config = {
-    mode: 'development',
-    output: {
-        filename: '[name].bundle.[hash].js'
-    },
-    devtool: 'source-map',
-    module: {
-        rules: [
+  mode: 'development',
+  output: {
+    filename: '[name].bundle.[hash].js'
+  },
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        exclude: /\.module\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
             {
-                test: /\.scss$/,
-                exclude: /\.module\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: false
-                            }
-                        },
-                        {
-                            loader: 'sass-loader'
-                        }
-                    ],
-                    fallback: 'style-loader'
-                })
+              loader: 'css-loader',
+              options: {
+                modules: false
+              }
             },
             {
-                test: /\.module\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                                camelCase: 'dashes',
-                                modules: true,
-                                localIdentName: '[name]__[local]--[hash:base64:5]'
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: commonPaths.PostCSSConfig
-                        },
-                        {
-                            loader: 'sass-loader'
-                        }
-                    ],
-                    fallback: 'style-loader'
-                })
+              loader: 'sass-loader'
             }
-        ]
-    },
-    devServer: {
-        contentBase: commonPaths.outputPath,
-        compress: true,
-        port: 9000,
-        publicPath: '/',
-        open: true,
-        historyApiFallback: true
-    },
-    cache: true,
-    plugins: [
-        new HtmlWebpackPlugin({
-            hash: false,
-            filename: 'index.html',
-            template: `${commonPaths.public}/index.ejs`,
-            inject: true,
-            cache: false,
-            buildVersion: pkg.version
-        }),
-        new ExtractTextPlugin({
-            filename: '[name].css',
-            disable: true
-        }),
-        new ErrorOverlayPlugin()
+          ],
+          fallback: 'style-loader'
+        })
+      },
+      {
+        test: /\.module\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                camelCase: 'dashes',
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: commonPaths.PostCSSConfig
+            },
+            {
+              loader: 'sass-loader'
+            }
+          ],
+          fallback: 'style-loader'
+        })
+      }
     ]
+  },
+  devServer: {
+    contentBase: commonPaths.outputPath,
+    compress: true,
+    port: 9000,
+    publicPath: '/',
+    open: true,
+    historyApiFallback: true
+  },
+  cache: true,
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: false,
+      filename: 'index.html',
+      template: `${commonPaths.public}/index.ejs`,
+      inject: true,
+      cache: false,
+      buildVersion: pkg.version
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      disable: true
+    }),
+    new ErrorOverlayPlugin()
+  ]
 };
 
 module.exports = config;
