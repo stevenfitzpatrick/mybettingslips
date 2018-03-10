@@ -12,6 +12,7 @@
     "lint": "eslint src --ext .js --ext .jsx",
     "stylelint": "stylelint src/components/**/*.scss src/styles/**/*.scss",
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --progress --env=dev",
+    "precommit": "lint-staged",
     "prettier": "prettier --config ./.prettierrc --write '{src,graphcool,build-utils}/**/*.{js,jsx}'",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
@@ -109,7 +110,7 @@
     "url": "git+https://github.com/stevenfitzpatrick/mybettingslips.git"
   },
   "lint-staged": {
-    "*Test.js": [
+    "src/**/__tests__/*.js": [
       "jest"
     ],
     "*.{js,jsx}": [

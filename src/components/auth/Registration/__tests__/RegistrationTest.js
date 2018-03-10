@@ -67,7 +67,7 @@ describe('Registration', () => {
     test('should show warning for missing multiple required fields', () => {
       email.simulate('blur', { target: { name: 'email', value: '' } });
       password.simulate('blur', { target: { name: 'password', value: '' } });
-      expect(mountedWrapper.find('.form-error')).toHaveLength(5);
+      expect(mountedWrapper.find('.form-error')).toHaveLength(2);
     });
   });
 
