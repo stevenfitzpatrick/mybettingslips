@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/stevenfitzpatrick/mybettingslips/compare/v1.0.0...v1.1.0) (2018-03-10)
+
+
+### Bug Fixes
+
+* **Versioning:** Add git push after release ([c2799e9](https://github.com/stevenfitzpatrick/mybettingslips/commit/c2799e9))
+
+
+### Features
+
+* **Versioning:** Adding standard versioning for releases ([5b05198](https://github.com/stevenfitzpatrick/mybettingslips/commit/5b05198))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-03-10)
 
