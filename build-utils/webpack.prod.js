@@ -71,7 +71,7 @@ const config = {
       inject: true,
       prefetch: false,
       minify: {
-        removeComments: true,
+        removeComments: false,
         collapseWhitespace: true,
         minifyJS: true
       },

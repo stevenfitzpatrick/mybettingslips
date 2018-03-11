@@ -148,7 +148,7 @@ export class Login extends Component {
               />
             />
             <Button fullWidth type="submit" disabled={isSubmitting}>
-              Login2
+              Login
             </Button>
           </form>
         )}

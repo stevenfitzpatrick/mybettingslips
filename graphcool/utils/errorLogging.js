@@ -7,7 +7,7 @@ const HTTP_ERROR_TITLE = {
 };
 
 const HTTP_ERROR_MESSAGES = {
-  401001: "Sorry, we couldn't find an account with those credentials. Please try again.",
+  401001: 'Sorry, we couldn\'t find an account with those credentials. Please try again.',
   401002: 'Sorry, looks like the password does not match.',
   500001: 'Sorry, an issue has occured. Our busy elves will look into it !'
 };
