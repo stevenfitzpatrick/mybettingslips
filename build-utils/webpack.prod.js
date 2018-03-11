@@ -1,3 +1,4 @@
+const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -11,6 +12,13 @@ const config = {
   mode: 'production',
   output: {
     filename: '[name].bundle.[chunkhash].js'
+  },
+  optimization: {
+    runtimeChunk: false,
+    splitChunks: {
+      chunks: 'all', //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693,
+      filename: '[name].async.[chunkhash].js'
+    }
   },
   module: {
     rules: [
@@ -85,18 +93,12 @@ const config = {
     }),
     //Add Bundle JS Analyzer
     new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
+      analyzerMode: 'static',
       openAnalyzer: true,
-      generateStatsFile: false
+      generateStatsFile: false,
+      reportFilename: path.join(commonPaths.report, 'report.html')
     })
-  ],
-  optimization: {
-    runtimeChunk: false,
-    splitChunks: {
-      chunks: 'all', //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693,
-      filename: '[name].async.[chunkhash].js'
-    }
-  }
+  ]
 };
 
 module.exports = config;

@@ -5,6 +5,7 @@ module.exports = {
   nodeModules: path.resolve(__dirname, '../', 'node_modules'),
   src: path.resolve(__dirname, '../', 'src'),
   public: path.resolve(__dirname, '../', 'public'),
+  report: path.resolve(__dirname, '../', 'reports'),
   PostCSSConfig: {
     plugins: () => [
       require('postcss-url')(),
