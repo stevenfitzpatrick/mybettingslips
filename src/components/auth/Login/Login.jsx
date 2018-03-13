@@ -59,10 +59,7 @@ export class Login extends Component {
   /**
    * Handle Form Submit
    */
-  handleSubmit = async (
-    { username, password },
-    { setSubmitting, setErrors }
-  ) => {
+  handleSubmit = async ({ username, password }, { setSubmitting }) => {
     const { loginMutation, history } = this.props;
     try {
       const { data: { authenticateUser } } = await loginMutation({
@@ -73,14 +70,8 @@ export class Login extends Component {
       history.push('/');
     } catch (ex) {
       const error = handleGraphQLError(ex);
-      const { message, field } = error;
-      if (field) {
-        const ref = `${field}Ref`;
-        this[ref].value.focus();
-        setErrors({ [field]: message });
-      } else {
-        this.setState({ error });
-      }
+      this.setState({ error });
+      this.usernameRef.value.focus();
       setSubmitting(false);
     }
   };

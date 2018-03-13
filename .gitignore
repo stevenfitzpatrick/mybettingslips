@@ -57,6 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# Cypress Local files
+cypress.env.json
+
 # build
 dist
 reports
