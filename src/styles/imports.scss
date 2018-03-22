@@ -3,9 +3,11 @@
     Note these will be critical css styles
 \* ------------------------------------ */
 
-@import "./variables/_colors";
-@import "./variables/_typography";
-@import "./utils/_helpers";
-@import "./utils/_reset";
-@import "./utils/_typography";
-@import "./utils/_animate";
+@import './variables/_colors';
+@import './variables/_typography';
+@import './utils/_helpers';
+@import './utils/_reset';
+@import './utils/_typography';
+@import './utils/_animate';
+@import './components/headers';
+@import './components/links';

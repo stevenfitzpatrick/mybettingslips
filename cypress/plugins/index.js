@@ -11,7 +11,46 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-module.exports = () => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+const webpack = require('@cypress/webpack-preprocessor');
+
+module.exports = on => {
+  const options = {
+    // send in the options from your webpack.config.js, so it works the same
+    // as your app's code
+    webpackOptions: {
+      module: {
+        rules: [
+          {
+            test: /\.jsx?$/,
+            exclude: [/node_modules/],
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  babelrc: false,
+                  presets: [
+                    [
+                      '@babel/preset-env',
+                      {
+                        useBuiltIns: 'usage',
+                        targets: {
+                          browsers: ['last 2 Chrome versions']
+                        }
+                      }
+                    ],
+                    '@babel/preset-react'
+                  ],
+                  plugins: [
+                    require('@babel/plugin-proposal-object-rest-spread')
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    watchOptions: {}
+  };
+  on('file:preprocessor', webpack(options));
 };

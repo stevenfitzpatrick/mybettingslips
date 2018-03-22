@@ -1,4 +1,6 @@
-
+/* ------------------------------------ *\
+    #Authentication Pages Layout
+\* ------------------------------------ */
 
 .auth {
   &-container {
@@ -8,7 +10,7 @@
   }
 
   &__img {
-    background-image: url("https://res.cloudinary.com/ddw0ktdva/image/upload/c_scale,f_auto,fl_preserve_transparency.progressive,q_auto:best,w_1000/v1519689991/richard-boyle-309541-unsplash.jpg");
+    background-image: url('https://res.cloudinary.com/ddw0ktdva/image/upload/c_scale,f_auto,fl_preserve_transparency.progressive,q_auto:best,w_1000/v1519689991/richard-boyle-309541-unsplash.jpg');
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,8 +19,17 @@
   }
 
   &__form {
+    position: relative;
+  }
+
+  &__inner {
+    bottom: 0;
     display: grid;
-    min-height: 100%;
+    left: 0;
     place-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
   }
 }

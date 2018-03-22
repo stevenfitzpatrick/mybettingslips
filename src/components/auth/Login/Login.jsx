@@ -4,9 +4,10 @@ import Yup from 'yup';
 import { Button, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 import styles from '../Auth.module.scss';
-import { FieldWarning, FormAlert } from '../../common';
+import { FormAlert } from '../../common';
 import { handleGraphQLError } from '../../../utils';
 import { LOGIN_USER_MUTATION } from '../../../client/auth';
 import { logout, setKeys } from '../../../client';
@@ -71,7 +72,7 @@ export class Login extends Component {
     } catch (ex) {
       const error = handleGraphQLError(ex);
       this.setState({ error });
-      this.usernameRef.value.focus();
+      this.usernameRef.current.focus();
       setSubmitting(false);
     }
   };
@@ -111,19 +112,16 @@ export class Login extends Component {
               autoComplete="username"
               spellCheck={false}
               label="Username"
+              placeholder="Enter your email"
               innerRef={this.usernameRef}
-              hasError={touched['username'] && errors['username']}
-              warning=<FieldWarning
-                field="username"
-                touched={touched}
-                errors={errors}
-              />
+              warning={errors['username']}
               autoFocus
               required
             />
             <Input
               name="password"
               type="password"
+              placeholder="Enter your password"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
@@ -131,16 +129,19 @@ export class Login extends Component {
               label="Password"
               innerRef={this.passwordRef}
               required
-              hasError={touched['password'] && errors['password']}
-              warning=<FieldWarning
-                field="password"
-                touched={touched}
-                errors={errors}
-              />
+              warning={touched['password'] && errors['password']}
             />
-            <Button fullWidth type="submit" disabled={isSubmitting}>
+            <Button
+              fullWidth
+              type="submit"
+              disabled={isSubmitting}
+              loading={isSubmitting}
+            >
               Login
             </Button>
+            <p className={styles.link}>
+              No Account ? <Link to="/auth/register">Register now</Link>
+            </p>
           </form>
         )}
       />

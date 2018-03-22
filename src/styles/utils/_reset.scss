@@ -60,6 +60,7 @@ strong {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
   text-decoration-skip: ink;
 }
@@ -102,11 +103,11 @@ img {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-// Selection Color
-::selection {
-  color: #fff;
-}
+// // Selection Color
+// ::selection {
+//   color: #fff;
+// }
 
-::-moz-selection {
-  color: #fff;
-}
+// ::-moz-selection {
+//   color: #fff;
+// }

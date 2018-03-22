@@ -1,25 +1,24 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+/**
+ * Login command helper, save user token to local storage
+ */
+Cypress.Commands.add('login', () => {
+  cy
+    .request({
+      method: 'POST',
+      url: Cypress.env('endpoint'),
+      body: {
+        operationName: 'authenticateUser',
+        variables: {
+          username: Cypress.env('username'),
+          password: Cypress.env('password')
+        },
+        query:
+          'mutation authenticateUser($username: String!, $password: String!) {\n  authenticateUser(email: $username, password: $password) {\n    id\n    token\n    __typename\n  }\n}\n'
+      }
+    })
+    .then(resp => {
+      const { data: { authenticateUser } } = resp.body;
+      window.localStorage.setItem('user_id', authenticateUser.id);
+      window.localStorage.setItem('user_token', authenticateUser.token);
+    });
+});

@@ -2,13 +2,21 @@ import React from 'react';
 import { MemoryRouter, Redirect, Route } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
 
-import UnauthorizedLayout from '../UnauthorizedLayout';
+import UnauthorizedWithRouter, {
+  UnauthorizedLayout
+} from '../UnauthorizedLayout';
 
 describe('UnauthorizedLayout', () => {
   let wrapper;
 
+  const defaultProps = {
+    location: {
+      key: '1234'
+    }
+  };
+
   beforeEach(() => {
-    wrapper = shallow(<UnauthorizedLayout />);
+    wrapper = shallow(<UnauthorizedLayout {...defaultProps} />);
   });
 
   test('should load routes correctly', () => {
@@ -19,20 +27,20 @@ describe('UnauthorizedLayout', () => {
   test('should show redirect to login if not logged in', () => {
     const mountedWrapper = mount(
       <MemoryRouter>
-        <UnauthorizedLayout />
+        <UnauthorizedLayout {...defaultProps} />
       </MemoryRouter>
     );
-    const route = mountedWrapper.find(Route);
-    expect(route.props().path).toEqual('/auth/login');
+    const route = mountedWrapper.find(Redirect);
+    expect(route.props().to).toEqual('/auth/login');
   });
 
   test('should correct component for matching route', () => {
     const mountedWrapper = mount(
       <MemoryRouter initialEntries={['/auth/register']} initialIndex={0}>
-        <UnauthorizedLayout />
+        <UnauthorizedWithRouter />
       </MemoryRouter>
     );
-    const route = mountedWrapper.find(Route);
+    const route = mountedWrapper.find(Route).last();
     expect(route.props().path).toEqual('/auth/register');
   });
 });

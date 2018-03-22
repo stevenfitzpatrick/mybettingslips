@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Consumer } from '../auth/PrivateRoute';
+import { AuthConsumer } from '../auth/AuthProvider';
 
 function withAuth(WrappedComponent) {
   function withAuth(props) {
     return (
-      <Consumer>{user => <WrappedComponent {...user} {...props} />}</Consumer>
+      <AuthConsumer>
+        {user => <WrappedComponent {...user} {...props} />}
+      </AuthConsumer>
     );
   }
 

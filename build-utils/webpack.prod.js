@@ -1,7 +1,7 @@
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -25,49 +25,45 @@ const config = {
       {
         test: /\.scss$/,
         exclude: /\.module\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: commonPaths.PostCSSConfig
-            },
-            {
-              loader: 'sass-loader'
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true
             }
-          ],
-          fallback: 'style-loader'
-        })
+          },
+          {
+            loader: 'postcss-loader',
+            options: commonPaths.PostCSSConfig
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       },
       {
         test: /\.module\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                minimize: true,
-                camelCase: 'dashes',
-                modules: true,
-                localIdentName: 'bs_[hash:base64:3]'
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: commonPaths.PostCSSConfig
-            },
-            {
-              loader: 'sass-loader'
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              minimize: true,
+              camelCase: 'dashes',
+              modules: true,
+              localIdentName: 'bs_[hash:base64:3]'
             }
-          ],
-          fallback: 'style-loader'
-        })
+          },
+          {
+            loader: 'postcss-loader',
+            options: commonPaths.PostCSSConfig
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       }
     ]
   },
@@ -85,8 +81,10 @@ const config = {
       },
       buildVersion: pkg.version
     }),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css'
+    //TODO: Change to content hash when available
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash:8].css',
+      chunkFilename: '[id].css'
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'

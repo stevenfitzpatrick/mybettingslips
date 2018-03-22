@@ -54,9 +54,24 @@
 /**
  * Set Header Size and LineHeight
  */
-@mixin heading() {
+@mixin heading($margin-bottom: var(--spacing)) {
   letter-spacing: 0.3px;
-  margin-bottom: var(--spacing);
+  margin-bottom: $margin-bottom;
   position: relative;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+/**
+* Add Underline to Headers
+*/
+@mixin underline() {
+  &::after {
+    background-color: var(--primary-color);
+    bottom: -8px;
+    content: '';
+    height: 4px;
+    left: 0;
+    position: absolute;
+    width: 1em;
+  }
 }

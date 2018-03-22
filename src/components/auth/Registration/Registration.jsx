@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
+import styles from '../Auth.module.scss';
 import { FormAlert } from '../../common';
 import { setKeys } from '../../../client';
 import { SIGNUP_USER_MUTATION } from '../../../client/auth';
@@ -56,7 +57,7 @@ export function Registration({ history, signupUserMutation }) {
         handleSubmit,
         isSubmitting
       }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
           <h1>Register</h1>
           {errors.message && <FormAlert>{errors.message}</FormAlert>}
           <input
@@ -78,11 +79,15 @@ export function Registration({ history, signupUserMutation }) {
           />
           {touched.password &&
             errors.password && (
-              <div className="form-error">{errors.password}</div>
-            )}
+            <div className="form-error">{errors.password}</div>
+          )}
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
+
+          <p className={styles.link}>
+            Back to <Link to="/auth/login">Login</Link>
+          </p>
         </form>
       )}
     />

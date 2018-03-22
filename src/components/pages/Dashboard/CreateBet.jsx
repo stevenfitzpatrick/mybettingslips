@@ -6,7 +6,7 @@ import { Dropdown, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 
 import { BET_DROPDOWNS_QUERY, CREATE_BET_MUTATION } from '../../../client/bets';
-import { FieldWarning, FormAlert } from '../../common';
+import { FormAlert } from '../../common';
 
 const results = {
   OPEN: 'Open',
@@ -57,7 +57,6 @@ export function CreateBet({ createBet, allBetTypes }) {
         render={({
           values,
           errors,
-          touched,
           handleChange,
           handleBlur,
           setFieldTouched,
@@ -75,7 +74,6 @@ export function CreateBet({ createBet, allBetTypes }) {
               value={values.stake}
               autoFocus
             />
-            <FieldWarning field="stake" touched={touched} errors={errors} />
             <Input
               name="odds"
               type="number"
@@ -83,14 +81,12 @@ export function CreateBet({ createBet, allBetTypes }) {
               onBlur={handleBlur}
               value={values.odds}
             />
-            <FieldWarning field="odds" touched={touched} errors={errors} />
             <Dropdown
               onChange={i => setFieldValue('typeId', i.id)}
               onBlur={() => setFieldTouched('typeId')}
               items={allBetTypes}
               placeholder="Select Sport Type"
             />
-            <FieldWarning field="typeId" touched={touched} errors={errors} />
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>

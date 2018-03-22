@@ -1,11 +1,10 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import { graphql } from 'react-apollo';
 import { Redirect, Route } from 'react-router-dom';
 
+import AuthProvider from '../auth/AuthProvider';
 import { isLoggedIn } from '../../client';
 import { LOGGED_IN_USER_QUERY } from '../../client/auth';
-
-const { Provider, Consumer } = createContext();
 
 const PrivateRoute = ({
   component: Component,
@@ -21,16 +20,14 @@ const PrivateRoute = ({
   }
   if (loggedInUser && loggedInUser.id) {
     return (
-      <Provider value={loggedInUser}>
+      <AuthProvider user={loggedInUser}>
         <Route {...rest} render={props => <Component {...props} />} />
-      </Provider>
+      </AuthProvider>
     );
   } else {
     return <Redirect to="/auth/login" />;
   }
 };
-
-export { Consumer };
 
 export default graphql(LOGGED_IN_USER_QUERY, {
   props: ({ data: { loading, loggedInUser } }) => ({

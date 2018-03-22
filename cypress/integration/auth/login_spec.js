@@ -11,7 +11,9 @@ describe('Login', () => {
 
   it('should show error message when email field blurred', () => {
     cy.focused().blur();
-    cy.get('.form-error').should('contain', 'Email is required');
+    cy
+      .get('label[for="username"] ~ span')
+      .should('contain', 'Email is required');
   });
 
   it('should show error message when password field blurred', () => {
@@ -19,7 +21,9 @@ describe('Login', () => {
       .get('input[name="password"')
       .focus()
       .blur();
-    cy.get('.form-error').should('contain', 'Password is required');
+    cy
+      .get('label[for="password"] ~ span')
+      .should('contain', 'Password is required');
   });
 
   it('should show Alert if incorrect details entered', () => {
@@ -33,5 +37,9 @@ describe('Login', () => {
     cy.get('input[name=username]').type(Cypress.env('username'));
     cy.get('input[name=password]').type(`${Cypress.env('password')}{enter}`);
     cy.location('pathname').should('eq', '/');
+    cy.clearLocalStorage('nada').should(ls => {
+      expect(ls.getItem('user_id')).to.exist;
+      expect(ls.getItem('user_token')).to.exist;
+    });
   });
 });

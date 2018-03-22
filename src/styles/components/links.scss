@@ -1,0 +1,14 @@
+/* ------------------------------------ *\
+    #Link Styles
+\* ------------------------------------ */
+
+a {
+  color: var(--link-color);
+  transition: color var(--link-transition);
+
+  &:hover,
+  &:focus {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+}

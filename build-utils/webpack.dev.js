@@ -1,5 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin').default;
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const pkg = require('../package.json');
@@ -16,44 +15,41 @@ const config = {
       {
         test: /\.scss$/,
         exclude: /\.module\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: false
-              }
-            },
-            {
-              loader: 'sass-loader'
+
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false
             }
-          ],
-          fallback: 'style-loader'
-        })
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       },
       {
         test: /\.module\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                camelCase: 'dashes',
-                modules: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]'
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: commonPaths.PostCSSConfig
-            },
-            {
-              loader: 'sass-loader'
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              camelCase: 'dashes',
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
             }
-          ],
-          fallback: 'style-loader'
-        })
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       }
     ]
   },
@@ -74,10 +70,6 @@ const config = {
       inject: true,
       cache: false,
       buildVersion: pkg.version
-    }),
-    new ExtractTextPlugin({
-      filename: '[name].css',
-      disable: true
     }),
     new ErrorOverlayPlugin()
   ]

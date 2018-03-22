@@ -1,0 +1,61 @@
+/* ------------------------------------ *\
+    #Header Styles
+\* ------------------------------------ */
+
+.header {
+  &-xs {
+    @include heading();
+
+    font-size: 0.75rem;
+  }
+
+  &-sm {
+    @include heading();
+
+    font-size: 0.875rem;
+  }
+
+  &-lg {
+    @include heading();
+
+    font-size: 1.125rem;
+  }
+
+  &-xl {
+    @include heading();
+
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  &-2xl {
+    @include heading();
+
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  &-3xl {
+    @include heading();
+
+    font-size: 1.875rem;
+    line-height: 1.25;
+  }
+
+  &-4xl {
+    @include heading(var(--l-spacing));
+
+    font-size: 2.25rem;
+    line-height: 1.125;
+
+    @include underline();
+  }
+
+  &-5xl {
+    @include heading();
+
+    font-size: 3rem;
+    line-height: 1.125;
+  }
+}

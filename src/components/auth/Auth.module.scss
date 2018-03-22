@@ -1,8 +1,13 @@
+/* ------------------------------------ *\
+    #Auth Form Styles
+\* ------------------------------------ */
+
 .form-container {
   margin: 0 auto;
   width: 400px;
+}
 
-  > label:last-of-type {
-    margin-bottom: calc(var(--spacing) * 2);
-  }
+.link {
+  margin-top: var(--spacing);
+  text-align: center;
 }
