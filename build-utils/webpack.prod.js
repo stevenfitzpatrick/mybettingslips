@@ -18,7 +18,10 @@ const config = {
     splitChunks: {
       chunks: 'all', //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693,
       filename: '[name].async.[chunkhash].js'
-    }
+    },
+    nodeEnv: 'production',
+    minimize: true,
+    concatenateModules: true
   },
   module: {
     rules: [
@@ -86,9 +89,9 @@ const config = {
       filename: '[name].[chunkhash:8].css',
       chunkFilename: '[id].css'
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
-    }),
+    // new ScriptExtHtmlWebpackPlugin({
+    //   defaultAttribute: 'defer'
+    // }),
     //Add Bundle JS Analyzer
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
