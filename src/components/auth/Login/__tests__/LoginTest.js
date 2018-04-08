@@ -1,7 +1,7 @@
 import React from 'react';
+import { mountWithRouter } from '@sfitzpatrick/enzyme-context-helpers';
 
 import { Login } from '../Login';
-import { mountWithTheme } from '../../../../../tests/contextHelpers';
 
 describe('Login', () => {
   let wrapper, email, password, form;
@@ -32,7 +32,7 @@ describe('Login', () => {
   };
 
   beforeEach(() => {
-    wrapper = mountWithTheme(<Login {...defaultProps} {...historyProps} />);
+    wrapper = mountWithRouter(<Login {...defaultProps} {...historyProps} />);
     email = wrapper.find('input[type="email"]');
     password = wrapper.find('input[type="password"]');
     form = wrapper.find('Formik');
