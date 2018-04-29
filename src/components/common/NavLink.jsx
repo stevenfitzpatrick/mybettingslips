@@ -7,7 +7,7 @@ class TopNavLink extends React.Component {
   render() {
     const { to, href, LinkType, children, ...rest } = this.props;
     return (
-      <span>
+      <React.Fragment>
         {href ? (
           <a href={href}>{children}</a>
         ) : (
@@ -15,7 +15,7 @@ class TopNavLink extends React.Component {
             {children}
           </LinkType>
         )}
-      </span>
+      </React.Fragment>
     );
   }
 }

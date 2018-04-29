@@ -4,6 +4,8 @@ import React, { Component, createContext } from 'react';
 const AuthContext = createContext();
 
 class AuthProvider extends Component {
+  static Consumer = AuthContext.Consumer;
+
   state = {
     username: '',
     id: ''
@@ -26,9 +28,8 @@ class AuthProvider extends Component {
   }
 
   render() {
-    const { id, username } = this.state;
     return (
-      <AuthContext.Provider value={{ id, username }}>
+      <AuthContext.Provider value={this.state}>
         {this.props.children}
       </AuthContext.Provider>
     );

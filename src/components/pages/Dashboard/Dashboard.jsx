@@ -3,13 +3,8 @@ import React, { Component } from 'react';
 // import { compose, graphql } from 'react-apollo';
 
 import withAuth from '../../handlers/withAuth';
-import CreateBet from './CreateBet';
 
 export class Dashboard extends Component {
-  state = {
-    showAddBet: false
-  };
-
   static propTypes = {
     id: PropTypes.string
   };
@@ -18,14 +13,163 @@ export class Dashboard extends Component {
     this.setState(({ showAddBet }) => ({ showAddBet: !showAddBet }));
 
   render() {
-    const { showAddBet } = this.state;
-    const { id } = this.props;
+    // const { id } = this.props;
 
     return (
       <div>
-        Dashboard
-        <button onClick={this.toggleAddBet}>Add Bet</button>
-        {showAddBet ? <CreateBet id={id} /> : null}
+        <h1>Dashboard</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          praesentium vero soluta mollitia distinctio, cupiditate tempore,
+          perspiciatis odit doloremque facilis repellat delectus quisquam? Rerum
+          temporibus assumenda cupiditate facilis provident magni.
+        </p>
+        <p>Steven</p>
       </div>
     );
   }

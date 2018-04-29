@@ -1,0 +1,19 @@
+/* ------------------------------------ *\
+    #Authentication Pages Layout
+\* ------------------------------------ */
+
+/**
+ * Main Page Layout
+ */
+.grid {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+}
+
+/**
+ * Offset Fixed Height
+ */
+.main {
+  padding: calc(var(--header-offset) + 2rem) 2.5rem 0;
+}

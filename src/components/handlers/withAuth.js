@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { AuthConsumer } from '../auth/AuthProvider';
+import AuthProvider from '../auth/AuthProvider';
 
 function withAuth(WrappedComponent) {
-  function withAuth(props) {
-    return (
-      <AuthConsumer>
-        {user => <WrappedComponent {...user} {...props} />}
-      </AuthConsumer>
-    );
-  }
+  const Wrapper = props => (
+    <AuthProvider.Consumer>
+      {user => <WrappedComponent {...user} {...props} />}
+    </AuthProvider.Consumer>
+  );
 
-  withAuth.displayName = `withAuth(${WrappedComponent.displayName ||
+  Wrapper.displayName = `withAuth(${WrappedComponent.displayName ||
     WrappedComponent.name})`;
-  return withAuth;
+  return Wrapper;
 }
 
 export default withAuth;

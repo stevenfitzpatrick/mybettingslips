@@ -34,7 +34,7 @@ describe('UnauthorizedLayout', () => {
     expect(route.props().to).toEqual('/auth/login');
   });
 
-  test('should correct component for matching route', () => {
+  xtest('should correct component for matching route', () => {
     const mountedWrapper = mount(
       <MemoryRouter initialEntries={['/auth/register']} initialIndex={0}>
         <UnauthorizedWithRouter />

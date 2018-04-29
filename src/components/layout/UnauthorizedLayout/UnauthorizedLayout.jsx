@@ -3,9 +3,10 @@ import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
-import Login from '../auth/Login';
-import Logout from '../auth/Logout';
-import Registration from '../auth/Registration';
+import Login from '../../auth/Login';
+import Logout from '../../auth/Logout';
+import Registration from '../../auth/Registration';
+
 import styles from './Unauthorized.module.scss';
 
 export function UnauthorizedLayout({ location }) {

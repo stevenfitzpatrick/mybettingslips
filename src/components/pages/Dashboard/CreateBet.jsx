@@ -87,6 +87,7 @@ export function CreateBet({ createBet, allBetTypes }) {
               items={allBetTypes}
               placeholder="Select Sport Type"
             />
+            <button>Cancel</button>
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>
