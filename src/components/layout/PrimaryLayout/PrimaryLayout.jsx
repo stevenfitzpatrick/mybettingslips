@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import CreateBet from '../../pages/Dashboard/CreateBet';
 import Dashboard from '../../pages/Dashboard';
 import FAQ from '../../pages/FAQ';
@@ -16,7 +17,7 @@ class PrimaryLayout extends Component {
 
   previousLocation = this.props.location;
 
-  componentWillUpdate(nextProps) {
+  componentDidUpdate(nextProps) {
     const { location } = this.props;
     if (
       nextProps.history.action !== 'POP' &&

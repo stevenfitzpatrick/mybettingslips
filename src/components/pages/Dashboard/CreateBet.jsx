@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Yup from 'yup';
 import { compose, graphql } from 'react-apollo';
 import { Dropdown, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
+import { number, object, string } from 'yup';
 
 import { BET_DROPDOWNS_QUERY, CREATE_BET_MUTATION } from '../../../client/bets';
 import { FormAlert } from '../../common';
@@ -15,10 +15,10 @@ const results = {
   VOID: 'Void'
 };
 
-const schema = Yup.object().shape({
-  stake: Yup.number('Must be integer').required('Stake is required'),
-  odds: Yup.number('Must be integer').required('Odds is required'),
-  typeId: Yup.string().required('Type is required')
+const schema = object().shape({
+  stake: number('Must be integer').required('Stake is required'),
+  odds: number('Must be integer').required('Odds is required'),
+  typeId: string().required('Type is required')
 });
 
 const propTypes = {

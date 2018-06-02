@@ -9,7 +9,11 @@ module.exports = {
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
     '^.+\\.module\\.scss$'
   ],
-  moduleFileExtensions: ['js', 'jsx', 'json'],
+  transform: {
+    '\\.(gql|graphql)$': 'jest-transform-graphql',
+    '.*': 'babel-jest'
+  },
+  moduleFileExtensions: ['js', 'jsx', 'json', 'graphql'],
   setupFiles: ['<rootDir>/tests/localStorage.js'],
   setupTestFrameworkScriptFile: '<rootDir>/tests/init.js',
   coverageThreshold: {

@@ -15,6 +15,9 @@ export class TopNav extends Component {
     className: ''
   };
 
+  /**
+   *
+   */
   handleCreateBet = () => {
     this.props.history.push({ pathname: '/create', state: { modal: true } });
   };

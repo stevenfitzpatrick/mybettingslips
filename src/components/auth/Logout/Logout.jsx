@@ -12,7 +12,7 @@ export class Logout extends Component {
     })
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.client.resetStore();
     logout();
   }

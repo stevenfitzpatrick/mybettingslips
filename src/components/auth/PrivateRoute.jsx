@@ -3,8 +3,8 @@ import { graphql } from 'react-apollo';
 import { Redirect, Route } from 'react-router-dom';
 
 import AuthProvider from '../auth/AuthProvider';
+import { CurrentUser } from '../../client/auth';
 import { isLoggedIn } from '../../client';
-import { LOGGED_IN_USER_QUERY } from '../../client/auth';
 
 const PrivateRoute = ({
   component: Component,
@@ -29,7 +29,7 @@ const PrivateRoute = ({
   }
 };
 
-export default graphql(LOGGED_IN_USER_QUERY, {
+export default graphql(CurrentUser, {
   props: ({ data: { loading, loggedInUser } }) => ({
     loading,
     loggedInUser

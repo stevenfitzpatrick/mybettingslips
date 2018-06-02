@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Yup from 'yup';
 import { Button, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import { object, string } from 'yup';
 
 import styles from '../Auth.module.scss';
+import { authenticateUser } from '../../../client/auth';
 import { FormAlert } from '../../common';
 import { handleGraphQLError } from '../../../utils';
-import { LOGIN_USER_MUTATION } from '../../../client/auth';
 import { logout, setKeys } from '../../../client';
 
-const schema = Yup.object().shape({
-  username: Yup.string()
+const schema = object().shape({
+  username: string()
     .required('Email is required')
     .email('Invalid email address'),
-  password: Yup.string().required('Password is required')
+  password: string().required('Password is required')
 });
 
 const propTypes = {
@@ -63,7 +63,9 @@ export class Login extends Component {
   handleSubmit = async ({ username, password }, { setSubmitting }) => {
     const { loginMutation, history } = this.props;
     try {
-      const { data: { authenticateUser } } = await loginMutation({
+      const {
+        data: { authenticateUser }
+      } = await loginMutation({
         variables: { username, password }
       });
       setKeys(authenticateUser.id, authenticateUser.token);
@@ -152,6 +154,6 @@ export class Login extends Component {
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
 
-export default graphql(LOGIN_USER_MUTATION, {
+export default graphql(authenticateUser, {
   name: 'loginMutation'
 })(Login);

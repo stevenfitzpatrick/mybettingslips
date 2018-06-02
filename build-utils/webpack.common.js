@@ -8,7 +8,7 @@ const config = {
   },
   resolve: {
     modules: [commonPaths.nodeModules, commonPaths.src],
-    extensions: ['.js', '.json', '.jsx', '.css', '.scss', '.svg']
+    extensions: ['.js', '.json', '.jsx', '.css', '.scss', '.svg', '.graphql']
   },
   target: 'web',
   module: {
@@ -36,6 +36,11 @@ const config = {
         options: {
           name: 'fonts/[name].[ext]'
         }
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader'
       }
     ]
   },

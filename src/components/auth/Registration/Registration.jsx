@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styles from '../Auth.module.scss';
 import { FormAlert } from '../../common';
 import { setKeys } from '../../../client';
-import { SIGNUP_USER_MUTATION } from '../../../client/auth';
+import { SignupUser } from '../../../client/auth';
 
 const propTypes = {
   history: PropTypes.object,
@@ -37,7 +37,9 @@ export function Registration({ history, signupUserMutation }) {
       }}
       onSubmit={async ({ email, password }, { setSubmitting, setErrors }) => {
         try {
-          const { data: { signupUser } } = await signupUserMutation({
+          const {
+            data: { signupUser }
+          } = await signupUserMutation({
             variables: { email, password }
           });
           setKeys(signupUser.id, signupUser.token);
@@ -97,6 +99,6 @@ export function Registration({ history, signupUserMutation }) {
 Registration.propTypes = propTypes;
 Registration.defaultProps = defaultProps;
 
-export default graphql(SIGNUP_USER_MUTATION, {
+export default graphql(SignupUser, {
   name: 'signupUserMutation'
 })(Registration);
