@@ -11,6 +11,7 @@ function withAuth(WrappedComponent) {
 
   Wrapper.displayName = `withAuth(${WrappedComponent.displayName ||
     WrappedComponent.name})`;
+
   return Wrapper;
 }
 

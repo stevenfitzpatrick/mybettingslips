@@ -2,13 +2,17 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import CreateBet from '../../pages/Dashboard/CreateBet';
 import Dashboard from '../../pages/Dashboard';
 import FAQ from '../../pages/FAQ';
 import Header from '../Header/Header';
 import NotFound from '../../pages/NotFound';
-
+import { Loadable } from '../../common/';
 import styles from './PrimaryLayout.module.scss';
+
+const LazyCreateBet = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "create-bet" */ '../../pages/Dashboard/CreateBet')
+});
 
 class PrimaryLayout extends Component {
   static propTypes = {
@@ -44,7 +48,9 @@ class PrimaryLayout extends Component {
             <Route path="/faq" component={FAQ} />
             <Route component={NotFound} />
           </Switch>
-          {isBetModal ? <Route path="/create" component={CreateBet} /> : null}
+          {isBetModal ? (
+            <Route path="/create" component={LazyCreateBet} />
+          ) : null}
         </main>
         <footer>Footer</footer>
       </div>

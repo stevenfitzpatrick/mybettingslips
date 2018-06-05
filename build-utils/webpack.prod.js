@@ -2,7 +2,7 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+// const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const pkg = require('../package.json');
@@ -16,8 +16,7 @@ const config = {
   optimization: {
     runtimeChunk: false,
     splitChunks: {
-      chunks: 'all', //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693,
-      filename: '[name].async.[chunkhash].js'
+      chunks: 'all' //Taken from https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693,
     },
     nodeEnv: 'production',
     minimize: true,

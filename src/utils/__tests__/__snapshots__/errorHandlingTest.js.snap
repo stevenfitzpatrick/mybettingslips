@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Handling should handle empty error 1`] = `undefined`;
+
+exports[`Error Handling should handle full error 1`] = `
+Object {
+  "field": "name",
+  "message": "not found",
+  "title": Any<String>,
+}
+`;
+
+exports[`Error Handling should handle generic error 1`] = `
+Object {
+  "message": "Generic Error has occured",
+  "title": "Whhoooppss",
+}
+`;

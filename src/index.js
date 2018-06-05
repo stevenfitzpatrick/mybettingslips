@@ -7,8 +7,9 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Theme } from '@sfitzpatrick/fitzy';
 import { ThemeProvider } from 'styled-components';
-
 import { withClientState } from 'apollo-link-state';
+import 'what-input';
+
 import App from './components/App';
 import { fetchItem } from './utils';
 import { USER_TOKEN_KEY } from './client';

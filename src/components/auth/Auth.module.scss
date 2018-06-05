@@ -11,3 +11,9 @@
   margin-top: var(--spacing);
   text-align: center;
 }
+
+.loading {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}

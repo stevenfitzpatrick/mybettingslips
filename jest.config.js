@@ -13,6 +13,10 @@ module.exports = {
     '\\.(gql|graphql)$': 'jest-transform-graphql',
     '.*': 'babel-jest'
   },
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname'
+  ],
   moduleFileExtensions: ['js', 'jsx', 'json', 'graphql'],
   setupFiles: ['<rootDir>/tests/localStorage.js'],
   setupTestFrameworkScriptFile: '<rootDir>/tests/init.js',

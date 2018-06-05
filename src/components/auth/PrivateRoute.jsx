@@ -6,6 +6,8 @@ import AuthProvider from '../auth/AuthProvider';
 import { CurrentUser } from '../../client/auth';
 import { isLoggedIn } from '../../client';
 
+import styles from './Auth.module.scss';
+
 const PrivateRoute = ({
   component: Component,
   loading,
@@ -16,7 +18,7 @@ const PrivateRoute = ({
     return <Redirect to="/auth/login" />;
   }
   if (loading) {
-    return <div>Loading</div>;
+    return <div className={styles.loading}>Loading...</div>;
   }
   if (loggedInUser && loggedInUser.id) {
     return (

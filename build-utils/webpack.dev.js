@@ -7,7 +7,8 @@ const commonPaths = require('./common');
 const config = {
   mode: 'development',
   output: {
-    filename: '[name].bundle.[hash].js'
+    filename: '[name].bundle.[hash].js',
+    chunkFilename: '[name].bundle.js'
   },
   devtool: 'source-map',
   module: {

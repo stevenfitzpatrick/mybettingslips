@@ -5,7 +5,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
-export class TopNav extends Component {
+export class Header extends Component {
   static propTypes = {
     history: PropTypes.object,
     className: PropTypes.string
@@ -16,7 +16,7 @@ export class TopNav extends Component {
   };
 
   /**
-   *
+   * Handle Create bet click and open modal
    */
   handleCreateBet = () => {
     this.props.history.push({ pathname: '/create', state: { modal: true } });
@@ -72,4 +72,4 @@ export class TopNav extends Component {
   }
 }
 
-export default withRouter(TopNav);
+export default withRouter(Header);

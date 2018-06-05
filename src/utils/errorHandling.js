@@ -3,7 +3,9 @@
  * @param {object} Return object of Graphcool Errors
  */
 export const handleGraphQLError = (errors = {}) => {
+  if (!errors) return;
   const { graphQLErrors } = errors;
+
   const [error] = graphQLErrors;
   const graphQLError = error?.functionError;
 
