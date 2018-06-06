@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Button, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { object, string } from 'yup';
 
 import styles from '../Auth.module.scss';
@@ -142,7 +142,7 @@ export class Login extends Component {
               Login
             </Button>
             <p className={styles.link}>
-              No Account ? <Link to="/auth/register">Register now</Link>
+              No Account ? Registration coming soon...
             </p>
           </form>
         )}
