@@ -85,7 +85,7 @@ const config = {
     }),
     //TODO: Change to content hash when available
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash:8].css',
+      filename: '[name].css',
       chunkFilename: '[id].css'
     }),
     // new ScriptExtHtmlWebpackPlugin({
