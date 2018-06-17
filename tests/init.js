@@ -1,4 +1,4 @@
-import Adapter from 'enzyme-adapter-react-16';
+const Adapter = require('enzyme-adapter-react-16');
 import Enzyme from 'enzyme';
 import { init } from '@sfitzpatrick/enzyme-context-helpers';
 

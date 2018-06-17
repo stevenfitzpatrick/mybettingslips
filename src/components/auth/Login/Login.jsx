@@ -142,7 +142,7 @@ export class Login extends Component {
               Login
             </Button>
             <p className={styles.link}>
-              No Account ? Registration coming soon...
+              No Account ? Registration coming soon2...
             </p>
           </form>
         )}

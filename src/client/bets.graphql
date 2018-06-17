@@ -1,0 +1,38 @@
+# Retrieve All bet types
+query BetTypesQuery {
+  allBetTypes(orderBy: name_ASC) {
+    id
+    name
+  }
+}
+
+# Get Bets for Users
+query GetUserBets($first: Int!, $skip: Int!) {
+  user {
+    bets(first: $first, skip: $skip) {
+      id
+    }
+    _betsMeta {
+      count
+    }
+  }
+}
+
+# Create bet mutation
+mutation CreateBetMutation(
+  $stake: Float!
+  $odds: Float!
+  $result: RESULT
+  $typeId: ID!
+  $userId: ID!
+) {
+  createBet(
+    stake: $stake
+    odds: $odds
+    result: $result
+    typeId: $typeId
+    userId: $userId
+  ) {
+    id
+  }
+}

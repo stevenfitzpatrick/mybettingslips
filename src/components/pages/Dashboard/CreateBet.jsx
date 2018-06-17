@@ -5,7 +5,7 @@ import { Dropdown, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 import { number, object, string } from 'yup';
 
-import { BET_DROPDOWNS_QUERY, CREATE_BET_MUTATION } from '../../../client/bets';
+import { BetTypesQuery, CreateBetMutation } from '../../../client/bets';
 import { FormAlert } from '../../common';
 
 const results = {
@@ -102,13 +102,13 @@ CreateBet.propTypes = propTypes;
 CreateBet.defaultProps = defaultProps;
 
 export default compose(
-  graphql(CREATE_BET_MUTATION, {
+  graphql(CreateBetMutation, {
     options({ id }) {
       return { variables: { userId: id } };
     },
     name: 'createBet'
   }),
-  graphql(BET_DROPDOWNS_QUERY, {
+  graphql(BetTypesQuery, {
     props: ({ getBetTypes: { allBetTypes } }) => {
       return { allBetTypes };
     },
