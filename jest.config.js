@@ -18,6 +18,7 @@ module.exports = {
     'jest-watch-typeahead/testname'
   ],
   moduleFileExtensions: ['js', 'jsx', 'json', 'graphql'],
+  modulePaths: ['<rootDir>/src/client'],
   setupFiles: ['<rootDir>/tests/localStorage.js'],
   setupTestFrameworkScriptFile: '<rootDir>/tests/init.js',
   coverageThreshold: {

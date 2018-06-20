@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 
 import { GetUserBets } from '../../../client/bets';
+import BetCard from './BetCard';
 
 class BetList extends Component {
   state = {
-    something: 'lol'
+    something: ''
   };
+
+  listCards = ({ id, ...props }) => <BetCard key={id} id={id} {...props} />;
 
   render() {
     const pagination = {
@@ -19,11 +22,13 @@ class BetList extends Component {
         variables={pagination}
         updateQuery={this.formatResponse}
       >
-        {({ loading, error, data }) => {
+        {({ loading, error, data: { user } = {} }) => {
           if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
+          if (error) return <div className="error">Error</div>;
 
-          return <pre>{JSON.stringify(data, null, 2)}</pre>;
+          //const count = user._betsMeta.count;
+          const items = user.bets;
+          return items.map(this.listCards);
         }}
       </Query>
     );

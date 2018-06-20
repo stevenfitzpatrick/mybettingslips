@@ -5,15 +5,18 @@ import { ApolloLink } from 'apollo-link';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { sayHello } from 'til-shared';
 import { Theme } from '@sfitzpatrick/fitzy';
 import { ThemeProvider } from 'styled-components';
 import { withClientState } from 'apollo-link-state';
-import 'what-input';
 
+import 'what-input';
 import App from './components/App';
 import { fetchItem } from './utils';
 import { USER_TOKEN_KEY } from './client';
 import './styles/main';
+
+sayHello();
 
 const cache = new InMemoryCache();
 

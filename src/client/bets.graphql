@@ -11,6 +11,15 @@ query GetUserBets($first: Int!, $skip: Int!) {
   user {
     bets(first: $first, skip: $skip) {
       id
+      createdAt
+      updatedAt
+      stake
+      odds
+      result
+      type {
+        name
+        icon
+      }
     }
     _betsMeta {
       count
