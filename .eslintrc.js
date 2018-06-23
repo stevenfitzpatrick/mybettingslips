@@ -15,9 +15,8 @@ module.exports = {
     'prettier/react'
   ],
   parserOptions: {
-    ecmaVersion: 8,
+    ecmaVersion: 2018,
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
       jsx: true,
       classes: true
     },
@@ -44,7 +43,6 @@ module.exports = {
     indent: ['error', 2],
     'no-undef': 0,
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'react/prefer-stateless-function': [2],
     'jsx-a11y/no-autofocus': 0,

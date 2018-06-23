@@ -26,7 +26,7 @@ export class Header extends Component {
     return (
       <Navigation className={this.props.className}>
         {Layout => (
-          <React.Fragment>
+          <>
             <Layout.Left>
               <nav>
                 <ul>
@@ -65,7 +65,7 @@ export class Header extends Component {
                 </li>
               </ul>
             </Layout.Right>
-          </React.Fragment>
+          </>
         )}
       </Navigation>
     );
