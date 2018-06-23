@@ -7,7 +7,7 @@
     "commit": "git add . && git cz && git push",
     "cypress": "cypress open",
     "cypress:chrome": "cypress run --browser chrome",
-    "cypress:run": "wait-on http://localhost:8080 && cypress run",
+    "cypress:run": "cypress run",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --env=prod && npm run inline",
     "predeploy": "npm run build",

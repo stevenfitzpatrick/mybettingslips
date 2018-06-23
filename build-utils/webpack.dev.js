@@ -60,8 +60,8 @@ const config = {
     add: app => {
       app.use(convert(history()));
     },
-    hot: false,
-    open: false
+    hot: true,
+    open: true
   },
   cache: true,
   plugins: [
