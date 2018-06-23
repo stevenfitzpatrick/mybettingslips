@@ -7,7 +7,7 @@
     "commit": "git add . && git cz && git push",
     "cypress": "cypress open",
     "cypress:chrome": "cypress run --browser chrome",
-    "cypress:run": "wait-on http://localhost:9000 && cypress run",
+    "cypress:run": "wait-on http://localhost:8080 && cypress run",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --env=prod && npm run inline",
     "predeploy": "npm run build",
@@ -151,15 +151,11 @@
   ],
   "bundlesize": [
     {
-      "path": "./dist/main.*.css",
-      "maxSize": "5 kB"
-    },
-    {
       "path": "./dist/main.*.js",
       "maxSize": "10 kB"
     },
     {
-      "path": "./dist/vendors~main.async.*.js",
+      "path": "./dist/vendors~main.bundle.*.js",
       "maxSize": "160 kB"
     },
     {
