@@ -10,8 +10,8 @@ function App() {
     <BrowserRouter>
       <>
         <Switch>
-          <Route path="/auth" component={UnauthorizedLayout} />
-          <PrivateRoute path="/" component={PrimaryLayout} />
+          <Route component={UnauthorizedLayout} path="/auth" />
+          <PrivateRoute component={PrimaryLayout} path="/" />
         </Switch>
       </>
     </BrowserRouter>

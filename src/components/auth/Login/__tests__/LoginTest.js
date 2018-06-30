@@ -64,7 +64,7 @@ describe('Login', () => {
           message: 'Please Try again'
         }
       });
-      wrapper.instance().clearError({ preventDefault() {} });
+      wrapper.instance().handleClearError({ preventDefault() {} });
       expect(wrapper.state().error).toBeNull();
     });
   });

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Button, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 import { graphql } from 'react-apollo';
-// import { Link } from 'react-router-dom';
 import { object, string } from 'yup';
 
 import styles from '../Auth.module.scss';
@@ -27,7 +26,7 @@ const propTypes = {
   /**
    * Function to handle login attempts
    */
-  loginMutation: PropTypes.func
+  loginMutation: PropTypes.func.isRequired
 };
 
 const defaultProps = {
@@ -39,20 +38,20 @@ export class Login extends Component {
     error: null
   };
 
+  componentDidMount() {
+    logout();
+  }
+
   /**
    * Set Inputs refs for validation
    */
   usernameRef = React.createRef();
   passwordRef = React.createRef();
 
-  componentDidMount() {
-    logout();
-  }
-
   /**
    * Clear back end error message
    */
-  clearError = e => {
+  handleClearError = e => {
     e.preventDefault();
     this.setState({ error: null });
   };
@@ -86,7 +85,6 @@ export class Login extends Component {
           username: '',
           password: ''
         }}
-        validationSchema={schema}
         onSubmit={this.handleSubmit}
         render={({
           values,
@@ -98,46 +96,49 @@ export class Login extends Component {
           isSubmitting
         }) => (
           <form
-            onSubmit={handleSubmit}
-            noValidate
-            name="loginForm"
             className={styles.formContainer}
+            name="loginForm"
+            noValidate
+            onSubmit={handleSubmit}
           >
             <h1 className="header-4xl">Login</h1>
-            <FormAlert error={this.state.error} onClear={this.clearError} />
-            <Input
-              name="username"
-              type="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.username}
-              autoComplete="username"
-              spellCheck={false}
-              label="Username"
-              placeholder="Enter your email"
-              innerRef={this.usernameRef}
-              warning={errors['username']}
-              autoFocus
-              required
+            <FormAlert
+              error={this.state.error}
+              onClear={this.handleClearError}
             />
             <Input
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              onChange={handleChange}
+              autoComplete="username"
+              autoFocus
+              innerRef={this.usernameRef}
+              label="Username"
+              name="username"
               onBlur={handleBlur}
-              value={values.password}
-              autoComplete="current-password"
-              label="Password"
-              innerRef={this.passwordRef}
+              onChange={handleChange}
+              placeholder="Enter your email"
               required
+              spellCheck={false}
+              type="email"
+              value={values.username}
+              warning={errors['username']}
+            />
+            <Input
+              autoComplete="current-password"
+              innerRef={this.passwordRef}
+              label="Password"
+              name="password"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              required
+              type="password"
+              value={values.password}
               warning={touched['password'] && errors['password']}
             />
             <Button
-              fullWidth
-              type="submit"
               disabled={isSubmitting}
+              fullWidth
               loading={isSubmitting}
+              type="submit"
             >
               Login
             </Button>
@@ -146,6 +147,7 @@ export class Login extends Component {
             </p>
           </form>
         )}
+        validationSchema={schema}
       />
     );
   }

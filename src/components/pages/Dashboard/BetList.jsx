@@ -5,11 +5,7 @@ import { GetUserBets } from '../../../client/bets';
 import BetCard from './BetCard';
 
 class BetList extends Component {
-  state = {
-    something: ''
-  };
-
-  listCards = ({ id, ...props }) => <BetCard key={id} id={id} {...props} />;
+  listCards = ({ id, ...props }) => <BetCard id={id} key={id} {...props} />;
 
   render() {
     const pagination = {
@@ -19,16 +15,14 @@ class BetList extends Component {
     return (
       <Query
         query={GetUserBets}
-        variables={pagination}
         updateQuery={this.formatResponse}
+        variables={pagination}
       >
         {({ loading, error, data: { user } = {} }) => {
           if (loading) return 'Loading...';
           if (error) return <div className="error">Error</div>;
 
-          //const count = user._betsMeta.count;
-          const items = user.bets;
-          return items.map(this.listCards);
+          return user.bets.map(this.listCards);
         }}
       </Query>
     );

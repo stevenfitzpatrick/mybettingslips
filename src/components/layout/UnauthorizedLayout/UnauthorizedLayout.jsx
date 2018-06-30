@@ -13,13 +13,13 @@ export function UnauthorizedLayout({ location }) {
   return (
     <main className={styles.authContainer}>
       <section className={styles['auth__img']} />
-      <TransitionGroup component="section" className={styles['auth__form']}>
-        <CSSTransition key={location.key} classNames="fade" timeout={200}>
+      <TransitionGroup className={styles['auth__form']} component="section">
+        <CSSTransition classNames="fade" key={location.key} timeout={200}>
           <div className={styles['auth__inner']}>
             <Switch location={location}>
-              <Route exact path="/auth/register" component={Registration} />
-              <Route exact path="/auth/logout" component={Logout} />
-              <Route exact path="/auth/login" component={Login} />
+              <Route component={Registration} exact path="/auth/register" />
+              <Route component={Logout} exact path="/auth/logout" />
+              <Route component={Login} exact path="/auth/login" />
               <Redirect to="/auth/login" />
             </Switch>
           </div>

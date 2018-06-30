@@ -44,7 +44,7 @@ describe('Bet Query List Test', () => {
 
   test('should render data list', async () => {
     let wrapper = mount(
-      <MockedProvider mocks={mocks} addTypename={false}>
+      <MockedProvider addTypename={false} mocks={mocks}>
         <BetList name="Buck" />
       </MockedProvider>
     );
@@ -66,7 +66,7 @@ describe('Bet Query List Test', () => {
     };
 
     const wrapper1 = mount(
-      <MockedProvider mocks={[errorMock]} addTypename={false}>
+      <MockedProvider addTypename={false} mocks={[errorMock]}>
         <BetList name="Buck" />
       </MockedProvider>
     );

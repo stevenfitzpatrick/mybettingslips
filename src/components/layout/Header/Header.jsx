@@ -7,8 +7,8 @@ import styles from './Header.module.scss';
 
 export class Header extends Component {
   static propTypes = {
-    history: PropTypes.object,
-    className: PropTypes.string
+    className: PropTypes.string,
+    history: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -31,20 +31,20 @@ export class Header extends Component {
               <nav>
                 <ul>
                   <li>
-                    <NavigationLink to="/" LinkType={NavLink} icon="home" exact>
+                    <NavigationLink exact icon="home" linkType={NavLink} to="/">
                       Home
                     </NavigationLink>
                   </li>
                   <li>
-                    <NavigationLink to="/faq" LinkType={NavLink} icon="help">
+                    <NavigationLink icon="help" linkType={NavLink} to="/faq">
                       FAQ
                     </NavigationLink>
                   </li>
                   <li>
                     <Button
+                      className={styles.button}
                       icon="edit"
                       onClick={this.handleCreateBet}
-                      className={styles.button}
                     >
                       Add Bet
                     </Button>
@@ -56,9 +56,9 @@ export class Header extends Component {
               <ul>
                 <li>
                   <NavigationLink
-                    to="/auth/logout"
                     icon="user"
-                    LinkType={NavLink}
+                    linkType={NavLink}
+                    to="/auth/logout"
                   >
                     Logout
                   </NavigationLink>

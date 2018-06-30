@@ -2,9 +2,7 @@ import React from 'react';
 import { MemoryRouter, Redirect, Route } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
 
-import UnauthorizedWithRouter, {
-  UnauthorizedLayout
-} from '../UnauthorizedLayout';
+import { UnauthorizedLayout } from '../UnauthorizedLayout';
 
 describe('UnauthorizedLayout', () => {
   let wrapper;
@@ -32,15 +30,5 @@ describe('UnauthorizedLayout', () => {
     );
     const route = mountedWrapper.find(Redirect);
     expect(route.props().to).toEqual('/auth/login');
-  });
-
-  xtest('should correct component for matching route', () => {
-    const mountedWrapper = mount(
-      <MemoryRouter initialEntries={['/auth/register']} initialIndex={0}>
-        <UnauthorizedWithRouter />
-      </MemoryRouter>
-    );
-    const route = mountedWrapper.find(Route).last();
-    expect(route.props().path).toEqual('/auth/register');
   });
 });

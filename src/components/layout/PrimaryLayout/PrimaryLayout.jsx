@@ -16,10 +16,8 @@ const LazyCreateBet = Loadable({
 
 class PrimaryLayout extends Component {
   static propTypes = {
-    location: PropTypes.object
+    location: PropTypes.object.isRequired
   };
-
-  previousLocation = this.props.location;
 
   componentDidUpdate(nextProps) {
     const { location } = this.props;
@@ -27,9 +25,11 @@ class PrimaryLayout extends Component {
       nextProps.history.action !== 'POP' &&
       (!location.state || !location.state.modal)
     ) {
-      this.previousLocation = this.props.location;
+      this.previousLocation = location;
     }
   }
+
+  previousLocation = this.props.location;
 
   render() {
     const { location } = this.props;
@@ -44,12 +44,12 @@ class PrimaryLayout extends Component {
         <Header className={styles.header} />
         <main className={styles.main}>
           <Switch location={isBetModal ? this.previousLocation : location}>
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/faq" component={FAQ} />
+            <Route component={Dashboard} exact path="/" />
+            <Route component={FAQ} path="/faq" />
             <Route component={NotFound} />
           </Switch>
           {isBetModal ? (
-            <Route path="/create" component={LazyCreateBet} />
+            <Route component={LazyCreateBet} path="/create" />
           ) : null}
         </main>
         <footer>Footer</footer>

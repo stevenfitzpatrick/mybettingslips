@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, Dropdown, Input, Modal } from '@sfitzpatrick/fitzy';
 import { compose, graphql } from 'react-apollo';
-import { Dropdown, Input } from '@sfitzpatrick/fitzy';
 import { Formik } from 'formik';
 import { number, object, string } from 'yup';
 
@@ -22,17 +22,22 @@ const schema = object().shape({
 });
 
 const propTypes = {
+  allBetTypes: PropTypes.array,
   createBet: PropTypes.func.isRequired,
-  allBetTypes: PropTypes.array
+  history: PropTypes.object.isRequired
 };
 
 const defaultProps = {
   allBetTypes: []
 };
 
-export function CreateBet({ createBet, allBetTypes }) {
+export function CreateBet({ createBet, allBetTypes, history }) {
+  function closeModal() {
+    history.goBack();
+  }
+
   return (
-    <div>
+    <Modal onClose={closeModal}>
       <Formik
         initialValues={{
           stake: '',
@@ -40,7 +45,6 @@ export function CreateBet({ createBet, allBetTypes }) {
           result: results.OPEN,
           typeId: ''
         }}
-        validationSchema={schema}
         onSubmit={async (inputs, { setSubmitting, setErrors }) => {
           try {
             await createBet({
@@ -64,37 +68,40 @@ export function CreateBet({ createBet, allBetTypes }) {
           setFieldValue,
           isSubmitting
         }) => (
-          <form onSubmit={handleSubmit} noValidate name="createBetForm">
+          <form name="createBetForm" noValidate onSubmit={handleSubmit}>
             {errors.message && <FormAlert>{errors.message}</FormAlert>}
             <Input
-              name="stake"
-              type="number"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.stake}
               autoFocus
+              name="stake"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              type="number"
+              value={values.stake}
             />
             <Input
               name="odds"
-              type="number"
-              onChange={handleChange}
               onBlur={handleBlur}
+              onChange={handleChange}
+              type="number"
               value={values.odds}
             />
             <Dropdown
-              onChange={i => setFieldValue('typeId', i.id)}
-              onBlur={() => setFieldTouched('typeId')}
               items={allBetTypes}
+              onBlur={() => setFieldTouched('typeId')}
+              onChange={i => setFieldValue('typeId', i.id)}
               placeholder="Select Sport Type"
             />
-            <button>Cancel</button>
-            <button type="submit" disabled={isSubmitting}>
+            <Button onClick={closeModal} use="Secondary">
+              Cancel
+            </Button>
+            <Button disabled={isSubmitting} type="submit">
               Submit
-            </button>
+            </Button>
           </form>
         )}
+        validationSchema={schema}
       />
-    </div>
+    </Modal>
   );
 }
 

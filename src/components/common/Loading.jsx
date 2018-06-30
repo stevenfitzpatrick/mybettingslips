@@ -1,11 +1,14 @@
 import React from 'react';
 
-function Loading({ error, pastDelay }) {
+function Loading({ error, retry, pastDelay }) {
   if (error) {
     // When the loader has errored
     return (
       <div>
-        Error! <button onClick={props.retry}>Retry</button>
+        Error!{' '}
+        <button onClick={retry} type="button">
+          Retry
+        </button>
       </div>
     );
   } else if (pastDelay) {

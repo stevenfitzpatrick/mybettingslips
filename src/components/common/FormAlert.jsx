@@ -4,11 +4,11 @@ import React from 'react';
 import { Alert } from '@sfitzpatrick/fitzy';
 
 const propTypes = {
-  onClear: PropTypes.func.isRequired,
   error: PropTypes.shape({
-    title: PropTypes.string,
-    message: PropTypes.string
-  })
+    message: PropTypes.string,
+    title: PropTypes.string
+  }),
+  onClear: PropTypes.func.isRequired
 };
 
 const defaultProps = {
@@ -17,7 +17,7 @@ const defaultProps = {
 
 const FormAlert = ({ error, onClear }) =>
   error ? (
-    <Alert title={error.title} onCancel={onClear}>
+    <Alert onCancel={onClear} title={error.title}>
       {error.message}
     </Alert>
   ) : null;

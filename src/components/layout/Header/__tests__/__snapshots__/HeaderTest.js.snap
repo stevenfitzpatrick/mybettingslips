@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render Header 1`] = `
+<header
+  className="sc-gZMcBi cNDcAC"
+>
+  <div
+    className="sc-jTzLTM iRlPGf"
+  >
+    <nav>
+      <ul>
+        <li>
+          <a
+            className="sc-fjdhpX gBkElo"
+            exact={true}
+            to="/"
+          >
+            <svg
+              className="sc-EHOje jbjauU"
+              size="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M13 20v-5h-2v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.59l-.3.3a1 1 0 1 1-1.4-1.42l9-9a1 1 0 0 1 1.4 0l9 9a1 1 0 0 1-1.4 1.42l-.3-.3V20a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2zm5 0v-9.59l-6-6-6 6V20h3v-5c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v5h3z"
+              />
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            className="sc-fjdhpX gBkElo"
+            to="/faq"
+          >
+            <svg
+              className="sc-EHOje jbjauU"
+              size="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.59 8.59a1 1 0 1 1-1.42-1.42 4 4 0 1 1 5.66 5.66l-2.12 2.12a1 1 0 1 1-1.42-1.42l2.12-2.12A2 2 0 0 0 10.6 8.6zM12 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+              />
+            </svg>
+            FAQ
+          </a>
+        </li>
+        <li>
+          <button
+            aria-busy={false}
+            className="button sc-htoDjs kfNvDD"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="sc-EHOje hbMIGf"
+              size="16"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6.3 12.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM8 16h2.59l9-9L17 4.41l-9 9V16zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h6a1 1 0 0 1 0 2H4v14h14v-6z"
+              />
+            </svg>
+            Add Bet
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div
+    className="sc-VigVT cFEsBV"
+  >
+    <ul>
+      <li>
+        <a
+          className="sc-fjdhpX gBkElo"
+          to="/auth/logout"
+        >
+          <svg
+            className="sc-EHOje jbjauU"
+            size="20"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2z"
+            />
+          </svg>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+`;

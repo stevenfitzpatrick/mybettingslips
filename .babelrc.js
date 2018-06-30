@@ -16,7 +16,6 @@ module.exports = {
       {
         modules,
         loose,
-        useBuiltIns: 'usage',
         targets: {
           browsers: ['last 2 Chrome versions']
         }

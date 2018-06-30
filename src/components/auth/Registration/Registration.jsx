@@ -11,7 +11,7 @@ import { SignupUser } from '../../../client/auth';
 
 const propTypes = {
   history: PropTypes.object,
-  signupUserMutation: PropTypes.func
+  signupUserMutation: PropTypes.func.isRequired
 };
 
 const defaultProps = {
@@ -24,16 +24,6 @@ export function Registration({ history, signupUserMutation }) {
       initialValues={{
         email: '',
         password: ''
-      }}
-      validate={({ email, password }) => {
-        let errors = {};
-        if (!email) {
-          errors.email = 'Email is required';
-        }
-        if (!password) {
-          errors.password = 'Password is required';
-        }
-        return errors;
       }}
       onSubmit={async ({ email, password }, { setSubmitting, setErrors }) => {
         try {
@@ -59,31 +49,31 @@ export function Registration({ history, signupUserMutation }) {
         handleSubmit,
         isSubmitting
       }) => (
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
           <h1>Register</h1>
           {errors.message && <FormAlert>{errors.message}</FormAlert>}
           <input
-            name="email"
-            type="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
             autoFocus
+            name="email"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            type="email"
+            value={values.email}
           />
           {touched.email &&
             errors.email && <div className="form-error">{errors.email}</div>}
           <input
             name="password"
-            type="password"
-            onChange={handleChange}
             onBlur={handleBlur}
+            onChange={handleChange}
+            type="password"
             value={values.password}
           />
           {touched.password &&
             errors.password && (
-            <div className="form-error">{errors.password}</div>
-          )}
-          <button type="submit" disabled={isSubmitting}>
+              <div className="form-error">{errors.password}</div>
+            )}
+          <button disabled={isSubmitting} type="submit">
             Submit
           </button>
 
@@ -92,6 +82,16 @@ export function Registration({ history, signupUserMutation }) {
           </p>
         </form>
       )}
+      validate={({ email, password }) => {
+        let errors = {};
+        if (!email) {
+          errors.email = 'Email is required';
+        }
+        if (!password) {
+          errors.password = 'Password is required';
+        }
+        return errors;
+      }}
     />
   );
 }
