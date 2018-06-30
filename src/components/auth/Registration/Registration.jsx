@@ -71,8 +71,8 @@ export function Registration({ history, signupUserMutation }) {
           />
           {touched.password &&
             errors.password && (
-              <div className="form-error">{errors.password}</div>
-            )}
+            <div className="form-error">{errors.password}</div>
+          )}
           <button disabled={isSubmitting} type="submit">
             Submit
           </button>
