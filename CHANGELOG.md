@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/stevenfitzpatrick/mybettingslips/compare/v1.1.1...v1.2.0) (2018-07-14)
+
+
+### Bug Fixes
+
+* **npm:** Sort out packages for Apollo ([b09fb6b](https://github.com/stevenfitzpatrick/mybettingslips/commit/b09fb6b))
+
+
+### Features
+
+* **Login:** Login Refactor and Tests ([9818bfb](https://github.com/stevenfitzpatrick/mybettingslips/commit/9818bfb))
+* **Nav:** Intial Nav Work ([93f467e](https://github.com/stevenfitzpatrick/mybettingslips/commit/93f467e))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/stevenfitzpatrick/mybettingslips/compare/v1.1.0...v1.1.1) (2018-03-20)
 
