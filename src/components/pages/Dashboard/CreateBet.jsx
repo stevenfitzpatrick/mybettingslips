@@ -49,7 +49,14 @@ export function CreateBet({ createBet, allBetTypes, history }) {
           try {
             await createBet({
               variables: {
-                ...inputs
+                stake: 120,
+                odds: 1.5,
+                result: 'Open',
+                typeId: 'cjdt55ewi2m9p01975crg32cn',
+                userId: id,
+                away: 'cjj7nsc12wsmf0197iok0jb1x',
+                home: 'cjj7nrs3ewsm5019718sf0am2',
+                sport: 'cjj7nr78uwgyf01835gzeebjv'
               }
             });
             setSubmitting(false);

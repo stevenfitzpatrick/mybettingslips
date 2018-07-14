@@ -29,14 +29,20 @@ query GetUserBets($first: Int!, $skip: Int!) {
 
 # Create bet mutation
 mutation CreateBetMutation(
+  $away: ID!
+  $home: ID!
   $stake: Float!
+  $sport: ID!
   $odds: Float!
   $result: RESULT
   $typeId: ID!
   $userId: ID!
 ) {
   createBet(
+    awayId: $away
+    homeId: $home
     stake: $stake
+    sportId: $sport
     odds: $odds
     result: $result
     typeId: $typeId

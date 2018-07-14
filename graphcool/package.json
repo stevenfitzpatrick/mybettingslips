@@ -5,7 +5,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "graphcool-lib": "^0.1.4",
-    "graphql-request": "^1.5.1",
-    "validator": "^9.4.1"
+    "graphql-request": "^1.6.0",
+    "validator": "^10.4.0"
   }
 }

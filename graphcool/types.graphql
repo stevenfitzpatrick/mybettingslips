@@ -11,13 +11,28 @@ type User @model {
 
 type Bet @model {
   id: ID! @isUnique
+  # Dates
   createdAt: DateTime!
   updatedAt: DateTime!
-  stake: Float!
-  odds: Float!
-  result: RESULT
-  user: User! @relation(name: "UserBets")
+  # Pick
+  away: Team! @relation(name: "BetsAwayTeam")
+  home: Team! @relation(name: "BetsHomeTeam")
+  sport: SportType! @relation(name: "SportTypes")
   type: BetType! @relation(name: "BetTypes")
+  # Stake
+  odds: Float!
+  stake: Float!
+  result: RESULT
+  # User
+  user: User! @relation(name: "UserBets")
+}
+
+type Team @model {
+  id: ID! @isUnique
+  name: String!
+  icon: String
+  awayBets: [Bet!]! @relation(name: "BetsAwayTeam")
+  homeBets: [Bet!]! @relation(name: "BetsHomeTeam")
 }
 
 type BetType @model {
@@ -25,4 +40,11 @@ type BetType @model {
   name: String!
   icon: String
   bets: [Bet!]! @relation(name: "BetTypes")
+}
+
+type SportType @model {
+  id: ID! @isUnique
+  name: String!
+  icon: String
+  bets: [Bet!]! @relation(name: "SportTypes")
 }
