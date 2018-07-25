@@ -2,16 +2,16 @@
 
 exports[`Header should render Header 1`] = `
 <header
-  className="sc-gZMcBi cNDcAC"
+  className="sc-fjdhpX fUCVvQ"
 >
   <div
-    className="sc-jTzLTM iRlPGf"
+    className="sc-kAzzGY hhmiGE"
   >
     <nav>
       <ul>
         <li>
           <a
-            className="sc-fjdhpX gBkElo"
+            className="sc-chPdSV bFUdSz"
             exact={true}
             to="/"
           >
@@ -29,7 +29,7 @@ exports[`Header should render Header 1`] = `
         </li>
         <li>
           <a
-            className="sc-fjdhpX gBkElo"
+            className="sc-chPdSV bFUdSz"
             to="/faq"
           >
             <svg
@@ -68,12 +68,12 @@ exports[`Header should render Header 1`] = `
     </nav>
   </div>
   <div
-    className="sc-VigVT cFEsBV"
+    className="sc-cSHVUG dPDOwP"
   >
     <ul>
       <li>
         <a
-          className="sc-fjdhpX gBkElo"
+          className="sc-chPdSV bFUdSz"
           to="/auth/logout"
         >
           <svg

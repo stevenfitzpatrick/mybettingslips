@@ -11,7 +11,7 @@ import styles from './PrimaryLayout.module.scss';
 
 const LazyCreateBet = Loadable({
   loader: () =>
-    import(/* webpackChunkName: "create-bet" */ '../../pages/Dashboard/CreateBet')
+    import(/* webpackChunkName: "create-bet" */ '../../pages/CreateBet/CreateBet')
 });
 
 class PrimaryLayout extends Component {

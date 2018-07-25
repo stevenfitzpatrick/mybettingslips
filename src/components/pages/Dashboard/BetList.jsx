@@ -5,7 +5,13 @@ import { GetUserBets } from '../../../client/bets';
 import BetCard from './BetCard';
 
 class BetList extends Component {
-  listCards = ({ id, ...props }) => <BetCard id={id} key={id} {...props} />;
+  handleDelete = e => {
+    const id = e.target.dataset.id;
+  };
+
+  listCards = ({ id, ...bet }) => (
+    <BetCard bet={bet} id={id} key={id} onDelete={this.handleDelete} />
+  );
 
   render() {
     const pagination = {
@@ -13,15 +19,10 @@ class BetList extends Component {
       skip: 0
     };
     return (
-      <Query
-        query={GetUserBets}
-        updateQuery={this.formatResponse}
-        variables={pagination}
-      >
+      <Query query={GetUserBets} variables={pagination}>
         {({ loading, error, data: { user } = {} }) => {
           if (loading) return 'Loading...';
           if (error) return <div className="error">Error</div>;
-
           return user.bets.map(this.listCards);
         }}
       </Query>

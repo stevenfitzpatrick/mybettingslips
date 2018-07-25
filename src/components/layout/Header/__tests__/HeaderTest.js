@@ -5,7 +5,12 @@ import Header from '../Header';
 
 describe('Header', () => {
   test('should render Header', () => {
-    const tree = renderWithTheme(<Header />).toJSON();
+    const defaultProps = {
+      history: {
+        push: jest.fn()
+      }
+    };
+    const tree = renderWithTheme(<Header {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

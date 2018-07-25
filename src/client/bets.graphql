@@ -6,10 +6,26 @@ query BetTypesQuery {
   }
 }
 
+# Get dropdown information for create bet
+query GetBetOptions {
+  allBetTypes(orderBy: name_ASC) {
+    id
+    name
+  }
+  allTeams(orderBy: name_ASC) {
+    id
+    name
+  }
+  allSportTypes(orderBy: name_ASC) {
+    id
+    name
+  }
+}
+
 # Get Bets for Users
 query GetUserBets($first: Int!, $skip: Int!) {
   user {
-    bets(first: $first, skip: $skip) {
+    bets(first: $first, skip: $skip, orderBy: updatedAt_DESC) {
       id
       createdAt
       updatedAt
@@ -29,20 +45,20 @@ query GetUserBets($first: Int!, $skip: Int!) {
 
 # Create bet mutation
 mutation CreateBetMutation(
-  $away: ID!
-  $home: ID!
+  $awayId: ID!
+  $homeId: ID!
   $stake: Float!
-  $sport: ID!
+  $sportId: ID!
   $odds: Float!
   $result: RESULT
   $typeId: ID!
   $userId: ID!
 ) {
   createBet(
-    awayId: $away
-    homeId: $home
+    awayId: $awayId
+    homeId: $homeId
     stake: $stake
-    sportId: $sport
+    sportId: $sportId
     odds: $odds
     result: $result
     typeId: $typeId

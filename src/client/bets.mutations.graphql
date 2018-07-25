@@ -1,0 +1,6 @@
+# Delete Bet mutation
+mutation DeleteBet($id: ID!) {
+  deleteBet(id: $id) {
+    id
+  }
+}

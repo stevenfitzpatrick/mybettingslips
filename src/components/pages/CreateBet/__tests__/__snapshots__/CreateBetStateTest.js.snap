@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateBet State should contain all correct Result options 1`] = `
+Object {
+  "LOSS": "Loss",
+  "OPEN": "Open",
+  "VOID": "Void",
+  "WIN": "Win",
+}
+`;

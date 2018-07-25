@@ -6,7 +6,8 @@ const commonConfig = require('./build-utils/webpack.common');
 const smp = new SpeedMeasurePlugin();
 
 module.exports = env => {
-  const target = typeof env === 'object' ? env.env : env;
+  console.log(process.env.npm_package_version);
+  const target = process.env.WEBPACK_SERVE ? 'dev' : env;
   const envConfig = require(`./build-utils/webpack.${target}.js`);
   return smp.wrap(webpackMerge(commonConfig, envConfig));
 };
