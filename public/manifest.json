@@ -1,9 +1,9 @@
 {
-  "name": "stevenfitzpatrick.io",
+  "name": "My betting slips",
+  "short_name": "My bets",
   "default_locale": "en",
-  "short_name": "SF",
-  "description": "Steven Fitzpatrick, Front End Developer",
-  "version": "0.0.0.1",
+  "description": "My betting slips",
+  "version": "1.0.0",
   "manifest_version": 2,
   "start_url": "./",
   "icons": [
@@ -24,6 +24,6 @@
     }
   ],
   "display": "standalone",
-  "background_color": "#d28546",
-  "theme_color": "#bd773f"
+  "background_color": "#182025",
+  "theme_color": "#17b890"
 }

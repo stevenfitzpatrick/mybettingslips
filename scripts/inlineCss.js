@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+
 /* eslint-disable no-console */
+
 /**
  * Helper to inline css into index.html after webpack build
  */
+
 const fs = require('fs');
 const path = require('path');
 const util = require('util');

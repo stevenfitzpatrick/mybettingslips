@@ -2,9 +2,9 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const pkg = require('../package.json');
 const commonPaths = require('./common');
@@ -93,15 +93,30 @@ const config = {
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
     }),
-    // new ScriptExtHtmlWebpackPlugin({
-    //   defaultAttribute: 'defer'
-    // }),
     //Add Bundle JS Analyzer
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: true,
       generateStatsFile: false,
       reportFilename: path.join(commonPaths.report, 'report.html')
+    }),
+    new GenerateSW({
+      swDest: 'sw.js',
+      exclude: ['main.css'],
+      skipWaiting: true,
+      clientsClaim: true,
+      navigateFallback: '/index.html',
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('^https://res.cloudinary.com/'),
+          handler: 'staleWhileRevalidate',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }
+      ]
     })
   ]
 };
