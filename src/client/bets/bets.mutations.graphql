@@ -1,0 +1,48 @@
+# Delete Bet mutation
+mutation DeleteBet($id: ID!) {
+  deleteBet(id: $id) {
+    id
+  }
+}
+
+# Update Bet Result mutation
+mutation UpdateBet($id: ID!, $result: RESULT) {
+  updateBet(id: $id, result: $result) {
+    id
+    result
+  }
+}
+
+# Create bet mutation
+mutation CreateBet(
+  $awayId: ID!
+  $homeId: ID!
+  $stake: Float!
+  $sportId: ID!
+  $odds: Float!
+  $result: RESULT
+  $typeId: ID!
+  $userId: ID!
+) {
+  createBet(
+    awayId: $awayId
+    homeId: $homeId
+    stake: $stake
+    sportId: $sportId
+    odds: $odds
+    result: $result
+    typeId: $typeId
+    userId: $userId
+  ) {
+    id
+    createdAt
+    updatedAt
+    stake
+    odds
+    result
+    type {
+      name
+      icon
+    }
+  }
+}

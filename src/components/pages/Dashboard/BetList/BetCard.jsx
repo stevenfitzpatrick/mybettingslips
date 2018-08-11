@@ -1,15 +1,24 @@
 import React from 'react';
-import { func, number, shape, string } from 'prop-types';
 import { Mutation } from 'react-apollo';
+import { number, shape, string } from 'prop-types';
 
-import { DeleteBet } from '../../../client/bets.mutations';
-import { GetUserBets } from '../../../client/bets';
-import styles from './Dashboard.module.scss';
+import styles from '../Dashboard.module.scss';
+import { BetResult } from '../../../common/';
+import {
+  calculateResult,
+  calculateWinnings,
+  formatRelativeDate
+} from '../../../../utils/';
+import { DeleteBet, GetUserBets } from '../../../../client/';
+import BetActions from './BetActions';
 
 const BetCard = ({
   bet: { createdAt, odds, result, stake, type = {} },
   id
 }) => {
+  const potentialWinnings = calculateWinnings(odds, stake);
+  const netResult = calculateResult(result, potentialWinnings, stake);
+
   return (
     <Mutation
       mutation={DeleteBet}
@@ -40,11 +49,19 @@ const BetCard = ({
     >
       {deleteBet => (
         <div className={styles.betCard}>
-          <div>{createdAt}</div>
-          <div>{odds}</div>
-          <div>{result}</div>
-          <div>{stake}</div>
-          <div>{type.name}</div>
+          <div>
+            Created at:
+            {formatRelativeDate(createdAt)}
+          </div>
+          <div>Odds: {odds}</div>
+          <div>Results: {result}</div>
+          <div>Stake: {stake}</div>
+          <div>Potential Winnings: €{potentialWinnings}</div>
+          <div>
+            Net Result: <BetResult result={result}>{netResult}</BetResult>
+          </div>
+          <div>Type: {type.name}</div>
+          <BetActions id={id} />
           <button
             onClick={() => deleteBet({ variables: { id } })}
             type="button"
@@ -68,8 +85,7 @@ BetCard.propTypes = {
       name: string
     })
   }).isRequired,
-  id: string.isRequired,
-  onDelete: func.isRequired
+  id: string.isRequired
 };
 
 export default BetCard;

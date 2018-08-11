@@ -1,8 +1,26 @@
+fragment betFields on Bet {
+  odds
+  result
+  stake
+}
+
 # Retrieve All bet types
 query BetTypesQuery {
   allBetTypes(orderBy: name_ASC) {
     id
     name
+  }
+}
+
+# Retrieve All bets to calculate summary
+query GetUserTotal {
+  user {
+    bets {
+      ...betFields
+    }
+    total: _betsMeta {
+      count
+    }
   }
 }
 
@@ -29,9 +47,7 @@ query GetUserBets($first: Int!, $skip: Int!) {
       id
       createdAt
       updatedAt
-      stake
-      odds
-      result
+      ...betFields
       type {
         name
         icon
@@ -40,30 +56,5 @@ query GetUserBets($first: Int!, $skip: Int!) {
     _betsMeta {
       count
     }
-  }
-}
-
-# Create bet mutation
-mutation CreateBetMutation(
-  $awayId: ID!
-  $homeId: ID!
-  $stake: Float!
-  $sportId: ID!
-  $odds: Float!
-  $result: RESULT
-  $typeId: ID!
-  $userId: ID!
-) {
-  createBet(
-    awayId: $awayId
-    homeId: $homeId
-    stake: $stake
-    sportId: $sportId
-    odds: $odds
-    result: $result
-    typeId: $typeId
-    userId: $userId
-  ) {
-    id
   }
 }

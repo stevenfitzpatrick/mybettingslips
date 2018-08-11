@@ -1,9 +1,4 @@
-export const results = {
-  OPEN: 'Open',
-  WIN: 'Win',
-  LOSS: 'Loss',
-  VOID: 'Void'
-};
+import { results } from '../../../store/bet.constants';
 
 export const initialState = {
   stake: '',

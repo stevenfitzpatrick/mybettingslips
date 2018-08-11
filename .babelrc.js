@@ -27,8 +27,7 @@ module.exports = {
     ['@babel/plugin-proposal-class-properties', { loose }],
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',
-    'macros',
-    'preval',
+    'babel-plugin-styled-components',
     ...envPlugins[NODE_ENV],
     '@babel/plugin-proposal-optional-chaining'
   ].filter(Boolean)

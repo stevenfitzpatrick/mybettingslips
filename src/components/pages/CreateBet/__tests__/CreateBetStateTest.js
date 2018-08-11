@@ -1,4 +1,5 @@
-import { initialState, results } from '../CreateBet.state';
+import { initialState } from '../CreateBet.state';
+import { results } from '../../../../store/bet.constants';
 
 describe('CreateBet State', () => {
   test('should contain all correct Result options', () => {

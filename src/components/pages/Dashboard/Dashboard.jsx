@@ -1,11 +1,16 @@
 import React from 'react';
-// import { compose, graphql } from 'react-apollo';
 
 import withAuth from '../../handlers/withAuth';
-import BetList from './BetList';
+import BetList from './BetList/';
+import BetTotal from './BetTotal/';
 
 const Dashboard = () => {
-  return <BetList />;
+  return (
+    <>
+      <BetTotal />
+      <BetList />
+    </>
+  );
 };
 
 export default withAuth(Dashboard);

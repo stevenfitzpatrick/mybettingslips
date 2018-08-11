@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 
-import { GetUserBets } from '../../../client/bets';
+import { GetUserBets } from '../../../../client/';
 import BetCard from './BetCard';
 
 class BetList extends Component {
-  handleDelete = e => {
-    const id = e.target.dataset.id;
-  };
-
-  listCards = ({ id, ...bet }) => (
-    <BetCard bet={bet} id={id} key={id} onDelete={this.handleDelete} />
-  );
+  listCards = ({ id, ...bet }) => <BetCard bet={bet} id={id} key={id} />;
 
   render() {
     const pagination = {

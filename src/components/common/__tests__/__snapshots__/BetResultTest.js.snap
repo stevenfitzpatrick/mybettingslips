@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BetResult should load with loss result props 1`] = `
+.c0 {
+  color: hsl(0,57%,63%);
+}
+
+<span
+  className="c0"
+  result="Loss"
+>
+  - €100
+</span>
+`;
+
+exports[`BetResult should load with open result props 1`] = `
+.c0 {
+  color: #ffffff;
+}
+
+<span
+  className="c0"
+  result="Open"
+>
+  €100
+</span>
+`;
+
+exports[`BetResult should load with win result props 1`] = `
+.c0 {
+  color: hsl(152,62%,53%);
+}
+
+<span
+  className="c0"
+  result="Win"
+>
+  + €100
+</span>
+`;

@@ -17,13 +17,6 @@ import './styles/main';
 
 const cache = new InMemoryCache();
 
-export const defaults = {
-  networkStatus: {
-    __typename: 'NetworkStatus',
-    isConnected: false
-  }
-};
-
 /**
  * Set up Auth forwarding header on each request
  */
@@ -52,8 +45,7 @@ const stateLink = withClientState({
         cache.writeData({ data });
       }
     }
-  },
-  defaults
+  }
 });
 
 /**
