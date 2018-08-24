@@ -6,7 +6,7 @@ import Dashboard from '../../pages/Dashboard';
 import FAQ from '../../pages/FAQ';
 import Header from '../Header/Header';
 import NotFound from '../../pages/NotFound';
-import { Loadable } from '../../common/';
+import { ErrorBoundary, Loadable } from '../../common/';
 import styles from './PrimaryLayout.module.scss';
 
 const LazyCreateBet = Loadable({
@@ -43,14 +43,16 @@ class PrimaryLayout extends Component {
       <div className={styles.grid}>
         <Header className={styles.header} />
         <main className={styles.main}>
-          <Switch location={isBetModal ? this.previousLocation : location}>
-            <Route component={Dashboard} exact path="/" />
-            <Route component={FAQ} path="/faq" />
-            <Route component={NotFound} />
-          </Switch>
-          {isBetModal ? (
-            <Route component={LazyCreateBet} path="/create" />
-          ) : null}
+          <ErrorBoundary>
+            <Switch location={isBetModal ? this.previousLocation : location}>
+              <Route component={Dashboard} exact path="/" />
+              <Route component={FAQ} path="/faq" />
+              <Route component={NotFound} />
+            </Switch>
+            {isBetModal ? (
+              <Route component={LazyCreateBet} path="/create" />
+            ) : null}
+          </ErrorBoundary>
         </main>
         <footer>Footer</footer>
       </div>

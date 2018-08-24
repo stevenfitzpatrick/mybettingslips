@@ -7,6 +7,7 @@ import { BetResult } from '../../../common/';
 import {
   calculateResult,
   calculateWinnings,
+  decimalToFraction,
   formatRelativeDate
 } from '../../../../utils/';
 import { DeleteBet, GetUserBets } from '../../../../client/';
@@ -53,7 +54,7 @@ const BetCard = ({
             Created at:
             {formatRelativeDate(createdAt)}
           </div>
-          <div>Odds: {odds}</div>
+          <div>Odds: {decimalToFraction(odds)}</div>
           <div>Results: {result}</div>
           <div>Stake: {stake}</div>
           <div>Potential Winnings: €{potentialWinnings}</div>
@@ -61,13 +62,7 @@ const BetCard = ({
             Net Result: <BetResult result={result}>{netResult}</BetResult>
           </div>
           <div>Type: {type.name}</div>
-          <BetActions id={id} />
-          <button
-            onClick={() => deleteBet({ variables: { id } })}
-            type="button"
-          >
-            Delete
-          </button>
+          <BetActions deleteBet id={id} onDelete={deleteBet} result={result} />
         </div>
       )}
     </Mutation>

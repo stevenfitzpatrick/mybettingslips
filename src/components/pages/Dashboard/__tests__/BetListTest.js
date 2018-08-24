@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetUserBets } from 'bets.graphql';
+import { GetUserBets } from 'index.js';
 import { MockedProvider } from 'react-apollo/test-utils';
 import { mount } from 'enzyme';
 
