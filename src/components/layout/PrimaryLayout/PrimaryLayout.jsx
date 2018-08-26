@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import Admin from '../../pages/Admin';
 import Dashboard from '../../pages/Dashboard';
 import FAQ from '../../pages/FAQ';
 import Header from '../Header/Header';
 import NotFound from '../../pages/NotFound';
 import { ErrorBoundary, Loadable } from '../../common/';
+
 import styles from './PrimaryLayout.module.scss';
 
 const LazyCreateBet = Loadable({
@@ -47,6 +49,7 @@ class PrimaryLayout extends Component {
             <Switch location={isBetModal ? this.previousLocation : location}>
               <Route component={Dashboard} exact path="/" />
               <Route component={FAQ} path="/faq" />
+              <Route component={Admin} path="/admin" />
               <Route component={NotFound} />
             </Switch>
             {isBetModal ? (

@@ -36,6 +36,11 @@ export class Header extends Component {
                     </NavigationLink>
                   </li>
                   <li>
+                    <NavigationLink icon="help" linkType={NavLink} to="/admin">
+                      Admin
+                    </NavigationLink>
+                  </li>
+                  <li>
                     <NavigationLink icon="help" linkType={NavLink} to="/faq">
                       FAQ
                     </NavigationLink>

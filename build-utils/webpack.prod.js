@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const SizePlugin = require('size-plugin');
 
 const pkg = require('../package.json');
 const commonPaths = require('./common');
@@ -117,7 +118,8 @@ const config = {
           }
         }
       ]
-    })
+    }),
+    new SizePlugin()
   ]
 };
 
