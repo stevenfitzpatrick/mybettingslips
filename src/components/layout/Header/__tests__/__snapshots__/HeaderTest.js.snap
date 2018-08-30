@@ -2,16 +2,16 @@
 
 exports[`Header should render Header 1`] = `
 <header
-  className="sc-fjdhpX fUCVvQ"
+  className="sc-kAzzGY dauFP"
 >
   <div
-    className="sc-kAzzGY hhmiGE"
+    className="sc-kGXeez iLfjST"
   >
     <nav>
       <ul>
         <li>
           <a
-            className="sc-chPdSV bFUdSz"
+            className="sc-kpOJdX kCcMLV"
             exact={true}
             to="/"
           >
@@ -29,7 +29,24 @@ exports[`Header should render Header 1`] = `
         </li>
         <li>
           <a
-            className="sc-chPdSV bFUdSz"
+            className="sc-kpOJdX kCcMLV"
+            to="/admin"
+          >
+            <svg
+              className="sc-EHOje jbjauU"
+              size="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10.59 8.59a1 1 0 1 1-1.42-1.42 4 4 0 1 1 5.66 5.66l-2.12 2.12a1 1 0 1 1-1.42-1.42l2.12-2.12A2 2 0 0 0 10.6 8.6zM12 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+              />
+            </svg>
+            Admin
+          </a>
+        </li>
+        <li>
+          <a
+            className="sc-kpOJdX kCcMLV"
             to="/faq"
           >
             <svg
@@ -47,7 +64,7 @@ exports[`Header should render Header 1`] = `
         <li>
           <button
             aria-busy={false}
-            className="button sc-htoDjs kfNvDD"
+            className="button sc-htoDjs djbsrM"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -68,12 +85,12 @@ exports[`Header should render Header 1`] = `
     </nav>
   </div>
   <div
-    className="sc-cSHVUG dPDOwP"
+    className="sc-kgoBCf eyKgJG"
   >
     <ul>
       <li>
         <a
-          className="sc-chPdSV bFUdSz"
+          className="sc-kpOJdX kCcMLV"
           to="/auth/logout"
         >
           <svg

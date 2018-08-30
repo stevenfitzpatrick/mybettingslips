@@ -32,7 +32,8 @@ type Line @model {
   # Pick
   away: Team! @relation(name: "LineAwayTeam")
   home: Team! @relation(name: "LineHomeTeam")
-  sport: SportType! @relation(name: "SportTypes")
+  sport: Sport! @relation(name: "SportLines")
+  competition: Competition! @relation(name: "CompetitionLines")
   type: BetType! @relation(name: "LineTypes")
   # Stake
   result: RESULT
@@ -51,15 +52,24 @@ type Team @model {
   id: ID! @isUnique
   name: String! @isUnique
   icon: String
-  sportType: SportType! @relation(name: "SportTeams")
+  sport: Sport! @relation(name: "SportTeams")
   awayBetLines: [Line!]! @relation(name: "LineAwayTeam")
   homeBetLines: [Line!]! @relation(name: "LineHomeTeam")
 }
 
-type SportType @model {
+type Competition @model {
   id: ID! @isUnique
-  name: String!
+  name: String! @isUnique
   icon: String
+  sport: Sport! @relation(name: "SportCompetitions")
+  competitionLines: [Line!]! @relation(name: "CompetitionLines")
+}
+
+type Sport @model {
+  id: ID! @isUnique
+  name: String! @isUnique
+  icon: String
+  competitions: [Competition!]! @relation(name: "SportCompetitions")
   teams: [Team!]! @relation(name: "SportTeams")
-  betLines: [Line!]! @relation(name: "SportTypes")
+  betLines: [Line!]! @relation(name: "SportLines")
 }

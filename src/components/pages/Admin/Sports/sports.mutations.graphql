@@ -1,0 +1,6 @@
+# Update Bet Result mutation
+mutation CreateSport($name: String!, $icon: String) {
+  createSport(name: $name, icon: $icon) {
+    id
+  }
+}

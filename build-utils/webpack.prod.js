@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const SizePlugin = require('size-plugin');
+const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin')
+  .default;
 
 const pkg = require('../package.json');
 const commonPaths = require('./common');

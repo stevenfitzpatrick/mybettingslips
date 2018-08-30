@@ -3,9 +3,13 @@ import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
-import Login from '../../auth/Login';
 import Logout from '../../auth/Logout';
 import Registration from '../../auth/Registration';
+import { Loadable } from '../../common/';
+
+const LazyLogin = Loadable({
+  loader: () => import(/* webpackChunkName: "login" */ '../../auth/Login')
+});
 
 import styles from './Unauthorized.module.scss';
 
@@ -19,7 +23,7 @@ export function UnauthorizedLayout({ location }) {
             <Switch location={location}>
               <Route component={Registration} exact path="/auth/register" />
               <Route component={Logout} exact path="/auth/logout" />
-              <Route component={Login} exact path="/auth/login" />
+              <Route component={LazyLogin} exact path="/auth/login" />
               <Redirect to="/auth/login" />
             </Switch>
           </div>

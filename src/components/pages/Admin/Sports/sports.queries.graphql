@@ -1,0 +1,8 @@
+# Get dropdown information for create team
+query GetSports {
+  allSports(orderBy: name_ASC) {
+    id
+    name
+    icon
+  }
+}

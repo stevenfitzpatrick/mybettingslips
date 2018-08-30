@@ -1,7 +1,0 @@
-# Create bet mutation
-mutation CreateTeam($name: String!, $sportTypeId: ID!) {
-  createTeam(name: $name, sportTypeId: $sportTypeId) {
-    id
-    name
-  }
-}
