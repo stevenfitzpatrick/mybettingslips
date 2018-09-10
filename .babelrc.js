@@ -5,7 +5,18 @@ const loose = true;
 
 const envPlugins = {
   development: ['react-hot-loader/babel'],
-  production: ['transform-react-remove-prop-types'],
+  production: [
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        corejs: false,
+        helpers: true,
+        regenerator: true,
+        useESModules: true
+      }
+    ],
+    'transform-react-remove-prop-types'
+  ],
   test: []
 };
 

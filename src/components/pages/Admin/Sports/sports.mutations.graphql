@@ -1,6 +1,24 @@
-# Update Bet Result mutation
+# Add new sport
 mutation CreateSport($name: String!, $icon: String) {
   createSport(name: $name, icon: $icon) {
+    id
+    name
+    icon
+  }
+}
+
+# Update sport
+mutation UpdateSport($name: String!, $icon: String, $id: ID!) {
+  updateSport(id: $id, name: $name, icon: $icon) {
+    id
+    name
+    icon
+  }
+}
+
+# Delete Sport
+mutation DeleteSport($id: ID!) {
+  deleteSport(id: $id) {
     id
   }
 }

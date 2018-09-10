@@ -74,6 +74,7 @@ const config = {
     ]
   },
   plugins: [
+    new SizePlugin(),
     new HtmlWebpackPlugin({
       hash: false,
       filename: 'index.html',
@@ -120,8 +121,7 @@ const config = {
           }
         }
       ]
-    }),
-    new SizePlugin()
+    })
   ]
 };
 

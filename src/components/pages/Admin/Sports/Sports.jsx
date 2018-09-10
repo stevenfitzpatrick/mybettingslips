@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
-import { Button, Toggle } from '@sfitzpatrick/fitzy';
-import { Query } from 'react-apollo';
+import { Button } from '@sfitzpatrick/fitzy';
 
-import AddSport from './AddSport';
+import { Query } from '../../../common/';
 import { GetSports } from './sports.queries.graphql';
+import { SportCard, SportForm } from './';
 
 class Sports extends Component {
-  listSports = ({ id, name }) => <div key={id}>{name}</div>;
+  state = {
+    item: {},
+    show: false
+  };
+
+  handleToggleForm = (event, item = {}) => {
+    this.setState(({ show }) => ({ show: !show, item }));
+  };
 
   render() {
+    const { item, show } = this.state;
+
     return (
       <div>
-        <Toggle>
-          {({ isOpen, onToggle }) => (
-            <>
-              <Button onClick={onToggle}>Add Team</Button>
-              {isOpen && <AddSport onClose={onToggle} />}
-            </>
-          )}
-        </Toggle>
+        <Button onClick={this.handleToggleForm}>Add Team</Button>
+        {show && <SportForm item={item} onClose={this.handleToggleForm} />}
 
-        <Query query={GetSports} variables={{}}>
-          {({ loading, error, data: { allSports } }) => {
-            if (loading) return 'Loading...';
-            if (error) return <div className="error">Error</div>;
-
-            return allSports.map(this.listSports);
-          }}
+        <Query query={GetSports}>
+          {({ allSports }) =>
+            allSports.map(item => (
+              <SportCard
+                item={item}
+                key={item.id}
+                onToggle={this.handleToggleForm}
+              />
+            ))
+          }
         </Query>
       </div>
     );

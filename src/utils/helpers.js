@@ -5,7 +5,10 @@
  * @param {Object} obj Input to test for emptiness
  * @returns {Boolean} is empty or not
  */
-export const isEmpty = (obj = {}) => !Object.keys(obj).length > 0;
+export const isEmpty = (obj = {}) => {
+  if (!obj) return true;
+  return !Object.keys(obj).length > 0;
+};
 
 /**
  * @name capitilize

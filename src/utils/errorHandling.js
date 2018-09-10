@@ -7,6 +7,14 @@ export const handleGraphQLError = (errors = {}) => {
   const { graphQLErrors } = errors;
 
   const [error] = graphQLErrors;
+
+  if (error?.message) {
+    return {
+      title: error?.path.join(''),
+      message: error?.message
+    };
+  }
+
   const graphQLError = error?.functionError;
 
   // Check if back end error otherwise pass generic error

@@ -62,7 +62,7 @@ const BetCard = ({
             Net Result: <BetResult result={result}>{netResult}</BetResult>
           </div>
           <div>Type: {type.name}</div>
-          <BetActions deleteBet id={id} onDelete={deleteBet} result={result} />
+          <BetActions id={id} onDelete={deleteBet} result={result} />
         </div>
       )}
     </Mutation>

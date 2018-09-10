@@ -3,6 +3,8 @@ import React from 'react';
 
 import { Alert } from '@sfitzpatrick/fitzy';
 
+import { isEmpty } from '../../utils/';
+
 const propTypes = {
   error: PropTypes.shape({
     message: PropTypes.string,
@@ -16,8 +18,11 @@ const defaultProps = {
 };
 
 const FormAlert = ({ error, onClear }) =>
-  error ? (
-    <Alert onCancel={onClear} title={error.title}>
+  !isEmpty(error) ? (
+    <Alert
+      onCancel={onClear}
+      title={error.title || 'Whoops something went wrong !'}
+    >
       {error.message}
     </Alert>
   ) : null;

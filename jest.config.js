@@ -20,6 +20,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'graphql'],
   modulePaths: ['<rootDir>/src/client'],
   setupFiles: ['<rootDir>/tests/localStorage.js'],
+  verbose: true,
   setupTestFrameworkScriptFile: '<rootDir>/tests/init.js',
   coverageThreshold: {
     global: {

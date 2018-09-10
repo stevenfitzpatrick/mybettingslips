@@ -3,3 +3,4 @@ export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as FormAlert } from './FormAlert';
 export { default as Loading } from './Loading';
 export { default as Loadable } from './Loadable';
+export { default as Query } from './Query';
