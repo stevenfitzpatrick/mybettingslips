@@ -21,9 +21,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run: sudo apt-get update && sudo apt-get install xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
       - run:
@@ -53,9 +53,12 @@ jobs:
       - run:
           name: Test
           command: npm test
-    #   - run:
-    #       name: Generate code coverage
-    #       command: npm run test:ci
+      - run:
+          name: Danger
+          command: npm run danger
+      #   - run:
+      #       name: Generate code coverage
+      #       command: npm run test:ci
       - run:
           name: Build
           command: npm run build
