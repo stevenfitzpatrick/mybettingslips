@@ -1,4 +1,4 @@
-const { NODE_ENV } = process.env;
+const { NODE_ENV = 'production' } = process.env;
 
 const modules = NODE_ENV === 'test' ? 'commonjs' : false;
 const loose = true;
