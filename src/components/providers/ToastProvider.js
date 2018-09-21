@@ -27,7 +27,7 @@ class ToastProvider extends Component {
     type = 'Success',
     message,
     dismissable = false,
-    timeout = 4000
+    timeout = 5000
   }) => {
     const id = uniqueId('toast');
     this.setState(
@@ -66,6 +66,7 @@ class ToastProvider extends Component {
                 <Alert
                   key={item.id}
                   title="Success"
+                  toastTimeout={5000}
                   use={item.type}
                   {...this.propSetters(item)}
                 >

@@ -7,7 +7,7 @@ import { object as yupObject, string as yupString } from 'yup';
 
 import withToast from '../../../handlers/withToast';
 import { FormAlert } from '../../../common/';
-import { handleGraphQLError, isEmpty, update } from '../../../../utils/';
+import { handleGraphQLError, isEmpty, update, getCurrentDate } from '../../../../utils/';
 import { CreateSport, UpdateSport } from './sports.mutations.graphql';
 import { GetSports } from './sports.queries.graphql';
 
@@ -56,13 +56,12 @@ class SportForm extends Component {
             const data = cache.readQuery({
               query: GetSports
             });
-
             data.allSports = update.addItem({
               list: data.allSports,
-              item: createSport,
+              item: { ...createSport, updatedAt: getCurrentDate()},
               sort: true
             });
-
+            data.meta.count = data.allSports.length;
             cache.writeQuery({
               query: GetSports,
               data

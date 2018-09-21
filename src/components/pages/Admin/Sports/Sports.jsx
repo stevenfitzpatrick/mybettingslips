@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from '@sfitzpatrick/fitzy';
+
+import { Button, Title } from '@sfitzpatrick/fitzy';
 
 import { Query } from '../../../common/';
 import { GetSports } from './sports.queries.graphql';
@@ -20,19 +21,27 @@ class Sports extends Component {
 
     return (
       <div>
-        <Button onClick={this.handleToggleForm}>Add Team</Button>
+        <Button icon="add" onClick={this.handleToggleForm} use="Secondary">
+          Add Team
+        </Button>
         {show && <SportForm item={item} onClose={this.handleToggleForm} />}
 
         <Query query={GetSports}>
-          {({ allSports }) =>
-            allSports.map(item => (
-              <SportCard
-                item={item}
-                key={item.id}
-                onToggle={this.handleToggleForm}
-              />
-            ))
-          }
+          {({ allSports, meta: { count } }) => (
+            <div>
+              <div>
+                <Title>Sports</Title>
+                <span>Showing 1 - 2 of 2</span>
+              </div>
+              {allSports.map(item => (
+                <SportCard
+                  item={item}
+                  key={item.id}
+                  onToggle={this.handleToggleForm}
+                />
+              ))}
+            </div>
+          )}
         </Query>
       </div>
     );

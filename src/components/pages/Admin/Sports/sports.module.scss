@@ -1,0 +1,19 @@
+.card {
+  align-items: center;
+  background-color: #101619;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba($color: #000, $alpha: 1);
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: 1.5rem 150px 150px auto;
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+
+  + .card {
+    margin-bottom: 1rem;
+  }
+
+  :last-child {
+    justify-self: end;
+  }
+}

@@ -1,15 +1,17 @@
 import React from 'react';
 import { compose, graphql } from 'react-apollo';
 import { func, object } from 'prop-types';
-import { Icon, IconButton, MenuDropdown } from '@sfitzpatrick/fitzy';
+import { DataLabel, Icon, IconButton, MenuDropdown } from '@sfitzpatrick/fitzy';
 
 import withToast from '../../../handlers/withToast';
-import { menuClassHelpers } from '../../../../utils';
+import { menuClassHelpers, formatDate } from '../../../../utils';
 import { DeleteSport } from './sports.mutations';
 import { GetSports } from './sports.queries';
 
+import styles from './sports.module.scss'
+
 const SportCard = ({ item, onToggle, withDeleteSport, addToast }) => {
-  const { name, icon } = item;
+  const { name, icon, updatedAt } = item;
   const actions = {
     EDIT: 'Edit',
     DELETE: 'Delete'
@@ -25,48 +27,51 @@ const SportCard = ({ item, onToggle, withDeleteSport, addToast }) => {
   }
 
   return (
-    <div>
-      <div>{name}</div>
+    <div className={styles.card}>
       <div>{icon && <Icon icon={icon} />}</div>
-      <MenuDropdown
-        onSelect={handleOnChange}
-        placement="bottom-start"
-        renderButton={({ getToggleButtonProps, ref }) => (
-          <IconButton
-            icon="more"
-            innerRef={ref}
-            {...getToggleButtonProps({ 'data-testid': 'sport-dropdown' })}
-          />
-        )}
-      >
-        {({
-          getItemProps,
-          getMenuProps,
-          Menu,
-          MenuItem,
-          selectedItem,
-          highlightedIndex
-        }) => (
-          <Menu {...getMenuProps({ refKey: 'innerRef' })}>
-            {Object.values(actions).map((item, i) => (
-              <MenuItem
-                key={item}
-                {...getItemProps({
-                  item,
-                  className: menuClassHelpers(
-                    selectedItem,
-                    highlightedIndex,
-                    item,
-                    i
-                  )
-                })}
-              >
-                {item}
-              </MenuItem>
-            ))}
-          </Menu>
-        )}
-      </MenuDropdown>
+      <DataLabel label="Date Updated">{formatDate(updatedAt)}</DataLabel>
+      <DataLabel label="Name">{name}</DataLabel>
+      <DataLabel label="Actions">
+        <MenuDropdown
+          onSelect={handleOnChange}
+          placement="bottom-end"
+          renderButton={({ getToggleButtonProps, ref }) => (
+            <IconButton
+              icon="more"
+              innerRef={ref}
+              {...getToggleButtonProps({ 'data-testid': 'sport-dropdown' })}
+            />
+          )}
+        >
+          {({
+            getItemProps,
+            getMenuProps,
+            Menu,
+            MenuItem,
+            selectedItem,
+            highlightedIndex
+          }) => (
+              <Menu {...getMenuProps({ refKey: 'innerRef' })}>
+                {Object.values(actions).map((item, i) => (
+                  <MenuItem
+                    key={item}
+                    {...getItemProps({
+                      item,
+                      className: menuClassHelpers(
+                        selectedItem,
+                        highlightedIndex,
+                        item,
+                        i
+                      )
+                    })}
+                  >
+                    {item}
+                  </MenuItem>
+                ))}
+              </Menu>
+            )}
+        </MenuDropdown>
+      </DataLabel>
     </div>
   );
 };
@@ -83,7 +88,7 @@ SportCard.propTypes = {
 };
 
 SportCard.defaultProps = {
-  addToast: () => {},
+  addToast: () => { },
   item: {}
 };
 
@@ -101,8 +106,7 @@ export default compose(
         }
       },
       update: (cache, { data: { deleteSport } }) => {
-        console.log(cache.data)
-        if(!cache) return;
+        if (!cache) return;
 
         const data = cache.readQuery({
           query: GetSports
@@ -111,6 +115,8 @@ export default compose(
         data.allSports = data.allSports.filter(
           sport => sport.id !== deleteSport.id
         );
+        data.meta.count = data.allSports.length;
+
         cache.writeQuery({
           query: GetSports,
           data

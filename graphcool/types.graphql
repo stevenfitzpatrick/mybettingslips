@@ -50,6 +50,11 @@ type BetType @model {
 
 type Team @model {
   id: ID! @isUnique
+
+  # Dates
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
   name: String! @isUnique
   icon: String
   sport: Sport! @relation(name: "SportTeams")
@@ -59,6 +64,11 @@ type Team @model {
 
 type Competition @model {
   id: ID! @isUnique
+
+  # Dates
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
   name: String! @isUnique
   icon: String
   sport: Sport! @relation(name: "SportCompetitions")
@@ -67,6 +77,10 @@ type Competition @model {
 
 type Sport @model {
   id: ID! @isUnique
+  # Dates
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
   name: String! @isUnique
   icon: String
   competitions: [Competition!]! @relation(name: "SportCompetitions")

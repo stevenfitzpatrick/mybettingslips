@@ -4,5 +4,9 @@ query GetSports {
     id
     name
     icon
+    updatedAt
+  }
+  meta: _allSportsMeta {
+    count
   }
 }

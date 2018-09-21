@@ -8,6 +8,7 @@ const { GenerateSW } = require('workbox-webpack-plugin');
 const SizePlugin = require('size-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin')
   .default;
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const pkg = require('../package.json');
 const commonPaths = require('./common');
@@ -74,7 +75,6 @@ const config = {
     ]
   },
   plugins: [
-    new SizePlugin(),
     new HtmlWebpackPlugin({
       hash: false,
       filename: 'index.html',
@@ -97,6 +97,7 @@ const config = {
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
     }),
+    new SizePlugin(),
     //Add Bundle JS Analyzer
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',

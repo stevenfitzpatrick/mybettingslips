@@ -2,21 +2,21 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { shape } from 'prop-types';
 
-import { Sports, Teams } from './';
+import { Competitions, Sports } from './';
 
 const Admin = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/teams`}>Teams</Link>
+        <Link to={`${match.url}/competitions`}>Competitions</Link>
       </li>
       <li>
         <Link to={`${match.url}/sports`}>Sports</Link>
       </li>
     </ul>
 
-    <Route component={Teams} path={`${match.path}/teams`} />
+    <Route component={Competitions} path={`${match.path}/competitions`} />
     <Route component={Sports} path={`${match.path}/sports`} />
     <Route
       exact
