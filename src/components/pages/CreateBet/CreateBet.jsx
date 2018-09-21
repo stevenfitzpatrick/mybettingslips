@@ -118,28 +118,24 @@ export function CreateBet({
                   />
                   <Dropdown
                     items={allBetTypes}
-                    itemToString={item => (item ? item.name : '')}
                     onBlur={() => setFieldTouched('typeId')}
                     onChange={i => setFieldValue('typeId', i.id)}
                     placeholder="Select Bet Type"
                   />
                   <Dropdown
                     items={allSportTypes}
-                    itemToString={item => (item ? item.name : '')}
                     onBlur={() => setFieldTouched('sportId')}
                     onChange={i => setFieldValue('sportId', i.id)}
                     placeholder="Select Sport Type"
                   />
                   <Dropdown
                     items={allTeams}
-                    itemToString={item => (item ? item.name : '')}
                     onBlur={() => setFieldTouched('homeId')}
                     onChange={i => setFieldValue('homeId', i.id)}
                     placeholder="Select Home Team"
                   />
                   <Dropdown
                     items={allTeams}
-                    itemToString={item => (item ? item.name : '')}
                     onBlur={() => setFieldTouched('awayId')}
                     onChange={i => setFieldValue('awayId', i.id)}
                     placeholder="Select Away Team"

@@ -27,7 +27,7 @@ class Sports extends Component {
         {show && <SportForm item={item} onClose={this.handleToggleForm} />}
 
         <Query query={GetSports}>
-          {({ allSports, meta: { count } }) => (
+          {({ allSports }) => (
             <div>
               <div>
                 <Title>Sports</Title>

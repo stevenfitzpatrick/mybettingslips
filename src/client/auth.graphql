@@ -1,19 +1,16 @@
-fragment userFields on AuthenticateUserPayload {
-  id
-  token
-}
-
 # Log in user Mutation
 mutation authenticateUser($username: String!, $password: String!) {
   authenticateUser(email: $username, password: $password) {
-    ...userFields
+    id
+    token
   }
 }
 
 # Create user mutation
 mutation SignupUser($email: String!, $password: String!) {
   signupUser(email: $email, password: $password) {
-    ...userFields
+    id
+    token
   }
 }
 

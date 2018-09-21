@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { func, node, oneOfType } from 'prop-types';
 
 class ErrorBoundary extends Component {
   state = { error: false };
 
-  componentDidCatch(error, info) {
-    console.log({ error, info });
+  componentDidCatch() {
     this.setState({ error: true });
   }
 
@@ -15,5 +15,9 @@ class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: oneOfType([func, node]).isRequired
+};
 
 export default ErrorBoundary;

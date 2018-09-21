@@ -1,14 +1,15 @@
 import React from 'react';
 import { compose, graphql } from 'react-apollo';
-import { func, object } from 'prop-types';
 import { DataLabel, Icon, IconButton, MenuDropdown } from '@sfitzpatrick/fitzy';
+import { func, object } from 'prop-types';
 
 import withToast from '../../../handlers/withToast';
-import { menuClassHelpers, formatDate } from '../../../../utils';
-import { DeleteSport } from './sports.mutations';
-import { GetSports } from './sports.queries';
+import { formatDate, menuClassHelpers } from '../../../../utils';
+import styles from './sports.module.scss';
 
-import styles from './sports.module.scss'
+import { DeleteSport } from './sports.mutations';
+
+import { GetSports } from './sports.queries';
 
 const SportCard = ({ item, onToggle, withDeleteSport, addToast }) => {
   const { name, icon, updatedAt } = item;
@@ -51,25 +52,25 @@ const SportCard = ({ item, onToggle, withDeleteSport, addToast }) => {
             selectedItem,
             highlightedIndex
           }) => (
-              <Menu {...getMenuProps({ refKey: 'innerRef' })}>
-                {Object.values(actions).map((item, i) => (
-                  <MenuItem
-                    key={item}
-                    {...getItemProps({
+            <Menu {...getMenuProps({ refKey: 'innerRef' })}>
+              {Object.values(actions).map((item, i) => (
+                <MenuItem
+                  key={item}
+                  {...getItemProps({
+                    item,
+                    className: menuClassHelpers(
+                      selectedItem,
+                      highlightedIndex,
                       item,
-                      className: menuClassHelpers(
-                        selectedItem,
-                        highlightedIndex,
-                        item,
-                        i
-                      )
-                    })}
-                  >
-                    {item}
-                  </MenuItem>
-                ))}
-              </Menu>
-            )}
+                      i
+                    )
+                  })}
+                >
+                  {item}
+                </MenuItem>
+              ))}
+            </Menu>
+          )}
         </MenuDropdown>
       </DataLabel>
     </div>
@@ -88,7 +89,7 @@ SportCard.propTypes = {
 };
 
 SportCard.defaultProps = {
-  addToast: () => { },
+  addToast: () => {},
   item: {}
 };
 

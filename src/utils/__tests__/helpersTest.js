@@ -10,10 +10,6 @@ describe('Helper', () => {
       expect(isEmpty(null)).toBeTruthy();
     });
 
-    test('should handle empty object', () => {
-      expect(isEmpty({})).toBeTruthy();
-    });
-
     test('should handle empty array', () => {
       expect(isEmpty([])).toBeTruthy();
     });

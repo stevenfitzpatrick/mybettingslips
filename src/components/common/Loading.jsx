@@ -2,7 +2,6 @@ import React from 'react';
 
 function Loading({ error, retry, pastDelay }) {
   if (error) {
-    debugger;
     // When the loader has errored
     return (
       <div>

@@ -33,13 +33,6 @@ module.exports = {
     'graphql'
   ],
   rules: {
-    'graphql/template-strings': [
-      'error',
-      {
-        env: 'literal',
-        schemaJson: require('./schema.json')
-      }
-    ],
     indent: ['error', 2],
     'no-undef': 0,
     'linebreak-style': ['error', 'unix'],
@@ -84,6 +77,10 @@ module.exports = {
       jest: {
         jestConfigFile: './jest.config.js'
       }
+    },
+    react: {
+      pragma: 'React',
+      version: '16.5.1'
     }
   }
 };

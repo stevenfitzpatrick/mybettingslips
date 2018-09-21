@@ -7,7 +7,12 @@ import { object as yupObject, string as yupString } from 'yup';
 
 import withToast from '../../../handlers/withToast';
 import { FormAlert } from '../../../common/';
-import { handleGraphQLError, isEmpty, update, getCurrentDate } from '../../../../utils/';
+import {
+  getCurrentDate,
+  handleGraphQLError,
+  isEmpty,
+  update
+} from '../../../../utils/';
 import { CreateSport, UpdateSport } from './sports.mutations.graphql';
 import { GetSports } from './sports.queries.graphql';
 
@@ -58,7 +63,7 @@ class SportForm extends Component {
             });
             data.allSports = update.addItem({
               list: data.allSports,
-              item: { ...createSport, updatedAt: getCurrentDate()},
+              item: { ...createSport, updatedAt: getCurrentDate() },
               sort: true
             });
             data.meta.count = data.allSports.length;
@@ -81,7 +86,9 @@ class SportForm extends Component {
                     }
                   });
                   setSubmitting(false);
-                  this.props.addToast({ message: `${isEdit ? 'Edited' : 'Added'}: ${name}`});
+                  this.props.addToast({
+                    message: `${isEdit ? 'Edited' : 'Added'}: ${name}`
+                  });
                   this.props.onClose();
                 } catch (ex) {
                   const error = handleGraphQLError(ex);
@@ -155,6 +162,7 @@ class SportForm extends Component {
 }
 
 SportForm.propTypes = {
+  addToast: func.isRequired,
   item: shape({
     name: string,
     icon: string
