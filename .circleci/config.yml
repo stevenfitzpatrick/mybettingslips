@@ -54,7 +54,7 @@ jobs:
           name: Test
           command: npm test
       - run:
-          name: Danger
+          name: Danger JS
           command: npm run danger
       #   - run:
       #       name: Generate code coverage
