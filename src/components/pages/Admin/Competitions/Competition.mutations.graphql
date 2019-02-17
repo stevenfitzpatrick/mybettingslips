@@ -1,0 +1,37 @@
+# Add new Competition
+mutation CreateCompetition($name: String!, $icon: String, $sportId: ID!) {
+  createCompetition(name: $name, icon: $icon, sportId: $sportId) {
+    id
+    name
+    icon
+    sport {
+      id
+      name
+    }
+  }
+}
+
+# Update Competition
+mutation UpdateCompetition(
+  $name: String!
+  $icon: String
+  $id: ID!
+  $sportId: ID!
+) {
+  updateCompetition(id: $id, name: $name, icon: $icon, sportId: $sportId) {
+    id
+    name
+    icon
+    sport {
+      id
+      name
+    }
+  }
+}
+
+# Delete Competition
+mutation DeleteCompetition($id: ID!) {
+  deleteCompetition(id: $id) {
+    id
+  }
+}

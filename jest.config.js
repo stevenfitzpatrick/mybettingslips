@@ -17,11 +17,12 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname'
   ],
+  moduleDirectories: ['node_modules', '<rootDir>/tests/utils/'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'graphql'],
   modulePaths: ['<rootDir>/src/client'],
   setupFiles: ['<rootDir>/tests/localStorage.js'],
   verbose: true,
-  setupTestFrameworkScriptFile: '<rootDir>/tests/init.js',
+  setupFilesAfterEnv: ['<rootDir>/tests/init.js'],
   coverageThreshold: {
     global: {
       statements: 50,

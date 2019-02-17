@@ -1,0 +1,15 @@
+query GetCompetitions {
+  allCompetitions(orderBy: name_ASC) {
+    id
+    name
+    icon
+    updatedAt
+    sport {
+      id
+      name
+    }
+  }
+  meta: _allCompetitionsMeta {
+    count
+  }
+}

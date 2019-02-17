@@ -35,10 +35,7 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
-            options: {
-              minimize: true
-            }
+            loader: 'css-loader'
           },
           {
             loader: 'postcss-loader',
@@ -57,7 +54,6 @@ const config = {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              minimize: true,
               camelCase: 'dashes',
               modules: true,
               localIdentName: 'bs_[hash:base64:3]'

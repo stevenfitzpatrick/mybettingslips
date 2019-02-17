@@ -1,8 +1,6 @@
 import React from 'react';
-import { fireEvent, render } from 'react-testing-library';
-import { MockedProvider } from 'react-apollo/test-utils';
-import { Theme } from '@sfitzpatrick/fitzy';
-import { ThemeProvider } from 'styled-components';
+import { fireEvent } from 'react-testing-library';
+import { renderWithApollo } from 'test-utils';
 
 import SportCard from '../SportCard';
 import { DeleteSport } from '../sports.mutations.graphql';
@@ -51,14 +49,10 @@ describe('Sports Card', () => {
   ];
 
   test('should handle edit', () => {
-    const { getByText, getByTestId } = render(
-      <MockedProvider addTypename={false} mocks={mocks}>
-        <ThemeProvider theme={Theme}>
-          <SportCard {...defaultProps} />
-        </ThemeProvider>
-      </MockedProvider>
+    const { getByText, getByTestId } = renderWithApollo(
+      <SportCard {...defaultProps} />,
+      { mocks }
     );
-
     expect(getByText('Football')).toBeTruthy();
     const dropdown = getByTestId('sport-dropdown');
     fireEvent.click(dropdown);
@@ -70,12 +64,9 @@ describe('Sports Card', () => {
   });
 
   test('should handle delete', () => {
-    const { getByText, getByTestId } = render(
-      <MockedProvider addTypename={false} mocks={mocks}>
-        <ThemeProvider theme={Theme}>
-          <SportCard {...defaultProps} />
-        </ThemeProvider>
-      </MockedProvider>
+    const { getByText, getByTestId } = renderWithApollo(
+      <SportCard {...defaultProps} />,
+      { mocks }
     );
 
     expect(getByText('Football')).toBeTruthy();
