@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 
 import { PrimaryLayout, UnauthorizedLayout } from './layout';
 import { PrivateRoute } from './auth';
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default hot(module)(App);
+export default hot(App);
