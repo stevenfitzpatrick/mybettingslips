@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent } from 'react-testing-library';
+import { fireEvent } from '@testing-library/react';
 import { renderWithApollo } from 'test-utils';
 
 import SportCard from '../SportCard';

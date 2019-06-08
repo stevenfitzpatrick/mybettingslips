@@ -10,7 +10,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:jest/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:react/all',
+    'plugin:react/recommended',
     'prettier',
     'prettier/react'
   ],
@@ -29,8 +29,8 @@ module.exports = {
     'jsx-a11y',
     'prettier',
     'jsx-a11y',
-    'codebox',
-    'graphql'
+    'graphql',
+    'react-hooks'
   ],
   rules: {
     indent: ['error', 2],
@@ -50,6 +50,8 @@ module.exports = {
     'react/forbid-component-props': 0,
     'react/destructuring-assignment': 0,
     'react/no-set-state': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'codebox/sort-imports': [
       'error',
       {

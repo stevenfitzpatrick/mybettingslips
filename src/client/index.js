@@ -5,5 +5,10 @@ export * from './user';
 export * from './auth.graphql';
 
 /** Bet GraphQL Queries */
-export * from './bets/bets.query.graphql';
-export * from './bets/bets.mutations.graphql';
+export {
+  GetBetOptions,
+  BetTypesQuery,
+  GetUserTotal,
+  GetUserBets
+} from './bets/bets.query.graphql';
+//export * from './bets/bets.mutations.graphql';

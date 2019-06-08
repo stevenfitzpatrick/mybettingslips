@@ -6,7 +6,7 @@ module.exports = {
     '^.+\\.module\\.scss$': 'identity-obj-proxy'
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
+    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|json)$',
     '^.+\\.module\\.scss$'
   ],
   transform: {
