@@ -1,7 +1,7 @@
 const commonPaths = require('./common');
 
 const config = {
-  entry: './src',
+  entry: ['./src'],
   output: {
     path: commonPaths.outputPath,
     publicPath: '/'

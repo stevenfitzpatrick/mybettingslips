@@ -1,7 +1,5 @@
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const convert = require('koa-connect');
-const history = require('connect-history-api-fallback');
 
 const pkg = require('../package.json');
 const commonPaths = require('./common');
@@ -56,11 +54,8 @@ const config = {
       }
     ]
   },
-  serve: {
-    add: app => {
-      app.use(convert(history()));
-    },
-    hot: true,
+  devServer: {
+    compress: false,
     open: true
   },
   cache: true,
